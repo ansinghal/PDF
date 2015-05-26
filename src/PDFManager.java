@@ -41,6 +41,24 @@ public class PDFManager {
 	       // pdfStripper.setEndPage(pdDoc.getNumberOfPages());
 	      
 	       Text = pdfStripper.getText(pdDoc);
+	       //for not including the extra text at the start and end of the file:
+	       int start = Text.indexOf("Computing Instance");
+	       int end = Text.lastIndexOf("Powered by TCPDF");
+	       Text = Text.substring(start,end);
+	       
+	       //quantity row doesn't have proper delimiters,inserting $ after every number
+	       //except the last:
+	       int index = Text.indexOf("Quantity");
+	       index = index + 9;
+	       //System.out.println("index of quantity +9=" + index);
+	       int i;
+	       StringBuilder t = new StringBuilder(Text);
+	       for(i=0;i<4;i++)
+	       {
+	    	   t.insert(index, " $");
+	    	   index = index + 4;
+	       }
+	       Text = t.toString();
 	       return Text;
 	   }
 	 
@@ -51,5 +69,3 @@ public class PDFManager {
 	  
 	}
 	
-
-
