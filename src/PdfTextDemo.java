@@ -7,9 +7,9 @@ public class PdfTextDemo {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		   PDFManager pdfManager = new PDFManager();
-		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf");
+		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\project\\test.pdf");
 	                  
-	       File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\t1.txt");
+	       File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.txt");
 	       file.createNewFile();
 	       
 	       FileWriter fw = new FileWriter(file.getAbsoluteFile());

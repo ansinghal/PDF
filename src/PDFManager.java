@@ -57,7 +57,9 @@ public class PDFManager {
 	    	   t.insert(index, " $");
 	    	   index = index + 4;
 	       }
-	       Text = t.toString();
+	       
+	       String str = t.toString();
+	       Text = str.replace("$", " : ");
 	       return Text;
 	   }
 	 
