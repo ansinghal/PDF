@@ -16,8 +16,11 @@ public class MainFunction {
 	       BufferedWriter bw = new BufferedWriter(fw);
 	       bw.write(pdfManager.ToText());
 	       bw.close();
-	       System.out.println("Done");
-			
+	       System.out.println("DoneParsing");
+	       
+	       FirstWrite fwrite = new FirstWrite(file);
+	       fwrite.write();
+	       System.out.println("DoneWriting");
 			 
 	       
 	    
