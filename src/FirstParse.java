@@ -7,7 +7,7 @@ import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 
-public class PDFManager {
+public class FirstParse {
 	private PDFParser parser;
 	   private PDFTextStripper pdfStripper;
 	   private PDDocument pdDoc ;
@@ -17,7 +17,7 @@ public class PDFManager {
 	   private String filePath;
 	   private File file;
 	 
-	    public PDFManager() 
+	    public FirstParse() 
 	    { } 
 	        
 	    

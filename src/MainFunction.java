@@ -2,11 +2,11 @@ import java.io.IOException;
 import java.io.*;
 
 
-public class PdfTextDemo {
+public class MainFunction {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		   PDFManager pdfManager = new PDFManager();
+		   FirstParse pdfManager = new FirstParse();
 		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\project\\test.pdf");
 	                  
 	       File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.txt");
