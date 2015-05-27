@@ -8,7 +8,7 @@
  *
  */
 import java.io.*;
-import java.lang.*;
+
 
 public class FirstWrite{
 	static FileInputStream fstream;
@@ -35,7 +35,7 @@ public class FirstWrite{
 	// Get the object of DataInputStream
 	DataInputStream in = new DataInputStream(fstream);
 	BufferedReader br = new BufferedReader(new InputStreamReader(in));
-	BufferedWriter out = new BufferedWriter(new FileWriter("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\fwrite.txt"));
+	BufferedWriter out = new BufferedWriter(new FileWriter("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\fwrite.csv"));
 	String strLine;
 	//Read File Line By Line
 	while ((strLine = br.readLine()) != null) {
@@ -49,11 +49,18 @@ public class FirstWrite{
 		i++ ;
 	}
 	else {
-		System.out.println("First word: "+first);
-		count++ ;
-		i++ ;
-		f = f+","+first;
-		s = s + "," + second;
+		      System.out.println("First word: "+first);
+		       count++ ;
+		        i++ ;
+		
+		        if (i==3)
+		        {f=first;
+		         s=second;
+		        }
+		        else
+		        { f = f+","+first;
+		          s = s + "," + second;
+		        }
 		
 	}
 	}
