@@ -1,3 +1,10 @@
+/*
+ * This class contains the function that reads the pdf file and converts it into a text file that:
+ * i)has trimmed all the irrelevant information.
+ * ii)corrects and replaces the text in files($ for :) so that : can be used as a delimiter.
+ * 
+ */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,13 +41,10 @@ public class FirstParse {
 	       cosDoc = parser.getDocument();
 	       pdfStripper = new PDFTextStripper();
 	       pdDoc = new PDDocument(cosDoc);
-	       pdDoc.getNumberOfPages();
+	       // to read all the text:
 	       pdfStripper.setEndPage(pdDoc.getNumberOfPages());
-	       // reading text from page 1 to 10
-	       // if you want to get text from full pdf file use this code
-	       // pdfStripper.setEndPage(pdDoc.getNumberOfPages());
-	      
 	       Text = pdfStripper.getText(pdDoc);
+	       
 	       //for not including the extra text at the start and end of the file:
 	       int start = Text.indexOf("Computing Instance");
 	       int end = Text.lastIndexOf("Powered by TCPDF");
@@ -49,8 +53,10 @@ public class FirstParse {
 	       //quantity row doesn't have proper delimiters,inserting $ after every number
 	       //except the last:
 	       int index = Text.indexOf("Quantity");
+	       //length of quantity + 1 blank space
 	       index = index + 9;
-	       int i;
+	       int i;//loop index
+	       //converting to stringbuilder to use the insert function
 	       StringBuilder t = new StringBuilder(Text);
 	       for(i=0;i<4;i++)
 	       {
@@ -58,7 +64,8 @@ public class FirstParse {
 	    	   index = index + 4;
 	       }
 	       
-	       String str = t.toString();
+	       //replacing $ by :
+	       String str = t.toString();//converting back to a string
 	       Text = str.replace("$", " : ");
 	       return Text;
 	   }

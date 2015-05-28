@@ -1,3 +1,9 @@
+/*
+ * Project: To convert a price quote to an excel workbook
+ * This class contains the main function.
+ */
+
+
 import java.io.IOException;
 import java.io.*;
 
@@ -11,13 +17,13 @@ public class MainFunction {
 	                  
 	       File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.txt");
 	       file.createNewFile();
-	       
+	       //parsing:
 	       FileWriter fw = new FileWriter(file.getAbsoluteFile());
 	       BufferedWriter bw = new BufferedWriter(fw);
 	       bw.write(pdfManager.ToText());
 	       bw.close();
 	       System.out.println("DoneParsing");
-	       
+	       //writing to produce a csv file
 	       FirstWrite fwrite = new FirstWrite(file);
 	       fwrite.write();
 	       System.out.println("DoneWriting");
