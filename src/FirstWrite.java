@@ -30,6 +30,7 @@ public class FirstWrite{
 	String second = null;//the second column
 	String f = null;//f will contain the text from the first column and a comma as a delimiter
 	String s = null;//s will contain the text from the second column and a comma as a delimiter
+    String c=  null;//c will contain test cost+first column and comma as delimiter
 	int i=1 ;
 	//FileInputStream fstream = new FileInputStream("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.txt");
 	// Get the object of DataInputStream
@@ -55,19 +56,28 @@ public class FirstWrite{
 		//if the value of i is 3;then just initialize f and s to be first and second
 		        if (i==3)
 		        {
-		         f=first;
-		         s=second;
+		        	f=first;
+		        	c=first + "(cost)";
+		        	s=second;
 		        }
 		        else
-		        { f = f+","+first;
-		          s = s + "," + second;
+		        {   
+		        	if (first.equals("Subtotals"))
+		               {
+		        		out.write(f);
+		               }
+		        
+		        	f = f+","+first;
+		        	c= c+","+first+"(cost)";
+		            s = s + "," + second;
 		        }
 		
 	}
 	}
 	
 	// writing f and s to a new file
-	out.write(f);
+	out.write(",");
+	out.write(c);
 	out.newLine();
 	out.write(s);
 	out.close () ;
@@ -76,8 +86,9 @@ public class FirstWrite{
 	in.close();
 	
 	}
-	catch (Exception e){//Catch exception if any
-	System.err.println("Error: " + e.getMessage());
+	catch (Exception e)
+	{//Catch exception if any
+		System.err.println("Error: " + e.getMessage());
 	}
 	
 	
