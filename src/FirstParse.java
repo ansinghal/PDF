@@ -67,6 +67,7 @@ public class FirstParse {
 	       //replacing $ by :
 	       String str = t.toString();//converting back to a string
 	       Text = str.replace("$", " : ");
+	       cosDoc.close();
 	       return Text;
 	   }
 	 

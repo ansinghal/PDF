@@ -23,7 +23,7 @@ public class FirstWrite{
 		fstream = new FileInputStream(f);
 	} 
 	
-	public void write()
+	public void write(String outputPath)
 	{
 	try{
 	String first = null ;//the first column
@@ -38,7 +38,7 @@ public class FirstWrite{
 	// Get the object of DataInputStream
 	DataInputStream in = new DataInputStream(fstream);
 	BufferedReader br = new BufferedReader(new InputStreamReader(in));
-	BufferedWriter out = new BufferedWriter(new FileWriter("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\fwrite.csv"));
+	BufferedWriter out = new BufferedWriter(new FileWriter(outputPath));
 	String strLine;
 	//Read File Line By Line
 	while ((strLine = br.readLine()) != null) {
