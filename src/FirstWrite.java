@@ -65,6 +65,10 @@ public class FirstWrite{
 		        	if (first.equals("Subtotals"))
 		               {
 		        		out.write(f);
+		        		out.write(",");
+		        		out.write(c);
+		        		out.newLine();
+		        		out.write(s);
 		               }
 		        
 		        	f = f+","+first;
@@ -76,12 +80,7 @@ public class FirstWrite{
 	}
 	
 	// writing f and s to a new file
-	out.write(",");
-	out.write(c);
-	out.newLine();
-	out.write(s);
-	out.close () ;
-	
+	out.close();
 	System.out.println(count*2) ;//prints the number of columns to the console
 	in.close();
 	
