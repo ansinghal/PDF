@@ -31,7 +31,8 @@ public class FirstWrite{
 	String f = null;//f will contain the text from the first column and a comma as a delimiter
 	String s = null;//s will contain the text from the second column and a comma as a delimiter
     String c=  null;//c will contain test cost+first column and comma as delimiter
-	int i=1 ;
+	String cost = null;
+    int i=1 ;
 	//FileInputStream fstream = new FileInputStream("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.txt");
 	// Get the object of DataInputStream
 	DataInputStream in = new DataInputStream(fstream);
@@ -42,7 +43,12 @@ public class FirstWrite{
 	while ((strLine = br.readLine()) != null) {
 	String[] delims = strLine.split(":");
 	first = delims[0] ;//column names
+	if (first.equals("   Datacenter"))
+			{
+				continue;
+			}
 	second = delims[1];//quantity of the items
+	cost = delims[2];//cost of items
 	first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
 	
 	//first line is blank:
@@ -50,7 +56,7 @@ public class FirstWrite{
 		i++ ;//i = 2
 	}
 	else {
-		      System.out.println("First word: "+first);
+			   //System.out.println("First word: "+first);
 		       count++ ;
 		        i++ ;//i = 3
 		//if the value of i is 3;then just initialize f and s to be first and second
