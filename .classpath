@@ -2,6 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/Project/pdfbox-app-1.8.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/project/pdfbox-app-1.8.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/project/poi-3.12/poi-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/project/poi-3.12/poi-examples-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/project/poi-3.12/poi-excelant-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/project/poi-3.12/poi-ooxml-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/project/poi-3.12/poi-ooxml-schemas-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/project/poi-3.12/poi-scratchpad-3.12-20150511.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
