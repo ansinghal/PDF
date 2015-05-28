@@ -13,9 +13,9 @@ public class MainFunction {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		   FirstParse pdfManager = new FirstParse();
-		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\project\\test2.pdf");
+		   pdfManager.setFilePath("C:\\test.pdf");
 	                  
-	       File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.txt");
+	       File file = new File("C:\\test.txt");
 	       file.createNewFile();
 	       //parsing:
 	       FileWriter fw = new FileWriter(file.getAbsoluteFile());

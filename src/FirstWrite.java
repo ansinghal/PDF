@@ -31,13 +31,14 @@ public class FirstWrite{
 	String f = null;//f will contain the text from the first column and a comma as a delimiter
 	String s = null;//s will contain the text from the second column and a comma as a delimiter
     String c=  null;//c will contain test cost+first column and comma as delimiter
+    String m= null ;
 	String cost = null;
     int i=1 ;
 	//FileInputStream fstream = new FileInputStream("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.txt");
 	// Get the object of DataInputStream
 	DataInputStream in = new DataInputStream(fstream);
 	BufferedReader br = new BufferedReader(new InputStreamReader(in));
-	BufferedWriter out = new BufferedWriter(new FileWriter("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\fwrite.csv"));
+	BufferedWriter out = new BufferedWriter(new FileWriter("C:\\fwrite.csv"));
 	String strLine;
 	//Read File Line By Line
 	while ((strLine = br.readLine()) != null) {
@@ -51,20 +52,18 @@ public class FirstWrite{
 	cost = delims[2];//cost of items
 	first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
 	
-	//first line is blank:
-	if (i==1) {
-		i++ ;//i = 2
-	}
-	else {
+	
+	{
 			   //System.out.println("First word: "+first);
 		       count++ ;
-		        i++ ;//i = 3
-		//if the value of i is 3;then just initialize f and s to be first and second
-		        if (i==3)
+		        i++ ;//i = 2
+		//if the value of i is 2;then just initialize f and s to be first and second
+		        if (i==2)
 		        {
 		        	f=first;
 		        	c=first + "(cost)";
 		        	s=second;
+		        	m=cost ;
 		        }
 		        else
 		        {   
@@ -75,11 +74,14 @@ public class FirstWrite{
 		        		out.write(c);
 		        		out.newLine();
 		        		out.write(s);
+		        		out.write(",") ;
+		        		out.write(m); 
 		               }
 		        
 		        	f = f+","+first;
 		        	c= c+","+first+"(cost)";
 		            s = s + "," + second;
+		            m = m + ","+cost ;
 		        }
 		
 	}
