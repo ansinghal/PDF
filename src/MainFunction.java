@@ -4,7 +4,12 @@
  */
 
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import xmlGenerator.XmlGenerator;
 
 
 public class MainFunction {
@@ -32,6 +37,10 @@ public class MainFunction {
 	       String in = outputPath;
 	       String finalOut = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xlsx";
 		   csv2excel.convert(in,finalOut);
+		   //xml file generation:
+		   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
+		   String delimiter = ",";
+		   XmlGenerator x = new XmlGenerator(outputPath,xmlPath,delimiter);
 	       
 	    
 	}
