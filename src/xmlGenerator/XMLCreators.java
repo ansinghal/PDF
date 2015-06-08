@@ -1,12 +1,7 @@
 package xmlGenerator;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.StringTokenizer;
 
 import javax.xml.parsers.*;
@@ -125,6 +120,10 @@ public class XMLCreators {
                 aTransformer.transform(src, result);
 
                 osw.flush();
+                //write to xmlPathFile:
+                BufferedWriter out = new BufferedWriter(new FileWriter(xmlFileName));
+                out.write(baos.toString());
+                out.close();
                 System.out.println(new String(baos.toByteArray()));
 
             } catch (Exception exp) {
