@@ -144,7 +144,7 @@ public class XMLCreators {
                 BufferedWriter out = new BufferedWriter(new FileWriter(xmlFileName));
                 out.write(baos.toString());
                 out.close();
-                //System.out.println(new String(baos.toByteArray()));
+                csvReader.close();
 
             } catch (Exception exp) {
                 exp.printStackTrace();
@@ -165,6 +165,7 @@ public class XMLCreators {
             System.err.println(exp.toString());
         }
         return rowsCount;
+        
         // "XLM Document has been created" + rowsCount;
     }
 }
