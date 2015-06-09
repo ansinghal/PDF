@@ -50,7 +50,8 @@ public class XMLCreators {
             List<String> headers = new ArrayList<String>(5);
 
             String text = null;
-            while ((text = csvReader.readLine()) != null) {
+            while ((text = csvReader.readLine()) != null) 
+            {
 
                 StringTokenizer st = new StringTokenizer(text, delimiter, false);
               //number of comma seperated values in this line of text:
@@ -74,29 +75,42 @@ public class XMLCreators {
 
                     rowsCount++;
 
-                    Element rowElement1 = newDoc.createElement("row");
-                    Element rowElement= newDoc.createElement("Title") ;
-                    
-
-                    rootElement.appendChild(rowElement1);
-                    rowElement1.appendChild(rowElement);
-                    for (int col = 0; col < headers.size(); col++) {
+                    Element rowElement = newDoc.createElement("row");
+                    //Element rowElement= newDoc.createElement("Title") ;
+                    rootElement.appendChild(rowElement);
+                    //rowElement1.appendChild(rowElement);
+                    for (int col = 0; col < headers.size(); col++)
+                    {
 
                         String header = headers.get(col);
                         String value = null;
 
-                        if (col < rowValues.length) {
+                        if (col < rowValues.length && rowValues[col] != "")
+                        {
 
                             value = rowValues[col];
 
-                        } else {
+                        } 
+                        else 
+                        {
                             // ?? Default value
                             value = "NA";
                         }
 
                         Element curElement = newDoc.createElement(header);
-                        curElement.appendChild(newDoc.createTextNode("Hidden")) ;
-                        curElement.appendChild(newDoc.createTextNode(value));
+                       
+                        Element title = newDoc.createElement("title");
+                        title.appendChild(newDoc.createTextNode(header));
+                        curElement.appendChild(title);
+                        
+                        Element valuetag = newDoc.createElement("value");
+                        valuetag.appendChild(newDoc.createTextNode(value));
+                        curElement.appendChild(valuetag);
+                        
+                        Element hidden = newDoc.createElement("hidden");
+                        hidden.appendChild(newDoc.createTextNode("1"));
+                        curElement.appendChild(hidden);
+                        
                         rowElement.appendChild(curElement);
 
                     }
@@ -108,7 +122,7 @@ public class XMLCreators {
 
             ByteArrayOutputStream baos = null;
             OutputStreamWriter osw = null;
-////what is this:
+
             try {
 
                 baos = new ByteArrayOutputStream();
