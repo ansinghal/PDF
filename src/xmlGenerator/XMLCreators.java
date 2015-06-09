@@ -66,7 +66,7 @@ public class XMLCreators {
                 if (line == 0) { // Header row
 
                     for (String col : rowValues) {
-                       //we need to implement find logic her:
+                       //we need to implement find logic here:
                     	headers.add(col);
                     }
 
@@ -111,6 +111,7 @@ public class XMLCreators {
 
                 TransformerFactory tranFactory = TransformerFactory.newInstance();
                 Transformer aTransformer = tranFactory.newTransformer();
+                //for formatiing:
                 aTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
                 aTransformer.setOutputProperty(OutputKeys.METHOD, "xml");
                 aTransformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
@@ -124,7 +125,7 @@ public class XMLCreators {
                 BufferedWriter out = new BufferedWriter(new FileWriter(xmlFileName));
                 out.write(baos.toString());
                 out.close();
-                System.out.println(new String(baos.toByteArray()));
+                //System.out.println(new String(baos.toByteArray()));
 
             } catch (Exception exp) {
                 exp.printStackTrace();
@@ -139,10 +140,7 @@ public class XMLCreators {
                 }
             }
 
-            // Output to console for testing
-            // Resultt result = new StreamResult(System.out);
-
-        } catch (IOException exp) {
+            } catch (IOException exp) {
             System.err.println(exp.toString());
         } catch (Exception exp) {
             System.err.println(exp.toString());
