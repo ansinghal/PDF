@@ -74,8 +74,12 @@ public class XMLCreators {
 
                     rowsCount++;
 
-                    Element rowElement = newDoc.createElement("row");
-                    rootElement.appendChild(rowElement);
+                    Element rowElement1 = newDoc.createElement("row");
+                    Element rowElement= newDoc.createElement("Title") ;
+                    
+
+                    rootElement.appendChild(rowElement1);
+                    rowElement1.appendChild(rowElement);
                     for (int col = 0; col < headers.size(); col++) {
 
                         String header = headers.get(col);
@@ -91,6 +95,7 @@ public class XMLCreators {
                         }
 
                         Element curElement = newDoc.createElement(header);
+                        curElement.appendChild(newDoc.createTextNode("Hidden")) ;
                         curElement.appendChild(newDoc.createTextNode(value));
                         rowElement.appendChild(curElement);
 
