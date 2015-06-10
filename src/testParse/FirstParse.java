@@ -48,6 +48,7 @@ public class FirstParse {
 	       int count = 0;
 	       int indices[] = new int[100];
 	       int j = Text.indexOf("New Subtotals");
+	       System.out.println(j);
 	       if(j==-1)
 	       {
 	    	   System.exit(-1);
@@ -77,9 +78,9 @@ public class FirstParse {
 	       indices[0]=start;
 	      // int end = Text.lastIndexOf("New Subtotals");
 	       j=0;
-	       String Text1;
+	       String Text1=null;
 	       String Finish = null;
-	       for(j=0;j<count-1;j++)
+	       do
 	    	   {
 	    	   		System.out.println("\n\nend="+indices[j]);
 	    	   		if(j!=0)
@@ -109,15 +110,21 @@ public class FirstParse {
 	       //replacing $ by :
 	       Text1 = t.toString();//converting back to a string
 	       Text1 = Text1.replace("$", " : ");
-	       Finish= Finish + (Text1);
-	    	   }
+	       Finish= Finish + Text1;
+	       j++;
+	    	   } while (j < count-1);
 	       
 	       
 	       cosDoc.close();
+	       
+	       	       
 	       return Finish;
 	   }
 	 
-	    public void setFilePath(String filePath) {
+	   
+	   
+	   
+	   public void setFilePath(String filePath) {
 	        this.filePath = filePath;
 	    }
 	    //remove text which comes up when a price quote is broken over 2 different pages:
@@ -129,7 +136,7 @@ public class FirstParse {
 	    		//One-timetax will always come at the end of the text so:
 	    		int j = str.indexOf("Tax",i+1);
 	    		j = str.indexOf("Tax",j+1);
-	    		//j = j+"One-Time Tax".length();
+	    		j = j+"Tax".length()+1;
 	    		StringBuffer s = new StringBuffer(str);
 	    		System.out.println("i="+i+" j="+j);
 	    		s.delete(i,j);
