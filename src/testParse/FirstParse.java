@@ -54,7 +54,8 @@ public class FirstParse {
 	       }
 	      int c=1;
 	      indices[0] = 0;
-	       while(j >= 0) {
+	       while(j >= 0) 
+	       {
 	    	    //System.out.println("index of new subtotal = "+j);
 	    	    indices[c]=j;
 	    	    j = Text.indexOf("New Subtotals", j+1);
@@ -87,6 +88,8 @@ public class FirstParse {
 	    	   		int ends = indices[j+1];
 	    	   		System.out.println("start="+start+"\nends="+ends);
 	    	   		Text1 = Text.substring(start,ends);
+	    	   		//to remove line of texts which come up when a price quote continues over 2 different pages:
+	    	   		Text1=removeGarbageData(Text1);
 	    	   		System.out.println(Text1);
 	    	   
 	       //quantity row doesn't have proper delimiters,inserting $ after every number
@@ -117,6 +120,29 @@ public class FirstParse {
 	    public void setFilePath(String filePath) {
 	        this.filePath = filePath;
 	    }
+	    //remove text which comes up when a price quote is broken over 2 different pages:
+	    public String removeGarbageData(String str)
+	    {
+	    	int i = str.indexOf("Proposal continues on next page.");
+	    	if(i>=0)
+	    	{
+	    		//One-timetax will always come at the end of the text so:
+	    		int j = str.indexOf("Tax",i+1);
+	    		j = str.indexOf("Tax",j+1);
+	    		//j = j+"One-Time Tax".length();
+	    		StringBuffer s = new StringBuffer(str);
+	    		System.out.println("i="+i+" j="+j);
+	    		s.delete(i,j);
+	    		str = s.toString();
+	    		return str;
+	    	}
+	     	else{
+	    		return str;
+	    	}
+	    }
+	    		    	
+}
+	    
+	    
 		
 	  
-	}
