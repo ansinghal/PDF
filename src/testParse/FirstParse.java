@@ -93,26 +93,27 @@ public class FirstParse {
 	    	   		Text1=removeGarbageData(Text1);
 	    	   		System.out.println(Text1);
 	    	   
-	       //quantity row doesn't have proper delimiters,inserting $ after every number
-	       //except the last:
-	       int index = Text1.indexOf("Quantity");
-	       //length of quantity + 1 blank space
-	       index = index + 9;
-	       int i;//loop index
-	       //converting to stringbuilder to use the insert function
-	       StringBuilder t = new StringBuilder(Text1);
-	       for(i=0;i<4;i++)
-	       {
-	    	   t.insert(index, " $");
-	    	   index = index + 4;
-	       }
+			       //quantity row doesn't have proper delimiters,inserting $ after every number
+			       //except the last:
+			       int index = Text1.indexOf("Quantity");
+			       //length of quantity + 1 blank space
+			       index = index + 9;
+			       int i;//loop index
+			       //converting to stringbuilder to use the insert function
+			       StringBuilder t = new StringBuilder(Text1); 
+			       for(i=0;i<4;i++)
+				       {
+				    	   t.insert(index, " $");
+				    	   index = index + 4;
+				       }
 	    	   
 	       //replacing $ by :
 	       Text1 = t.toString();//converting back to a string
 	       Text1 = Text1.replace("$", " : ");
 	       Finish= Finish + Text1;
 	       j++;
-	    	   } while (j < count-1);
+	    	   }
+	       while (j < count);
 	       
 	       
 	       cosDoc.close();
