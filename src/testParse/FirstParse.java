@@ -58,9 +58,9 @@ public class FirstParse {
 	    	   System.out.println("Keyword Description is not found");
 	       }
 	       
-	       
+	       int s = Text.indexOf("Computing Instance");
 	       int start = Text.indexOf("Server");
-	       if(start == -1)
+	       if(start > s)
 	       {
 	    	   start  = Text.indexOf("Computing Instance");
 	       }
@@ -131,7 +131,7 @@ public class FirstParse {
 	    		//One-timetax will always come at the end of the text so:
 	    		int j = str.indexOf("Tax",i+1);
 	    		j = str.indexOf("Tax",j+1);
-	    		j = j+"Tax".length()+1;
+	    		j = j+"Tax".length()+2;
 	    		StringBuffer s = new StringBuffer(str);
 	    		System.out.println("i="+i+" j="+j);
 	    		s.delete(i,j);
