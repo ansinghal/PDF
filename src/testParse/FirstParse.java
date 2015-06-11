@@ -36,48 +36,39 @@ public class FirstParse {
 	      
 	       file = new File(filePath);
 	       parser = new PDFParser(new FileInputStream(file));
-	      
 	       parser.parse();
 	       cosDoc = parser.getDocument();
 	       pdfStripper = new PDFTextStripper();
 	       pdDoc = new PDDocument(cosDoc);
 	       // to read all the text:
 	       pdfStripper.setEndPage(pdDoc.getNumberOfPages());
+	       
+	       
 	       Text = pdfStripper.getText(pdDoc);
-	       //to get total number of price quotes in the given pdf:
-	       int count = 0;
 	       int indices[] = new int[100];
-	       int j = Text.indexOf("New Subtotals");
-	       System.out.println(j);
-	       if(j==-1)
-	       {
-	    	   System.exit(-1);
-	       }
-	      int c=1;
-	      indices[0] = 0;
-	       while(j >= 0) 
-	       {
-	    	    //System.out.println("index of new subtotal = "+j);
-	    	    indices[c]=j;
-	    	    j = Text.indexOf("New Subtotals", j+1);
-	            c++;
-	            count ++;
-	       }
+	       //to get total number of price quotes in the given pdf:
+	       int count = getNumberQuotes(Text,indices);
 	       System.out.println("total number of price quotes is:"+count);
+	       
+	       
 	       //for not including the extra text at the start and end of the file:
 	       int description = Text.indexOf("Description");
 	       if(description == -1)
 	       {
 	    	   System.out.println("Keyword Description is not found");
 	       }
+	       
+	       
 	       int start = Text.indexOf("Server");
 	       if(start == -1)
 	       {
 	    	   start  = Text.indexOf("Computing Instance");
 	       }
 	       indices[0]=start;
+	       
+	       
 	      // int end = Text.lastIndexOf("New Subtotals");
-	       j=0;
+	       int j=0;
 	       String Text1=null;
 	       String Finish=null;
 	       do
@@ -150,6 +141,35 @@ public class FirstParse {
 	     	else{
 	    		return str;
 	    	}
+	    }
+	    
+	    public int getNumberQuotes(String str,int[] indices)
+	    {
+	    	 int count = 0;
+		       int j = Text.indexOf("New Subtotals");
+		       System.out.println(j);
+		       if(j==-1)
+		       {
+		    	   System.exit(-1);
+		       }
+		      int c=1;
+		      indices[0] = 0;
+		       while(j >= 0) 
+		       {
+		    	    //System.out.println("index of new subtotal = "+j);
+		    	    indices[c]=j;
+		    	    j = Text.indexOf("New Subtotals", j+1);
+		            c++;
+		            count ++;
+		       }
+		       
+		       //for getting the text after the final new subtotals:
+		       indices[c-1]=Text.indexOf("Order Subtotals");
+		       
+		       //for getting order subtotals:
+		       //indices[c]=Text.indexOf("Total Recurring");
+		       	       
+		       return count;
 	    }
 	    		    	
 }
