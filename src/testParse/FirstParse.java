@@ -79,7 +79,7 @@ public class FirstParse {
 	      // int end = Text.lastIndexOf("New Subtotals");
 	       j=0;
 	       String Text1=null;
-	       String Finish = null;
+	       String Finish=null;
 	       do
 	    	   {
 	    	   		System.out.println("\n\nend="+indices[j]);
@@ -110,6 +110,9 @@ public class FirstParse {
 	       //replacing $ by :
 	       Text1 = t.toString();//converting back to a string
 	       Text1 = Text1.replace("$", " : ");
+	       if (j==0)  // TO REMOVE NULL 
+	    	   Finish=Text1;
+	       else
 	       Finish= Finish + Text1;
 	       j++;
 	    	   }
