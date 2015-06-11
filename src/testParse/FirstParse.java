@@ -48,7 +48,7 @@ public class FirstParse {
 	       int indices[] = new int[100];
 	       //to get total number of price quotes in the given pdf:
 	       int count = getNumberQuotes(Text,indices);
-	       System.out.println("total number of price quotes is:"+count);
+	       //System.out.println("total number of price quotes is:"+count);
 	       
 	       
 	       //for not including the extra text at the start and end of the file:
@@ -73,16 +73,16 @@ public class FirstParse {
 	       String Finish=null;
 	       do
 	    	   {
-	    	   		System.out.println("\n\nend="+indices[j]);
+	    	   		//System.out.println("\n\nend="+indices[j]);
 	    	   		if(j!=0)
 	    	   			start = indices[j]+45;
 	    	   		start = indices[j];
 	    	   		int ends = indices[j+1];
-	    	   		System.out.println("start="+start+"\nends="+ends);
+	    	   		//System.out.println("start="+start+"\nends="+ends);
 	    	   		Text1 = Text.substring(start,ends);
 	    	   		//to remove line of texts which come up when a price quote continues over 2 different pages:
 	    	   		Text1=removeGarbageData(Text1);
-	    	   		System.out.println(Text1);
+	    	   		//System.out.println(Text1);
 	    	   
 			       //quantity row doesn't have proper delimiters,inserting $ after every number
 			       //except the last:
@@ -133,7 +133,7 @@ public class FirstParse {
 	    		j = str.indexOf("Tax",j+1);
 	    		j = j+"Tax".length()+2;
 	    		StringBuffer s = new StringBuffer(str);
-	    		System.out.println("i="+i+" j="+j);
+	    		//System.out.println("i="+i+" j="+j);
 	    		s.delete(i,j);
 	    		str = s.toString();
 	    		return str;
@@ -147,7 +147,7 @@ public class FirstParse {
 	    {
 	    	 int count = 0;
 		       int j = Text.indexOf("New Subtotals");
-		       System.out.println(j);
+		       //System.out.println(j);
 		       if(j==-1)
 		       {
 		    	   System.exit(-1);
