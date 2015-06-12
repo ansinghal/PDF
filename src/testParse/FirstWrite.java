@@ -51,12 +51,12 @@ public class FirstWrite{
 		{
 			System.out.print("\n***********entered Next*********\n");
 			out.newLine();
-			//out.write(datacenter);
+			out.write(datacenter);
 			out.write(f);
 			out.write(";");
 			out.write(c);
 			out.newLine();
-			///out.write(namedatacenter);
+			out.write(namedatacenter);
 			out.write(s);
 			out.write(";") ;
 			out.write(m);
@@ -70,8 +70,8 @@ public class FirstWrite{
 		}
 		if (first.equals("   Datacenter"))
 		{
-			//datacenter = "Datacenter;";
-			//namedatacenter=delims[1]+";";
+			datacenter = "Datacenter;";
+			namedatacenter=delims[1]+";";
 			continue;
 		}
 		
