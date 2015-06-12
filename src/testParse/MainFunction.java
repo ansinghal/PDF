@@ -31,12 +31,12 @@ public class MainFunction {
 	       bw.close();
 	       System.out.println("DoneParsing");
 	       //writing to produce a csv file
-	       /*FirstWrite fwrite = new FirstWrite(file);
+	       FirstWrite fwrite = new FirstWrite(file);
 	       String outputPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv";
 	       fwrite.write(outputPath);
 	       System.out.println("DoneWriting");
 	       //converting the csv file to xlsx
-	       String in = outputPath;
+	       /*String in = outputPath;
 	       String finalOut = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xlsx";
 		   csv2excel.convert(in,finalOut);
 		   //xml file generation:
