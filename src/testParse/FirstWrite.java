@@ -42,13 +42,14 @@ public class FirstWrite{
 	String datacenter=null;
 	String namedatacenter=null;
 	//Read File Line By Line
-	while ((strLine = br.readLine()) != null) 
+	while ((strLine = br.readLine()) != null)
 	{
+		System.out.println(f);
 		String[] delims = strLine.split(":");
 		first = delims[0] ;//column names
 		if(first.equals("NEXT"))
 		{
-			System.out.print("entered Next");
+			System.out.print("\n***********entered Next*********\n");
 			out.newLine();
 			//out.write(datacenter);
 			out.write(f);
@@ -59,6 +60,8 @@ public class FirstWrite{
 			out.write(s);
 			out.write(",") ;
 			out.write(m);
+			f = null;
+			i = 1;
 			continue;
 		}
 		if(first.isEmpty())
@@ -72,35 +75,31 @@ public class FirstWrite{
 			continue;
 		}
 		
-		if (first.equals("NEXT"))
-        {
-			
- 		}
 		second = delims[1];//quantity of the items
 		cost = delims[2];//cost of items
 		first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
 		first=first.replace("&", "and");
-		
-		
-				   //System.out.println("First word: "+first);
-			       count++ ;
-			        i++ ;//i = 2
-			//if the value of i is 2;then just initialize f and s to be first and second
-			        if (i==2)
-			        {
-			        	f=first;
-			        	c=first + "cost";
-			        	s=second;
-			        	m=cost ;
-			        }
-			        else
-			        {
-			          
-			        	f = f+","+first;
-			        	c= c+","+first+"cost";
-			            s = s + "," + second;
-			            m = m + ","+cost ;
-			        }
+
+
+	   //System.out.println("First word: "+first);
+       count++ ;
+        i++ ;//i = 2
+        //if the value of i is 2;then just initialize f and s to be first and second
+        if (i==2)
+        {
+        	f=first;
+        	c=first + "cost";
+        	s=second;
+        	m=cost ;
+        }
+        else
+        {
+          
+        	f = f+","+first;
+        	c= c+","+first+"cost";
+            s = s + "," + second;
+            m = m + ","+cost ;
+        }
 			
 		
 	}
