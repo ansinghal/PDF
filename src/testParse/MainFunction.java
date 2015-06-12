@@ -28,6 +28,8 @@ public class MainFunction {
 	       FileWriter fw = new FileWriter(file.getAbsoluteFile());
 	       BufferedWriter bw = new BufferedWriter(fw);
 	       bw.write(pdfManager.ToText());
+	       //writing next finally
+	       bw.write("\nNEXT:\n");
 	       bw.close();
 	       System.out.println("DoneParsing");
 	       //writing to produce a csv file

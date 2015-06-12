@@ -53,12 +53,12 @@ public class FirstWrite{
 			out.newLine();
 			//out.write(datacenter);
 			out.write(f);
-			out.write(",");
+			out.write(";");
 			out.write(c);
 			out.newLine();
 			///out.write(namedatacenter);
 			out.write(s);
-			out.write(",") ;
+			out.write(";") ;
 			out.write(m);
 			f = null;
 			i = 1;
@@ -70,8 +70,8 @@ public class FirstWrite{
 		}
 		if (first.equals("   Datacenter"))
 		{
-			//datacenter = "Datacenter,";
-			//namedatacenter=delims[1]+",";
+			//datacenter = "Datacenter;";
+			//namedatacenter=delims[1]+";";
 			continue;
 		}
 		
@@ -95,10 +95,10 @@ public class FirstWrite{
         else
         {
           
-        	f = f+","+first;
-        	c= c+","+first+"cost";
-            s = s + "," + second;
-            m = m + ","+cost ;
+        	f = f+";"+first;
+        	c= c+";"+first+"cost";
+            s = s + ";" + second;
+            m = m + ";"+cost ;
         }
 			
 		
