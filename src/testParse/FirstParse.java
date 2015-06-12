@@ -9,6 +9,7 @@ package testParse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -112,14 +113,64 @@ public class FirstParse {
 	       
 	       cosDoc.close();
 	       
-	       	       
+	       Finish = writeNext(Finish);	       
 	       return Finish;
 	   }
 	 
 	   
 	   
 	   
-	   public void setFilePath(String filePath) {
+	   private String writeNext(String str) {
+		   int server = str.indexOf("Server:");
+		   int comp = str.indexOf("Instance:");
+		   if(comp<server)
+		   {
+			   StringBuffer s = new StringBuffer(str);
+			   s.insert(server, "\nNEXT:\n");
+			   server = server + "\nNEXT:\n".length();
+			   comp = comp + "\nNEXT:\n".length();
+			   str = s.toString();
+		   }
+		   
+		   if(server < comp)
+		   {
+			   StringBuffer s = new StringBuffer(str);
+			   s.insert(comp-"Computation".length(), "\nNEXT:\n");
+			   server = server + "\nNEXT:\n".length();
+			   comp = comp + "\nNEXT:\n".length();
+			   str = s.toString();
+		   }
+		   while(server != -1)
+		   {
+			   server = str.indexOf("Server:",server + "server:".length());
+			   if(server==-1)
+			   {
+				   break;
+			   }
+			   StringBuffer s = new StringBuffer(str);
+			   s.insert(server, "\nNEXT:\n");
+			   server = server + "\nNEXT:\n".length();
+			   comp = comp + "\nNEXT:\n".length();
+			   str = s.toString();
+		   }
+		   while(comp !=-1)
+		   {
+			   comp = str.indexOf("Instance:",comp+"Instance:".length());
+			   if(comp==-1)
+			   {
+				   break;
+			   }
+			   StringBuffer s = new StringBuffer(str);
+			   s.insert(comp-"Computation".length(), "\nNEXT:\n");
+			   server = server + "\nNEXT:\n".length();
+			   comp = comp + "\nNEXT:\n".length();
+			   str=s.toString();
+		   }
+		return str;
+	}
+
+
+	public void setFilePath(String filePath) {
 	        this.filePath = filePath;
 	    }
 	    //remove text which comes up when a price quote is broken over 2 different pages:
