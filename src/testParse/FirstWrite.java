@@ -92,6 +92,13 @@ public class FirstWrite{
         	s=second;
         	m=cost ;
         }
+        else if(first.equals("Subtotals") || first.equals("Quantity") || 
+        		first.equals("NewSubtotals"))
+        {
+        	c = c+";"+first;
+        	//s = s + ";" + second;
+            m = m + ";"+cost ;
+        }
         else
         {
           
