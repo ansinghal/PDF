@@ -50,6 +50,7 @@ public class XMLCreators {
             List<String> headers = new ArrayList<String>(5);
 
             String text = null;
+            int i =0;
             while ((text = csvReader.readLine()) != null) 
             {
 
@@ -64,8 +65,9 @@ public class XMLCreators {
 
                 }
 
-                if (line == 0) { // Header row
-
+                if (line%2 == 0) { // Header row
+                	headers.clear();
+                	i++;
                     for (String col : rowValues) {
                        //we need to implement find logic here:
                     	headers.add(col);
@@ -75,7 +77,7 @@ public class XMLCreators {
 
                     rowsCount++;
 
-                    Element rowElement = newDoc.createElement("row");
+                    Element rowElement = newDoc.createElement("Quote"+i);
                     //Element rowElement= newDoc.createElement("Title") ;
                     rootElement.appendChild(rowElement);
                     //rowElement1.appendChild(rowElement);
