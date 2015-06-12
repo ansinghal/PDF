@@ -41,6 +41,7 @@ public class FirstWrite{
 	String strLine;
 	String datacenter=null;
 	String namedatacenter=null;
+	int flag = 0;
 	//Read File Line By Line
 	while ((strLine = br.readLine()) != null)
 	{
@@ -50,7 +51,14 @@ public class FirstWrite{
 		if(first.equals("NEXT"))
 		{
 			System.out.print("\n***********entered Next*********\n");
-			out.newLine();
+			if(flag==1)
+				{
+					out.newLine();
+				}
+			else
+			{
+				flag = 1;
+			}
 			out.write(datacenter);
 			out.write(f);
 			out.write(";");

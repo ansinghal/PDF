@@ -17,7 +17,6 @@ import xmlGenerator.XmlGenerator;
 public class MainFunction {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		   FirstParse pdfManager = new FirstParse();
 		   //input file
 		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf");
@@ -37,15 +36,10 @@ public class MainFunction {
 	       String outputPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv";
 	       fwrite.write(outputPath);
 	       System.out.println("DoneWriting");
-	       //converting the csv file to xlsx
-	       /*String in = outputPath;
-	       String finalOut = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xlsx";
-		   csv2excel.convert(in,finalOut);
-		   //xml file generation:
+	       //xml file generation:
 		   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
-		   String delimiter = ",";
-		   XmlGenerator x = new XmlGenerator(outputPath,xmlPath,delimiter);*/
-	       
+		   String delimiter = ";";
+		   XmlGenerator x = new XmlGenerator("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv",xmlPath,delimiter);
 	    
 	}
 
