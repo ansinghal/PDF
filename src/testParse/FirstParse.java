@@ -59,11 +59,20 @@ public class FirstParse {
 	    	   System.out.println("Keyword Description is not found");
 	       }
 	       
-	       int s = Text.indexOf("Computing Instance");
-	       int start = Text.indexOf("Server");
-	       if(start > s)
+	       int s = Text.indexOf("Computing Instance:");
+	       int start = Text.indexOf("Server:");
+	       if(start == -1 && s==-1)
 	       {
-	    	   start  = Text.indexOf("Computing Instance");
+	    	   System.out.println("Error!!");
+	    	   System.exit(-1);
+	       }
+	       else if(start==-1)
+	       {
+	    	   start = s;
+	       }
+	       if(start > s && s>0)
+	       {
+	    	   start  =  s;
 	       }
 	       indices[0]=start;
 	       
@@ -123,7 +132,7 @@ public class FirstParse {
 	   private String writeNext(String str) {
 		   int server = str.indexOf("Server:");
 		   int comp = str.indexOf("Instance:");
-		   if(comp<server)
+		   if(comp<server && comp>0)
 		   {
 			   StringBuffer s = new StringBuffer(str);
 			   s.insert(server, "\nNEXT:\n");
@@ -132,7 +141,7 @@ public class FirstParse {
 			   str = s.toString();
 		   }
 		   
-		   if(server < comp)
+		   if(server < comp && server>0)
 		   {
 			   StringBuffer s = new StringBuffer(str);
 			   s.insert(comp-"Computation".length(), "\nNEXT:\n");
@@ -209,6 +218,7 @@ public class FirstParse {
 		       {
 		    	    //System.out.println("index of new subtotal = "+j);
 		    	    indices[c]=j;
+		    	    System.out.print(c+indices[c]);
 		    	    j = Text.indexOf("New Subtotals", j+1);
 		            c++;
 		            count ++;
