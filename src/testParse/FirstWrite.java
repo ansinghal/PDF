@@ -45,7 +45,7 @@ public class FirstWrite{
 	//Read File Line By Line
 	while ((strLine = br.readLine()) != null)
 	{
-		System.out.println(f);
+		//System.out.println(f);
 		String[] delims = strLine.split(":");
 		first = delims[0] ;//column names
 		if(first.equals("NEXT"))

@@ -19,7 +19,7 @@ public class MainFunction {
 	public static void main(String[] args) throws IOException {
 		   FirstParse pdfManager = new FirstParse();
 		   //input file
-		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test2.pdf");
+		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf");
 	       //output file           
 	       File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
 	       file.createNewFile();

@@ -90,6 +90,7 @@ public class FirstParse {
 	    	   		int ends = indices[j+1];
 	    	   		//System.out.println("start="+start+"\nends="+ends);
 	    	   		Text1 = Text.substring(start,ends);
+	    	   		//System.out.print("\nStart="+start+"  End"+ends);
 	    	   		//to remove line of texts which come up when a price quote continues over 2 different pages:
 	    	   		Text1=removeGarbageData(Text1);
 	    	   		//System.out.println(Text1);
@@ -132,18 +133,21 @@ public class FirstParse {
 	   private String writeNext(String str) {
 		   int server = str.indexOf("Server:");
 		   int comp = str.indexOf("Instance:");
-		   if(comp<server && comp>0)
+		   System.out.printf("Server="+server+"Comp="+comp);
+		   if(comp<server && comp>-1)
 		   {
 			   StringBuffer s = new StringBuffer(str);
+			   System.out.println("writing in comp<server comparison");
 			   s.insert(server, "\nNEXT:\n");
 			   server = server + "\nNEXT:\n".length();
 			   comp = comp + "\nNEXT:\n".length();
 			   str = s.toString();
 		   }
 		   
-		   if(server < comp && server>0)
+		   if(server < comp && server>-1)
 		   {
 			   StringBuffer s = new StringBuffer(str);
+			   System.out.println("writing in server>comp comparison");
 			   s.insert(comp-"Computation".length(), "\nNEXT:\n");
 			   server = server + "\nNEXT:\n".length();
 			   comp = comp + "\nNEXT:\n".length();
@@ -218,7 +222,7 @@ public class FirstParse {
 		       {
 		    	    //System.out.println("index of new subtotal = "+j);
 		    	    indices[c]=j;
-		    	    System.out.print(c+indices[c]);
+		    	    //System.out.print("\nc= "+c+" "+indices[c]);
 		    	    j = Text.indexOf("New Subtotals", j+1);
 		            c++;
 		            count ++;
