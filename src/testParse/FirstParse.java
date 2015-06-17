@@ -2,7 +2,7 @@ package testParse;
 /*
  * This class contains the function that reads the pdf file and converts it into a text file that:
  * i)has trimmed all the irrelevant information.
- * ii)corrects and replaces the text in files($ for :) so that : can be used as a delimiter.
+ * ii)corrects and replaces the text in files($ for  so that : can be used as a delimiter.
  * 
  */
 
@@ -20,21 +20,21 @@ public class FirstParse {
 	   private PDFTextStripper pdfStripper;
 	   private PDDocument pdDoc ;
 	   private COSDocument cosDoc ;
-	  
+
 	   private String Text ;
 	   private String filePath;
 	   private File file;
-	 
+
 	    public FirstParse() 
 	    { } 
-	        
-	    
+
+
 	   public String ToText() throws IOException
 	   {
 	       this.pdfStripper = null;
 	       this.pdDoc = null;
 	       this.cosDoc = null;
-	      
+
 	       file = new File(filePath);
 	       parser = new PDFParser(new FileInputStream(file));
 	       parser.parse();
@@ -43,22 +43,22 @@ public class FirstParse {
 	       pdDoc = new PDDocument(cosDoc);
 	       // to read all the text:
 	       pdfStripper.setEndPage(pdDoc.getNumberOfPages());
-	       
-	       
+
+
 	       Text = pdfStripper.getText(pdDoc);
 	       int indices[] = new int[100];
 	       //to get total number of price quotes in the given pdf:
 	       int count = getNumberQuotes(Text,indices);
 	       //System.out.println("total number of price quotes is:"+count);
-	       
-	       
+
+
 	       //for not including the extra text at the start and end of the file:
 	       int description = Text.indexOf("Description");
 	       if(description == -1)
 	       {
 	    	   System.out.println("Keyword Description is not found");
 	       }
-	       
+
 	       int s = Text.indexOf("Computing Instance:");
 	       int start = Text.indexOf("Server:");
 	       if(start == -1 && s==-1)
@@ -75,8 +75,8 @@ public class FirstParse {
 	    	   start  =  s;
 	       }
 	       indices[0]=start;
-	       
-	       
+
+
 	      // int end = Text.lastIndexOf("New Subtotals");
 	       int j=0;
 	       String Text1=null;
@@ -94,7 +94,7 @@ public class FirstParse {
 	    	   		//to remove line of texts which come up when a price quote continues over 2 different pages:
 	    	   		Text1=removeGarbageData(Text1);
 	    	   		//System.out.println(Text1);
-	    	   
+
 			       //quantity row doesn't have proper delimiters,inserting $ after every number
 			       //except the last:
 			       int index = Text1.indexOf("Quantity");
@@ -108,7 +108,7 @@ public class FirstParse {
 				    	   t.insert(index, " $");
 				    	   index = index + 4;
 				       }
-	    	   
+
 	       //replacing $ by :
 	       Text1 = t.toString();//converting back to a string
 	       Text1 = Text1.replace("$", " : ");
@@ -119,17 +119,17 @@ public class FirstParse {
 	       j++;
 	    	   }
 	       while (j < count);
-	       
-	       
+
+
 	       cosDoc.close();
-	       
+
 	       Finish = writeNext(Finish);	       
 	       return Finish;
 	   }
-	 
-	   
-	   
-	   
+
+
+
+
 	   private String writeNext(String str) {
 		   int server = str.indexOf("Server:");
 		   int comp = str.indexOf("Instance:");
@@ -143,7 +143,7 @@ public class FirstParse {
 			   comp = comp + "\nNEXT:\n".length();
 			   str = s.toString();
 		   }
-		   
+
 		   if(server < comp && server>-1)
 		   {
 			   StringBuffer s = new StringBuffer(str);
@@ -206,7 +206,7 @@ public class FirstParse {
 	    		return str;
 	    	}
 	    }
-	    
+
 	    public int getNumberQuotes(String str,int[] indices)
 	    {
 	    	 int count = 0;
@@ -227,18 +227,14 @@ public class FirstParse {
 		            c++;
 		            count ++;
 		       }
-		       
+
 		       //for getting the text after the final new subtotals:
 		       indices[c-1]=Text.indexOf("Order Subtotals");
-		       
+
 		       //for getting order subtotals:
 		       //indices[c]=Text.indexOf("Total Recurring");
-		       	       
+
 		       return count;
 	    }
-	    		    	
+
 }
-	    
-	    
-		
-	  

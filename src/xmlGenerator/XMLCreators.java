@@ -77,7 +77,8 @@ public class XMLCreators {
 
                     rowsCount++;
 
-                    Element rowElement = newDoc.createElement("Quote"+i);
+                    Element rowElement = newDoc.createElement("Quote");
+                    rowElement.setAttribute("id", Integer.toString(i));
                     //Element rowElement= newDoc.createElement("Title") ;
                     rootElement.appendChild(rowElement);
                     //rowElement1.appendChild(rowElement);
@@ -100,19 +101,22 @@ public class XMLCreators {
                         }
 
                         Element curElement = newDoc.createElement(header);
-                       
-                        Element title = newDoc.createElement("title");
+
+                        curElement.setAttribute("title", header);
+                        /*Element title = newDoc.createElement("title");
                         title.appendChild(newDoc.createTextNode(header));
-                        curElement.appendChild(title);
-                        
-                        Element valuetag = newDoc.createElement("value");
+                        curElement.appendChild(title);*/
+
+                        curElement.setAttribute("value", value);
+                        /*Element valuetag = newDoc.createElement("value");
                         valuetag.appendChild(newDoc.createTextNode(value));
-                        curElement.appendChild(valuetag);
-                        
-                        Element hidden = newDoc.createElement("hidden");
+                        curElement.appendChild(valuetag);*/
+
+                        curElement.setAttribute("hidden", "1");
+                        /*Element hidden = newDoc.createElement("hidden");
                         hidden.appendChild(newDoc.createTextNode("1"));
-                        curElement.appendChild(hidden);
-                        
+                        curElement.appendChild(hidden);*/
+
                         rowElement.appendChild(curElement);
 
                     }
@@ -136,7 +140,6 @@ public class XMLCreators {
                 aTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
                 aTransformer.setOutputProperty(OutputKeys.METHOD, "xml");
                 aTransformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
                 Source src = new DOMSource(newDoc);
                 Result result = new StreamResult(osw);
                 aTransformer.transform(src, result);
@@ -167,7 +170,7 @@ public class XMLCreators {
             System.err.println(exp.toString());
         }
         return rowsCount;
-        
+
         // "XLM Document has been created" + rowsCount;
     }
 }
