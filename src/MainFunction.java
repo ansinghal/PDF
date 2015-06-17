@@ -34,9 +34,9 @@ public class MainFunction {
 	       fwrite.write(outputPath);
 	       System.out.println("DoneWriting");
 	       //converting the csv file to xlsx
-	       String in = outputPath;
+	       /*String in = outputPath;
 	       String finalOut = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xlsx";
-		   csv2excel.convert(in,finalOut);
+		   csv2excel.convert(in,finalOut);*/
 		   //xml file generation:
 		   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
 		   String delimiter = ",";
