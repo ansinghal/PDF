@@ -77,7 +77,8 @@ public class XMLCreators {
 
                     rowsCount++;
 
-                    Element rowElement = newDoc.createElement("Quote"+i);
+                    Element rowElement = newDoc.createElement("Quote");
+                    rowElement.setAttribute("id", Integer.toString(i));
                     //Element rowElement= newDoc.createElement("Title") ;
                     rootElement.appendChild(rowElement);
                     //rowElement1.appendChild(rowElement);
@@ -101,17 +102,20 @@ public class XMLCreators {
 
                         Element curElement = newDoc.createElement(header);
                        
-                        Element title = newDoc.createElement("title");
+                        curElement.setAttribute("title", header);
+                        /*Element title = newDoc.createElement("title");
                         title.appendChild(newDoc.createTextNode(header));
-                        curElement.appendChild(title);
+                        curElement.appendChild(title);*/
                         
-                        Element valuetag = newDoc.createElement("value");
+                        curElement.setAttribute("value", value);
+                        /*Element valuetag = newDoc.createElement("value");
                         valuetag.appendChild(newDoc.createTextNode(value));
-                        curElement.appendChild(valuetag);
+                        curElement.appendChild(valuetag);*/
                         
-                        Element hidden = newDoc.createElement("hidden");
+                        curElement.setAttribute("hidden", "1");
+                        /*Element hidden = newDoc.createElement("hidden");
                         hidden.appendChild(newDoc.createTextNode("1"));
-                        curElement.appendChild(hidden);
+                        curElement.appendChild(hidden);*/
                         
                         rowElement.appendChild(curElement);
 

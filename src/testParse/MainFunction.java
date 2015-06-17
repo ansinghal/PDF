@@ -19,23 +19,47 @@ public class MainFunction {
 	public static void main(String[] args) throws IOException {
 		   FirstParse pdfManager = new FirstParse();
 		   //input file
-		   pdfManager.setFilePath("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf");
-	       //output file           
-	       File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
-	       file.createNewFile();
-	       //parsing:
-	       FileWriter fw = new FileWriter(file.getAbsoluteFile());
-	       BufferedWriter bw = new BufferedWriter(fw);
-	       bw.write(pdfManager.ToText());
-	       //writing next finally
-	       bw.write("\nNEXT:\n");
-	       bw.close();
-	       System.out.println("DoneParsing");
-	       //writing to produce a csv file
-	       FirstWrite fwrite = new FirstWrite(file);
-	       String outputPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv";
-	       fwrite.write(outputPath);
-	       System.out.println("DoneWriting");
+		 String [] fname = new String[3];
+		 
+		   fname[0] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf";
+		  fname[1] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test2.pdf";
+		  fname[2] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test3.pdf";
+			 
+			  File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
+			  
+			 for (int g=0;g<3;g++)
+		  {    
+				  
+				  if(g==0) //file will be created first time 
+	                 {  file.delete();
+        	           file.createNewFile();
+                      }
+				  
+				  FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
+			  BufferedWriter bw = new BufferedWriter(fw);
+				
+				  pdfManager.setFilePath(fname[g]);
+		    
+	         //output file           
+	        
+	        
+	       
+	        
+	        
+	        //parsing:
+	      
+	       
+	        bw.write(pdfManager.ToText());
+	        //writing next finally
+	        bw.write("\nNEXT:\n");
+	        bw.close();
+	        System.out.println("DoneParsing");
+	        //writing to produce a csv file
+	        FirstWrite fwrite = new FirstWrite(file);
+	        String outputPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv";
+	        fwrite.write(outputPath);
+	        System.out.println("DoneWriting");
+		  }
 	       //xml file generation:
 		   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
 		   String delimiter = ";";
