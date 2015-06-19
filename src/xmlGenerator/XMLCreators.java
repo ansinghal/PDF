@@ -100,7 +100,7 @@ public class XMLCreators {
                             value = "NA";
                         }
 
-                        Element curElement = newDoc.createElement(header);
+                        Element curElement = newDoc.createElement("Element");
                        
                         curElement.setAttribute("title", header);
                         /*Element title = newDoc.createElement("title");
