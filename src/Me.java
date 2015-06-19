@@ -40,7 +40,12 @@ public class Me {
  public JFrame frame;
  public JFrame frame2 ;
 	public String data ;
-	private JTextField textField;
+	private JTextField NumFiles;
+	public Integer count;
+	public String ipath;
+	public String opath;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -88,10 +93,11 @@ public class Me {
 		
 		
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setForeground(SystemColor.text);
-		textArea.setBounds(209, 121, 258, 29);
-		frame.getContentPane().add(textArea);
+		JTextArea Inputpath = new JTextArea();
+		Inputpath.setBackground(Color.WHITE);
+		Inputpath.setForeground(Color.BLACK);
+		Inputpath.setBounds(209, 121, 258, 29);
+		frame.getContentPane().add(Inputpath);
 		
 		JLabel lblNewLabel_1 = new JLabel("Quote Converter");
 		lblNewLabel_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 24));
@@ -108,18 +114,18 @@ public class Me {
 		lblOutputPath.setBounds(10, 183, 67, 14);
 		frame.getContentPane().add(lblOutputPath);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(81, 172, 386, 29);
-		frame.getContentPane().add(textPane);
+		JTextPane Outputpath = new JTextPane();
+		Outputpath.setBounds(81, 172, 386, 29);
+		frame.getContentPane().add(Outputpath);
 		
 		JLabel lblEnterNumberOf = new JLabel("Enter No. Of Files");
 		lblEnterNumberOf.setBounds(10, 54, 114, 34);
 		frame.getContentPane().add(lblEnterNumberOf);
 		
-		textField = new JTextField();
-		textField.setBounds(116, 57, 86, 29);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		NumFiles = new JTextField();
+		NumFiles.setBounds(116, 57, 86, 29);
+		frame.getContentPane().add(NumFiles);
+		NumFiles.setColumns(10);
 		
 		JToolBar toolBar = new JToolBar();
 		toolBar.setBounds(149, 212, 318, 58);
@@ -142,44 +148,23 @@ public class Me {
 		
 	      btnRun.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {     
-	            data = textArea.getText();
-	            FirstParse pdfManager = new FirstParse();
-	            pdfManager.setFilePath(data);
-	            File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
-	 	       try {
-				file.createNewFile();
-			
-				// TODO Auto-generated catch block
-				
-				 FileWriter fw = new FileWriter(file.getAbsoluteFile());
-			       BufferedWriter bw = new BufferedWriter(fw);
-			       bw.write(pdfManager.ToText());
-			       bw.close();
-			       System.out.println("DoneParsing");
-			       FirstWrite fwrite = new FirstWrite(file);
-			       String outputPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv";
-			       fwrite.write(outputPath);
-			       System.out.println("DoneWriting");
-			       //converting the csv file to xlsx
-			       String in = outputPath;
-			       String finalOut = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xlsx";
-				  // csv2excel.convert(in,finalOut);
-				   //xml file generation:
-				   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
-				   String delimiter = ",";
-				   XmlGenerator y = new XmlGenerator(outputPath,xmlPath,delimiter);
-			       
-			    
-	 	      } catch (IOException e1) {
-			}
+	           count = Integer.parseInt(NumFiles.getText());
+	           ipath = Inputpath.getText();
+	           opath = Outputpath.getText();
 	            
-	         }
+			    
+	 	      } 
+	            
+	   
+	         
 	            
 	           
 
 		
 	      }) ;
+	      System.out.println(count);
+	      System.out.println(ipath);
+	      System.out.println(opath);
 	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-	}
+
 }
