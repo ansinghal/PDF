@@ -69,13 +69,20 @@ public class xmlRead
 							  for (int k = 1; k < nodeMap.getLength(); k++) {
 									//good place to check if hidden == 0;change k = 0 for hidden nodes
 								  	Node node = nodeMap.item(k);
-									System.out.println("attr name : " + node.getNodeName());
-									System.out.println("attr value : " + node.getNodeValue());
-									System.out.println("i="+i+"j="+j+"k="+k);
+									//System.out.println("attr name : " + node.getNodeName());
+									//System.out.println("attr value : " + node.getNodeValue());
+									//System.out.println("\n\ni="+i+" j = "+j+" k="+k);
 									if(k==1)
-										matrix[i][j]=node.getNodeName();
+									{
+										matrix[i*2][j]=node.getNodeValue();
+										//System.out.println("k=1;attr name : " + node.getNodeValue());
+										//System.out.println(matrix[i*2][j]+"\t"+i*2+"\t"+j);
+									}
 									if(k==2)
-										matrix[i+1][j]=node.getNodeValue();
+									{
+										matrix[i*2+1][j]=node.getNodeValue();
+										//System.out.println(matrix[i*2+1][j]+"\t"+(i*2+1)+"\t"+j);
+									}
 								}
 							  
 						  }
@@ -92,7 +99,7 @@ public class xmlRead
 
 			private static void printMatrix(String[][] matrix) {
 				// TODO Auto-generated method stub
-				
+			System.out.println(matrix[0][40]);
 			}
 
 			private static void printNote(NodeList nodeList) {
