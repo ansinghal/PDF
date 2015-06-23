@@ -31,6 +31,7 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JToolBar;
 import javax.swing.JPanel;
 
@@ -40,7 +41,9 @@ public class Me {
  public JFrame frame;
  public JFrame frame2 ;
 	public String data ;
-	private JTextField textField;
+	private JTextField textField; 
+    public String input[] ;
+    public Integer count ;
 
 	/**
 	 * Launch the application.
@@ -89,7 +92,7 @@ public class Me {
 		
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setForeground(SystemColor.text);
+		textArea.setForeground(new Color(0, 0, 51));
 		textArea.setBounds(209, 121, 258, 29);
 		frame.getContentPane().add(textArea);
 		
@@ -143,18 +146,36 @@ public class Me {
 	      btnRun.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {     
 	            data = textArea.getText();
+	            input=data.split(",") ;
+	            count=Integer.parseInt(textField.getText()) ;
 	            FirstParse pdfManager = new FirstParse();
-	            pdfManager.setFilePath(data);
 	            File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
-	 	       try {
-				file.createNewFile();
+	           
+		 	       try {
+		 	    	  FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				       BufferedWriter bw = new BufferedWriter(fw);
+					file.createNewFile();
+	            for (int i =0;i<count;i++)
+	            {      
+	            
+	            
+	            
+	            
+	            
+	            pdfManager.setFilePath(input[i]);
+	            System.out.print(input[i]);
 			
 				// TODO Auto-generated catch block
 				
-				 FileWriter fw = new FileWriter(file.getAbsoluteFile());
-			       BufferedWriter bw = new BufferedWriter(fw);
-			       bw.write(pdfManager.ToText());
-			       bw.close();
+				
+				
+			       bw.append(pdfManager.ToText());
+			       
+			       
+	            }
+	            
+	            bw.close(); 
+	           
 			       System.out.println("DoneParsing");
 			       FirstWrite fwrite = new FirstWrite(file);
 			       String outputPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv";
@@ -168,10 +189,12 @@ public class Me {
 				   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
 				   String delimiter = ",";
 				   XmlGenerator y = new XmlGenerator(outputPath,xmlPath,delimiter);
+				   file.delete() ;
 			       
 			    
 	 	      } catch (IOException e1) {
 			}
+		 	       
 	            
 	         }
 	            
