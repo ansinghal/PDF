@@ -132,6 +132,8 @@ public class xmlRead
 						
 					
 					}
+					//rearrange the linkedList:
+					l=reArrange(l);
 					//printing the linkedlist:
 					//System.out.println("   "+l.size());
 					Iterator<String> itr=l.iterator();  
@@ -139,6 +141,43 @@ public class xmlRead
 					   System.out.println(itr.next());  }
 					
 				}
+
+			private static LinkedList<String> reArrange(LinkedList<String> l)
+			{
+				Iterator<String> itr = l.iterator();
+				LinkedList<String> nl = new LinkedList<String>();
+				while(itr.hasNext())
+				{
+					String str = itr.next();
+					if(str.contains("cost"))
+						continue;
+					else
+					{
+						if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
+							continue;
+						System.out.println("Adding:"+str);
+						nl.add(str);
+					}
+			
+					
+				}
+				itr = l.iterator();
+				System.out.println("ahahahahahha");
+				while(itr.hasNext())
+				{
+					String str = itr.next();
+					if(str.contains("cost"))
+					{
+						nl.add(str);
+						System.out.println("Adding:"+str);
+					}
+				}
+				nl.add("Subtotals");
+				nl.add("Quantity");
+				nl.add("NewSubtotals");
+				// TODO Auto-generated method stub
+				return nl;
+			}
 
 			private static int maxColumnSize(String[][] matrix) {
 				// TODO Auto-generated method stub
