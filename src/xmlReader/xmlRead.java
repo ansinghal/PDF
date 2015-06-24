@@ -1,5 +1,5 @@
 package xmlReader;
-
+import java.util.*;
 import java.io.*;
 import java.util.LinkedList;
 
@@ -96,13 +96,13 @@ public class xmlRead
 					  i++;
 					  
 				  }
-				  //printMatrix(matrix);
+				  printMatrix(matrix);
 				  createLinkedList(matrix);
 		
 	}
 
 			  private static void createLinkedList(String[][] matrix){
-					LinkedList l = new LinkedList();
+				  LinkedList<String> l=new LinkedList<String>();
 					int row = 0;
 					int col = 0;
 					System.out.println("matrix length:"+matrix.length);
@@ -131,7 +131,10 @@ public class xmlRead
 					
 					}
 					//printing the linkedlist:
-					System.out.println("   "+l.size());
+					//System.out.println("   "+l.size());
+					Iterator<String> itr=l.iterator();  
+					  while(itr.hasNext()){  
+					   System.out.println(itr.next());  }
 					
 				}
 
