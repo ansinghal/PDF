@@ -69,9 +69,11 @@ public class xmlRead
 							  for (int k = 1; k < nodeMap.getLength(); k++) {
 									//good place to check if hidden == 0;change k = 0 for hidden nodes
 								  	Node node = nodeMap.item(k);
-									//System.out.println("attr name : " + node.getNodeName());
+								  	//Displays with each iteration values where i=quote no j=title pair k=value/title
+								  	//System.out.println("\n\ni="+i+" j = "+j+" k="+k);
+								  	//System.out.println("attr name : " + node.getNodeName());
 									//System.out.println("attr value : " + node.getNodeValue());
-									//System.out.println("\n\ni="+i+" j = "+j+" k="+k);
+									
 									if(k==1)
 									{
 										matrix[i*2][j]=node.getNodeValue();
@@ -97,56 +99,23 @@ public class xmlRead
 		
 	}
 
-			private static void printMatrix(String[][] matrix) {
-				// TODO Auto-generated method stub
-			System.out.println(matrix[0][40]);
-			}
-
-			private static void printNote(NodeList nodeList) {
-				  
-				 
-			 
-			    for (int count = 0; count < nodeList.getLength(); count++) {
-			    Node tempNode = nodeList.item(count);
-			 
-				// make sure it's element node.
-				if (tempNode.getNodeType() == Node.ELEMENT_NODE) {
-					String name = tempNode.getNodeName();
-					// get node name and value
-					System.out.println("\nNode Name =" + name + " [OPEN]");
-					
-					//System.out.println("Node Value =" + tempNode.getTextContent());
-			 
-					if (tempNode.hasAttributes()) {
-			 
-						// get attributes names and values
-						NamedNodeMap nodeMap = tempNode.getAttributes();
-			 
-						for (int i = 0; i < nodeMap.getLength(); i++) {
-			 
-							Node node = nodeMap.item(i);
-							System.out.println("attr name : " + node.getNodeName());
-							System.out.println("attr value : " + node.getNodeValue());
-			 
-						}
-			 
-					}
-			 
-					if (tempNode.hasChildNodes()) {
-			 
-						// loop again if has child nodes
-						printNote(tempNode.getChildNodes());
-			 
-					}
-			 
-					System.out.println("Node Name =" + tempNode.getNodeName() + " [CLOSE]");
-								 
+			private static void printMatrix(String[][] matrix) 
+			
+			{
+				for(int i = 0; i<matrix.length; i++)
+				{    int j=0;
+				    while(matrix[i][j]!=null)
+				    {
+				        System.out.print(matrix[i][j]+",");
+				        j++;
+				    }
+				    System.out.println();
 				}
-			 
+			
+				
+				
+				
 			}
-			 
-	}
-			 
 			
 }
 
