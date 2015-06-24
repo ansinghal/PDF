@@ -136,51 +136,62 @@ public class xmlRead
 					l=reArrange(l);
 					//printing the linkedlist:
 					//System.out.println("   "+l.size());
-					Iterator<String> itr=l.iterator();  
-					  while(itr.hasNext()){  
-					   System.out.println(itr.next());  }
+					int i = 0;
+					for(i=0;i<l.size();i++)
+					{
+						System.out.println("List l:"+" "+i+" "+l.get(i));
+					}  
 					
 				}
 
 			private static LinkedList<String> reArrange(LinkedList<String> l)
 			{
-				Iterator<String> itr = l.iterator();
+				//Iterator<String> itr = l.iterator();
 				LinkedList<String> nl = new LinkedList<String>();
-				while(itr.hasNext())
+				int i = 0;
+				/*for(i=0;i<l.size();i++)
 				{
-					String str = itr.next();
+					System.out.println("List l:"+" "+i+" "+l.get(i));
+				}*/
+				for(i=0;i<l.size();i++)
+				{
+					String str = l.get(i);
 					if(str.contains("cost"))
 						continue;
 					else
 					{
 						if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
-							continue;
-						System.out.println("Adding:"+str);
+							break;
+						//System.out.println("Adding:"+str);
 						nl.add(str);
 					}
 			
 					
 				}
-				itr = l.iterator();
-				System.out.println("ahahahahahha");
-				while(itr.hasNext())
+				//itr = l.iterator();
+				//System.out.println("ahahahahahha");
+				for(i=0;i<l.size();i++)
 				{
-					String str = itr.next();
+					String str = l.get(i);
+					if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
+						break;
+					//System.out.println("String:"+str);
 					if(str.contains("cost"))
 					{
 						nl.add(str);
-						System.out.println("Adding:"+str);
+						//System.out.println("Adding:"+str);
 					}
 				}
 				nl.add("Subtotals");
 				nl.add("Quantity");
 				nl.add("NewSubtotals");
 				// TODO Auto-generated method stub
+				System.out.println("The size of l is:"+l.size()+"\nThe size of nl is:"+nl.size());
 				return nl;
 			}
 
 			private static int maxColumnSize(String[][] matrix) {
-				// TODO Auto-generated method stub
+				// ma
 				int row = 0;
 				int max = -1;
 				for(row=0;row<matrix.length;row++)
@@ -200,7 +211,8 @@ public class xmlRead
 			
 			{
 				for(int i = 0; i<matrix.length; i++)
-				{    int j=0;
+				{    
+					int j=0;
 				    while(matrix[i][j]!=null)
 				    {
 				        System.out.print(matrix[i][j]+",");
