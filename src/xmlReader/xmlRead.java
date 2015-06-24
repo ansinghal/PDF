@@ -106,9 +106,10 @@ public class xmlRead
 					int row = 0;
 					int col = 0;
 					System.out.println("matrix length:"+matrix.length);
+					
 					while(matrix[row][col]!=null)
-					{
-						for(row=0;row<10;row=row++)
+					{System.out.println("column="+col);
+						for(row=0;row<(matrix.length)-1;row++)
 						{	
 							System.out.println("row="+row);
 							if(row%2==0)
@@ -126,7 +127,7 @@ public class xmlRead
 							}
 						}
 						col++;
-						System.out.println("column="+col);
+						
 					
 					}
 					//printing the linkedlist:
