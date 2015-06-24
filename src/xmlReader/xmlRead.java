@@ -1,6 +1,7 @@
 package xmlReader;
 
 import java.io.*;
+import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -96,8 +97,35 @@ public class xmlRead
 					  
 				  }
 				  printMatrix(matrix);
+				  createLinkedList(matrix);
 		
 	}
+
+			  private static void createLinkedList(String[][] matrix){
+					LinkedList l = new LinkedList();
+					int row = 0;
+					int col = 0;
+					for(row=0;row<matrix.length;row = row+2)
+					{
+						col = 0;
+						while(matrix[row][col]!=null)
+						{
+							//System.out.print(matrix[row][col]);
+							if(l.contains(matrix[row][col]))
+								continue;
+							else
+							{
+								l.add(matrix[row][col]);
+							}
+							col++;
+						}
+						//System.out.println();
+					
+					}
+					//printing the linkedlist:
+					System.out.println("   "+l.size());
+					
+				}
 
 			private static void printMatrix(String[][] matrix) 
 			
@@ -111,8 +139,7 @@ public class xmlRead
 				    }
 				    System.out.println();
 				}
-			
-				
+						
 				
 				
 			}
