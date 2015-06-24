@@ -96,7 +96,7 @@ public class xmlRead
 					  i++;
 					  
 				  }
-				  printMatrix(matrix);
+				  //printMatrix(matrix);
 				  createLinkedList(matrix);
 		
 	}
@@ -105,21 +105,28 @@ public class xmlRead
 					LinkedList l = new LinkedList();
 					int row = 0;
 					int col = 0;
-					for(row=0;row<matrix.length;row = row+2)
+					System.out.println("matrix length:"+matrix.length);
+					while(matrix[row][col]!=null)
 					{
-						col = 0;
-						while(matrix[row][col]!=null)
-						{
-							//System.out.print(matrix[row][col]);
-							if(l.contains(matrix[row][col]))
-								continue;
-							else
+						for(row=0;row<10;row=row++)
+						{	
+							System.out.println("row="+row);
+							if(row%2==0)
 							{
-								l.add(matrix[row][col]);
+								if(l.contains(matrix[row][col]))
+								{
+									System.out.println("Contains:"+matrix[row][col]);
+									continue;
+								}										
+								else
+								{
+									System.out.println("Added:"+matrix[row][col]);
+									l.add(matrix[row][col]);
+								}
 							}
-							col++;
 						}
-						//System.out.println();
+						col++;
+						System.out.println("column="+col);
 					
 					}
 					//printing the linkedlist:
