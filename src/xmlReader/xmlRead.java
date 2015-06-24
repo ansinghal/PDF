@@ -106,9 +106,11 @@ public class xmlRead
 					int row = 0;
 					int col = 0;
 					System.out.println("matrix length:"+matrix.length);
-					
-					while(matrix[row][col]!=null)
-					{System.out.println("column="+col);
+					int m = maxColumnSize(matrix);
+					System.out.println("Max size of columns is:"+m);
+					for(col=0;col<m;col++)
+					{
+						System.out.println("column="+col);
 						for(row=0;row<(matrix.length)-1;row++)
 						{	
 							System.out.println("row="+row);
@@ -137,6 +139,23 @@ public class xmlRead
 					   System.out.println(itr.next());  }
 					
 				}
+
+			private static int maxColumnSize(String[][] matrix) {
+				// TODO Auto-generated method stub
+				int row = 0;
+				int max = -1;
+				for(row=0;row<matrix.length;row++)
+				{
+					int count = 0;
+					while(matrix[row][count]!=null)
+					{
+						count++;
+					}
+					if(count>max)
+						max = count;
+				}
+				return max;
+			}
 
 			private static void printMatrix(String[][] matrix) 
 			
