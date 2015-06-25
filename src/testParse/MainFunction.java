@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import xmlGenerator.XmlGenerator;
+import xmlReader.xmlRead;
 
 
 public class MainFunction {
@@ -22,8 +23,8 @@ public class MainFunction {
 		 String [] fname = new String[3];
 		 
 		   fname[0] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf";
-		  fname[1] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test2.pdf";
-		  fname[2] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test3.pdf";
+		  fname[1] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test3.pdf";
+		  fname[2] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test4.pdf";
 			 
 			  File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
 			  
@@ -31,7 +32,8 @@ public class MainFunction {
 		  {    
 				  
 				  if(g==0) //file will be created first time 
-	                 {  file.delete();
+	                 {  
+					  	file.delete();
         	           file.createNewFile();
                       }
 				  
@@ -64,7 +66,9 @@ public class MainFunction {
 		   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
 		   String delimiter = ";";
 		   XmlGenerator x = new XmlGenerator("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv",xmlPath,delimiter);
-	    
+		   
+		   //reading the generated xml and creating the appropriate csv files:
+		   xmlRead xlr = new xmlRead(xmlPath,"C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv");
 	}
 
 }
