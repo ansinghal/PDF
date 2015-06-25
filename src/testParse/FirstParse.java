@@ -133,11 +133,11 @@ public class FirstParse {
 	   private String writeNext(String str) {
 		   int server = str.indexOf("Server:");
 		   int comp = str.indexOf("Instance:");
-		   System.out.printf("Server="+server+"Comp="+comp);
+		   //System.out.println("Server="+server+"Comp="+comp);
 		   if(comp<server && comp>-1)
 		   {
 			   StringBuffer s = new StringBuffer(str);
-			   System.out.println("writing in comp<server comparison");
+			   //System.out.println("writing in comp<server comparison");
 			   s.insert(server, "\nNEXT:\n");
 			   server = server + "\nNEXT:\n".length();
 			   comp = comp + "\nNEXT:\n".length();
@@ -147,7 +147,7 @@ public class FirstParse {
 		   if(server < comp && server>-1)
 		   {
 			   StringBuffer s = new StringBuffer(str);
-			   System.out.println("writing in server>comp comparison");
+			   //System.out.println("writing in server>comp comparison");
 			   s.insert(comp-"Computation".length(), "\nNEXT:\n");
 			   server = server + "\nNEXT:\n".length();
 			   comp = comp + "\nNEXT:\n".length();

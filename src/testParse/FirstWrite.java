@@ -50,7 +50,7 @@ public class FirstWrite{
 		first = delims[0] ;//column names
 		if(first.equals("NEXT"))
 		{
-			System.out.print("\n***********entered Next*********\n");
+			//System.out.print("\n***********entered Next*********\n");
 			if(flag==1)
 				{
 					out.newLine();
@@ -121,7 +121,7 @@ public class FirstWrite{
 	
 	// writing f and s to a new file
 	out.close();
-	System.out.println(count*2) ;//prints the number of columns to the console
+	//System.out.println(count*2) ;//prints the number of columns to the console
 	in.close();
 	
 	}
