@@ -1,3 +1,4 @@
+
 /*
  * This class contains the function that reads the pdf file and converts it into a text file that:
  * i)has trimmed all the irrelevant information.

@@ -1,22 +1,28 @@
-import java.awt.EventQueue;
+import java.awt.*;
+import Config.configcreate;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+
+import java.io.*;
+
 import javax.swing.JLabel;
 
-import java.awt.BorderLayout;
+
+
+
 import java.awt.Color;
 
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
+import testParse.FirstWrite;
 import xmlGenerator.XmlGenerator;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,7 +40,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JToolBar;
 import javax.swing.JPanel;
-
+import javax.swing.JOptionPane ;
 
 public class Me {
 
@@ -44,6 +50,7 @@ public class Me {
 	private JTextField textField; 
     public String input[] ;
     public Integer count ;
+    public String output ;
 
 	/**
 	 * Launch the application.
@@ -146,15 +153,28 @@ public class Me {
 	      btnRun.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {     
 	            data = textArea.getText();
+	            data = data+"," ;
+	            output=textPane.getText();
 	            input=data.split(",") ;
+	            
+	            
 	            count=Integer.parseInt(textField.getText()) ;
+	            if (input.length<count )
+	            {
+	            	System.out.print("Please enter more files");
+	            	JOptionPane.showMessageDialog(null,"Enter More Files","Insufficient number of files",JOptionPane.WARNING_MESSAGE);
+	            }
+	            
 	            FirstParse pdfManager = new FirstParse();
-	            File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
+	            File file = new File(output+".txt");
+	            file.delete();
 	           
 		 	       try {
 		 	    	  FileWriter fw = new FileWriter(file.getAbsoluteFile());
 				       BufferedWriter bw = new BufferedWriter(fw);
+				       
 					file.createNewFile();
+				
 	            for (int i =0;i<count;i++)
 	            {      
 	            
@@ -170,39 +190,52 @@ public class Me {
 				
 				
 			       bw.append(pdfManager.ToText());
+			       bw.write("\nNEXT:\n");
 			       
 			       
 	            }
+	          
 	            
 	            bw.close(); 
 	           
-			       System.out.println("DoneParsing");
-			       FirstWrite fwrite = new FirstWrite(file);
-			       String outputPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv";
-			       fwrite.write(outputPath);
-			       System.out.println("DoneWriting");
-			       //converting the csv file to xlsx
-			       String in = outputPath;
-			       String finalOut = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xlsx";
-				  // csv2excel.convert(in,finalOut);
-				   //xml file generation:
-				   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
-				   String delimiter = ",";
-				   XmlGenerator y = new XmlGenerator(outputPath,xmlPath,delimiter);
-				   file.delete() ;
+	            
+		        System.out.println("DoneParsing");
+		        //writing to produce a csv file
+		        FirstWrite fwrite = new FirstWrite(file);
+		        String outputPath =output+".csv";
+		        fwrite.write(outputPath);
+		        System.out.println("DoneWriting");
+			  
+		       //xml file generation:
+			   String xmlPath = output+".xml";
+			   String delimiter = ";";
+			   String xmlPath1 = output+"1.xml";
+			   XmlGenerator x = new XmlGenerator(outputPath,xmlPath,delimiter);
+			   configcreate y = new configcreate(xmlPath1,delimiter);
+			   
+		    
+		
 			       
 			    
-	 	      } catch (IOException e1) {
+	 	      } catch (FileNotFoundException e1){
+	 	    	 JOptionPane.showMessageDialog(null,"Enter Correct Path","File Not Found",JOptionPane.WARNING_MESSAGE);
+	 	    	    
+	 	    	    
+	 	    	} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-		 	       
-	            
-	         }
+		 	      if (textPane.getText()=="")
+		 	      {
+		 	    	 JOptionPane.showMessageDialog(null,"Specify Output Path","Ouput Path Not Specified ",JOptionPane.WARNING_MESSAGE);
+		 	      }
+		 	      
+		 	    	  
+		 	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path Ronit is awesome  ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
 	            
 	           
-
+	      }
 		
 	      }) ;
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
 	}
 }

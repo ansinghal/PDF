@@ -1,3 +1,5 @@
+
+
 /**
  * This function generates the csv file from the text file using : as a delimiter.It removes all
  * the blanks(spaces) from the column names.
