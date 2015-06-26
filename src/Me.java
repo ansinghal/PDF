@@ -47,10 +47,14 @@ public class Me {
  public JFrame frame;
  public JFrame frame2 ;
 	public String data ;
+
 	private JTextField textField; 
     public String input[] ;
     public Integer count ;
     public String output ;
+
+	
+	
 
 	/**
 	 * Launch the application.
@@ -98,6 +102,7 @@ public class Me {
 		
 		
 		
+
 		JTextArea textArea = new JTextArea();
 		textArea.setForeground(new Color(0, 0, 51));
 		textArea.setBounds(209, 121, 258, 29);
@@ -126,10 +131,7 @@ public class Me {
 		lblEnterNumberOf.setBounds(10, 54, 114, 34);
 		frame.getContentPane().add(lblEnterNumberOf);
 		
-		textField = new JTextField();
-		textField.setBounds(116, 57, 86, 29);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+	
 		
 		JToolBar toolBar = new JToolBar();
 		toolBar.setBounds(149, 212, 318, 58);
@@ -150,8 +152,13 @@ public class Me {
 		JButton btnDelete = new JButton("Delete");
 		toolBar.add(btnDelete);
 		
+		JTextArea textField = new JTextArea();
+		textField.setBounds(117, 61, 76, 27);
+		frame.getContentPane().add(textField);
+		
 	      btnRun.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {     
+
 	            data = textArea.getText();
 	            data = data+"," ;
 	            output=textPane.getText();
@@ -232,10 +239,15 @@ public class Me {
 		 	      
 		 	    	  
 		 	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path Ronit is awesome  ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
+
+	          	            
+			    
+	 	      } 
 	            
-	           
-	      }
-		
-	      }) ;
-	}
+	   
+	         
+
+	}) ;
+
+}
 }
