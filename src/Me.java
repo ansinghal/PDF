@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import Config.configcreate;
 
 import javax.swing.*;
@@ -6,6 +7,7 @@ import javax.swing.*;
 import java.io.*;
 
 import javax.swing.JLabel;
+
 
 
 
@@ -18,6 +20,7 @@ import javax.swing.JButton;
 
 import testParse.FirstWrite;
 import xmlGenerator.XmlGenerator;
+import xmlReader.xmlRead;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -162,6 +165,13 @@ public class Me {
 	            data = textArea.getText();
 	            data = data+"," ;
 	            output=textPane.getText();
+	            new File(output).mkdir();
+	            
+
+	            
+
+	            
+	            
 	            input=data.split(",") ;
 	            
 	            
@@ -209,16 +219,18 @@ public class Me {
 		        System.out.println("DoneParsing");
 		        //writing to produce a csv file
 		        FirstWrite fwrite = new FirstWrite(file);
-		        String outputPath =output+".csv";
+		        String outputPath =output+"\\test.csv";
 		        fwrite.write(outputPath);
 		        System.out.println("DoneWriting");
 			  
 		       //xml file generation:
-			   String xmlPath = output+".xml";
+			   String xmlPath = output+"\\test.xml";
 			   String delimiter = ";";
-			   String xmlPath1 = output+"1.xml";
+			   String xmlPath1 = output+"\\test1.xml";
 			   XmlGenerator x = new XmlGenerator(outputPath,xmlPath,delimiter);
 			   configcreate y = new configcreate(xmlPath1,delimiter);
+			   xmlRead xlr = new xmlRead(xmlPath,output+".\\output.csv");
+
 			   
 		    
 		
