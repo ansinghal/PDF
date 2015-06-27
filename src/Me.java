@@ -1,5 +1,5 @@
 import java.awt.*;
-import Config.configcreate;
+import config.configcreate;
 
 import javax.swing.*;
 

@@ -92,6 +92,11 @@ public class XMLCreators {
                     
                    
                     
+                    /*The following code is used to access the 
+                      config file and throw a file not found exception,
+                       in the for loop that follows a method searches this file 
+                       and aasign 0 or 1 to the hidden field. bedefault if the header 
+                       is missing gin the file it assigns 1 */
                     
                     Properties prop = new Properties();
                 	String propFileName = "titlesConfig.properties";
