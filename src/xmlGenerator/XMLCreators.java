@@ -143,8 +143,8 @@ public class XMLCreators {
                         curElement.appendChild(valuetag);*/
                         
                         String hiddenVal = prop.getProperty(header);
-                        if(hiddenVal==null)
-                        	hiddenVal="1";
+                       // if(hiddenVal==null)
+                        	//hiddenVal="1";
                         curElement.setAttribute("hidden", hiddenVal);
                         /*Element hidden = newDoc.createElement("hidden");
                         hidden.appendChild(newDoc.createTextNode("1"));
