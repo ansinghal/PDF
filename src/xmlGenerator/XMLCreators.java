@@ -1,4 +1,6 @@
 package xmlGenerator;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
@@ -12,6 +14,11 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+ 
 
 public class XMLCreators {
     // Protected Properties
@@ -82,7 +89,23 @@ public class XMLCreators {
                     //Element rowElement= newDoc.createElement("Title") ;
                     rootElement.appendChild(rowElement);
                     //rowElement1.appendChild(rowElement);
-                    for (int col = 0; col < headers.size(); col++)
+                    
+                   
+                    
+                    
+                    Properties prop = new Properties();
+                	String propFileName = "titlesConfig.properties";
+                	InputStream inputStream = XMLCreators.class.getResourceAsStream(propFileName);
+                	if (inputStream != null) {
+                		prop.load(inputStream);
+                		} else {
+                		throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+                		}
+                    
+                   
+                	
+                	
+                	for (int col = 0; col < headers.size(); col++)
                     {
 
                         String header = headers.get(col);
@@ -101,6 +124,8 @@ public class XMLCreators {
                         }
 
                         Element curElement = newDoc.createElement("Element");
+                        
+                        
                        
                         curElement.setAttribute("title", header);
                         /*Element title = newDoc.createElement("title");
@@ -112,7 +137,10 @@ public class XMLCreators {
                         valuetag.appendChild(newDoc.createTextNode(value));
                         curElement.appendChild(valuetag);*/
                         
-                        curElement.setAttribute("hidden", "1");
+                        String hiddenVal = prop.getProperty(header);
+                        if(hiddenVal==null)
+                        	hiddenVal="1";
+                        curElement.setAttribute("hidden", hiddenVal);
                         /*Element hidden = newDoc.createElement("hidden");
                         hidden.appendChild(newDoc.createTextNode("1"));
                         curElement.appendChild(hidden);*/
