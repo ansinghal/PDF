@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?><XMLCreators>
+    <Quote id="1">
+        <Datacenter hidden="1" title="Datacenter" value=" Singapore 1 (sng01)"/>
+        <Server hidden="1" title="Server" value=" Single Processor Quad Core Xeon 1270 V3 - 3.50GHz  (Haswell) - 1 x 8MB  "/>
+        <Surcharges hidden="1" title="Surcharges" value=" International Services  "/>
+        <OperatingSystem hidden="1" title="OperatingSystem" value=" Red Hat Enterprise Linux 6.x (64 bit) (per-processor licensing)  "/>
+        <RAM hidden="1" title="RAM" value=" 16 GB DDR3 1333  "/>
+        <DiskController hidden="1" title="DiskController" value=" RAID  "/>
+        <FirstHardDrive hidden="1" title="FirstHardDrive" value=" 500 GB SATA II  "/>
+        <SecondHardDrive hidden="1" title="SecondHardDrive" value=" 500 GB SATA II  "/>
+        <ThirdHardDrive hidden="1" title="ThirdHardDrive" value=" 500 GB SATA II  "/>
+        <PublicBandwidth hidden="1" title="PublicBandwidth" value=" 20000 GB Bandwidth  "/>
+        <UplinkPortSpeeds hidden="1" title="UplinkPortSpeeds" value=" 100 Mbps Public &amp; Private Network Uplinks  "/>
+        <PublicNetworkPort hidden="1" title="PublicNetworkPort" value=" 100 Mbps Public Uplink  "/>
+        <PrivateNetworkPort hidden="1" title="PrivateNetworkPort" value=" 100 Mbps Private Uplink  "/>
+        <RemoteManagement hidden="1" title="RemoteManagement" value=" Reboot / KVM over IP  "/>
+        <PrimaryIPAddresses hidden="1" title="PrimaryIPAddresses" value=" 1 IP Address  "/>
+        <Monitoring hidden="1" title="Monitoring" value=" Host Ping  "/>
+        <Notification hidden="1" title="Notification" value=" Email and Ticket  "/>
+        <AdvancedMonitoring hidden="1" title="AdvancedMonitoring" value=" Monitoring Package - Advanced  "/>
+        <Response hidden="1" title="Response" value=" Automated Notification  "/>
+        <HardwareandSoftwareFirewalls hidden="1" title="HardwareandSoftwareFirewalls" value=" 100Mbps Hardware Firewall  "/>
+        <VPNManagement-PrivateNetwork hidden="1" title="VPNManagement-PrivateNetwork" value=" Unlimited SSL VPN Users &amp; 1 PPTP VPN User per account  "/>
+        <VulnerabilityAssessmentsandManagement hidden="1" title="VulnerabilityAssessmentsandManagement" value=" Nessus Vulnerability Assessment &amp; Reporting  "/>
+        <Servercost hidden="1" title="Servercost" value="  209.00  "/>
+        <Surchargescost hidden="1" title="Surchargescost" value="  20.00  "/>
+        <OperatingSystemcost hidden="1" title="OperatingSystemcost" value="  45.00  "/>
+        <RAMcost hidden="1" title="RAMcost" value="  128.00  "/>
+        <DiskControllercost hidden="1" title="DiskControllercost" value="  50.00  "/>
+        <FirstHardDrivecost hidden="1" title="FirstHardDrivecost" value="  0.00  "/>
+        <SecondHardDrivecost hidden="1" title="SecondHardDrivecost" value="  21.00  "/>
+        <ThirdHardDrivecost hidden="1" title="ThirdHardDrivecost" value="  21.00  "/>
+        <PublicBandwidthcost hidden="1" title="PublicBandwidthcost" value="  0.00  "/>
+        <UplinkPortSpeedscost hidden="1" title="UplinkPortSpeedscost" value="  0.00  "/>
+        <PublicNetworkPortcost hidden="1" title="PublicNetworkPortcost" value="  0.00  "/>
+        <PrivateNetworkPortcost hidden="1" title="PrivateNetworkPortcost" value="  0.00  "/>
+        <RemoteManagementcost hidden="1" title="RemoteManagementcost" value="  0.00  "/>
+        <PrimaryIPAddressescost hidden="1" title="PrimaryIPAddressescost" value="  0.00  "/>
+        <Monitoringcost hidden="1" title="Monitoringcost" value="  0.00  "/>
+        <Notificationcost hidden="1" title="Notificationcost" value="  0.00  "/>
+        <AdvancedMonitoringcost hidden="1" title="AdvancedMonitoringcost" value="  5.00  "/>
+        <Responsecost hidden="1" title="Responsecost" value="  0.00  "/>
+        <HardwareandSoftwareFirewallscost hidden="1" title="HardwareandSoftwareFirewallscost" value="  99.00  "/>
+        <VPNManagement-PrivateNetworkcost hidden="1" title="VPNManagement-PrivateNetworkcost" value="  0.00  "/>
+        <VulnerabilityAssessmentsandManagementcost hidden="1" title="VulnerabilityAssessmentsandManagementcost" value="  0.00  "/>
+        <Subtotals hidden="1" title="Subtotals" value="  598.00  "/>
+        <Quantity hidden="1" title="Quantity" value="  1  "/>
+        <NewSubtotals hidden="1" title="NewSubtotals" value="  598.00  "/>
+    </Quote>
+    <Quote id="2">
+        <Datacenter hidden="1" title="Datacenter" value=" Singapore 1 (sng01)"/>
+        <Server hidden="1" title="Server" value=" Single Processor Quad Core Xeon 1270 V3 - 3.50GHz  (Haswell) - 1 x 8MB  "/>
+        <Surcharges hidden="1" title="Surcharges" value=" International Services  "/>
+        <OperatingSystem hidden="1" title="OperatingSystem" value=" Red Hat Enterprise Linux 6.x (64 bit) (per-processor licensing)  "/>
+        <RAM hidden="1" title="RAM" value=" 8 GB DDR3 1333  "/>
+        <DiskController hidden="1" title="DiskController" value=" RAID  "/>
+        <FirstHardDrive hidden="1" title="FirstHardDrive" value=" 200 GB SSD  "/>
+        <SecondHardDrive hidden="1" title="SecondHardDrive" value=" 200 GB SSD  "/>
+        <ThirdHardDrive hidden="1" title="ThirdHardDrive" value=" 200 GB SSD  "/>
+        <PublicBandwidth hidden="1" title="PublicBandwidth" value=" 20000 GB Bandwidth  "/>
+        <UplinkPortSpeeds hidden="1" title="UplinkPortSpeeds" value=" 100 Mbps Public &amp; Private Network Uplinks  "/>
+        <PublicNetworkPort hidden="1" title="PublicNetworkPort" value=" 100 Mbps Public Uplink  "/>
+        <PrivateNetworkPort hidden="1" title="PrivateNetworkPort" value=" 100 Mbps Private Uplink  "/>
+        <RemoteManagement hidden="1" title="RemoteManagement" value=" Reboot / KVM over IP  "/>
+        <PrimaryIPAddresses hidden="1" title="PrimaryIPAddresses" value=" 1 IP Address  "/>
+        <Monitoring hidden="1" title="Monitoring" value=" Host Ping  "/>
+        <Notification hidden="1" title="Notification" value=" Email and Ticket  "/>
+        <AdvancedMonitoring hidden="1" title="AdvancedMonitoring" value=" Monitoring Package - Advanced  "/>
+        <Response hidden="1" title="Response" value=" Automated Notification  "/>
+        <HardwareandSoftwareFirewalls hidden="1" title="HardwareandSoftwareFirewalls" value=" 100Mbps Hardware Firewall  "/>
+        <VPNManagement-PrivateNetwork hidden="1" title="VPNManagement-PrivateNetwork" value=" Unlimited SSL VPN Users &amp; 1 PPTP VPN User per account  "/>
+        <VulnerabilityAssessmentsandManagement hidden="1" title="VulnerabilityAssessmentsandManagement" value=" Nessus Vulnerability Assessment &amp; Reporting  "/>
+        <Servercost hidden="1" title="Servercost" value="  209.00  "/>
+        <Surchargescost hidden="1" title="Surchargescost" value="  20.00  "/>
+        <OperatingSystemcost hidden="1" title="OperatingSystemcost" value="  45.00  "/>
+        <RAMcost hidden="1" title="RAMcost" value="  48.00  "/>
+        <DiskControllercost hidden="1" title="DiskControllercost" value="  50.00  "/>
+        <FirstHardDrivecost hidden="1" title="FirstHardDrivecost" value="  81.00  "/>
+        <SecondHardDrivecost hidden="1" title="SecondHardDrivecost" value="  81.00  "/>
+        <ThirdHardDrivecost hidden="1" title="ThirdHardDrivecost" value="  81.00  "/>
+        <PublicBandwidthcost hidden="1" title="PublicBandwidthcost" value="  0.00  "/>
+        <UplinkPortSpeedscost hidden="1" title="UplinkPortSpeedscost" value="  0.00  "/>
+        <PublicNetworkPortcost hidden="1" title="PublicNetworkPortcost" value="  0.00  "/>
+        <PrivateNetworkPortcost hidden="1" title="PrivateNetworkPortcost" value="  0.00  "/>
+        <RemoteManagementcost hidden="1" title="RemoteManagementcost" value="  0.00  "/>
+        <PrimaryIPAddressescost hidden="1" title="PrimaryIPAddressescost" value="  0.00  "/>
+        <Monitoringcost hidden="1" title="Monitoringcost" value="  0.00  "/>
+        <Notificationcost hidden="1" title="Notificationcost" value="  0.00  "/>
+        <AdvancedMonitoringcost hidden="1" title="AdvancedMonitoringcost" value="  5.00  "/>
+        <Responsecost hidden="1" title="Responsecost" value="  0.00  "/>
+        <HardwareandSoftwareFirewallscost hidden="1" title="HardwareandSoftwareFirewallscost" value="  99.00  "/>
+        <VPNManagement-PrivateNetworkcost hidden="1" title="VPNManagement-PrivateNetworkcost" value="  0.00  "/>
+        <VulnerabilityAssessmentsandManagementcost hidden="1" title="VulnerabilityAssessmentsandManagementcost" value="  0.00  "/>
+        <Subtotals hidden="1" title="Subtotals" value="  719.00  "/>
+        <Quantity hidden="1" title="Quantity" value="  1  "/>
+        <NewSubtotals hidden="1" title="NewSubtotals" value="  719.00  "/>
+    </Quote>
+    <Quote id="3">
+        <Datacenter hidden="1" title="Datacenter" value=" Singapore 1 (sng01)"/>
+        <Server hidden="1" title="Server" value=" Single Processor Quad Core Xeon 1270 V3 - 3.50GHz  (Haswell) - 1 x 8MB  "/>
+        <Surcharges hidden="1" title="Surcharges" value=" International Services  "/>
+        <OperatingSystem hidden="1" title="OperatingSystem" value=" Red Hat Enterprise Linux 6.x (64 bit) (per-processor licensing)  "/>
+        <RAM hidden="1" title="RAM" value=" 8 GB DDR3 1333  "/>
+        <DiskController hidden="1" title="DiskController" value=" RAID  "/>
+        <FirstHardDrive hidden="1" title="FirstHardDrive" value=" 400 GB SSD  "/>
+        <SecondHardDrive hidden="1" title="SecondHardDrive" value=" 400 GB SSD  "/>
+        <ThirdHardDrive hidden="1" title="ThirdHardDrive" value=" 400 GB SSD  "/>
+        <PublicBandwidth hidden="1" title="PublicBandwidth" value=" 20000 GB Bandwidth  "/>
+        <UplinkPortSpeeds hidden="1" title="UplinkPortSpeeds" value=" 100 Mbps Public &amp; Private Network Uplinks  "/>
+        <PublicNetworkPort hidden="1" title="PublicNetworkPort" value=" 100 Mbps Public Uplink  "/>
+        <PrivateNetworkPort hidden="1" title="PrivateNetworkPort" value=" 100 Mbps Private Uplink  "/>
+        <RemoteManagement hidden="1" title="RemoteManagement" value=" Reboot / KVM over IP  "/>
+        <PrimaryIPAddresses hidden="1" title="PrimaryIPAddresses" value=" 1 IP Address  "/>
+        <Monitoring hidden="1" title="Monitoring" value=" Host Ping  "/>
+        <Notification hidden="1" title="Notification" value=" Email and Ticket  "/>
+        <AdvancedMonitoring hidden="1" title="AdvancedMonitoring" value=" Monitoring Package - Advanced  "/>
+        <Response hidden="1" title="Response" value=" Automated Notification  "/>
+        <HardwareandSoftwareFirewalls hidden="1" title="HardwareandSoftwareFirewalls" value=" APF Software Firewall for Linux  "/>
+        <VPNManagement-PrivateNetwork hidden="1" title="VPNManagement-PrivateNetwork" value=" Unlimited SSL VPN Users &amp; 1 PPTP VPN User per account  "/>
+        <VulnerabilityAssessmentsandManagement hidden="1" title="VulnerabilityAssessmentsandManagement" value=" Nessus Vulnerability Assessment &amp; Reporting  "/>
+        <Servercost hidden="1" title="Servercost" value="  209.00  "/>
+        <Surchargescost hidden="1" title="Surchargescost" value="  20.00  "/>
+        <OperatingSystemcost hidden="1" title="OperatingSystemcost" value="  45.00  "/>
+        <RAMcost hidden="1" title="RAMcost" value="  48.00  "/>
+        <DiskControllercost hidden="1" title="DiskControllercost" value="  50.00  "/>
+        <FirstHardDrivecost hidden="1" title="FirstHardDrivecost" value="  163.00  "/>
+        <SecondHardDrivecost hidden="1" title="SecondHardDrivecost" value="  163.00  "/>
+        <ThirdHardDrivecost hidden="1" title="ThirdHardDrivecost" value="  163.00  "/>
+        <PublicBandwidthcost hidden="1" title="PublicBandwidthcost" value="  0.00  "/>
+        <UplinkPortSpeedscost hidden="1" title="UplinkPortSpeedscost" value="  0.00  "/>
+        <PublicNetworkPortcost hidden="1" title="PublicNetworkPortcost" value="  0.00  "/>
+        <PrivateNetworkPortcost hidden="1" title="PrivateNetworkPortcost" value="  0.00  "/>
+        <RemoteManagementcost hidden="1" title="RemoteManagementcost" value="  0.00  "/>
+        <PrimaryIPAddressescost hidden="1" title="PrimaryIPAddressescost" value="  0.00  "/>
+        <Monitoringcost hidden="1" title="Monitoringcost" value="  0.00  "/>
+        <Notificationcost hidden="1" title="Notificationcost" value="  0.00  "/>
+        <AdvancedMonitoringcost hidden="1" title="AdvancedMonitoringcost" value="  5.00  "/>
+        <Responsecost hidden="1" title="Responsecost" value="  0.00  "/>
+        <HardwareandSoftwareFirewallscost hidden="1" title="HardwareandSoftwareFirewallscost" value="  0.00  "/>
+        <VPNManagement-PrivateNetworkcost hidden="1" title="VPNManagement-PrivateNetworkcost" value="  0.00  "/>
+        <VulnerabilityAssessmentsandManagementcost hidden="1" title="VulnerabilityAssessmentsandManagementcost" value="  0.00  "/>
+        <Subtotals hidden="1" title="Subtotals" value="  866.00  "/>
+        <Quantity hidden="1" title="Quantity" value="  2  "/>
+        <NewSubtotals hidden="1" title="NewSubtotals" value="  1,732.00  "/>
+    </Quote>
+    <Quote id="4">
+        <Datacenter hidden="1" title="Datacenter" value=" Singapore 1 (sng01)"/>
+        <Server hidden="1" title="Server" value=" Single Processor Quad Core Xeon 1270 V3 - 3.50GHz  (Haswell) - 1 x 8MB  "/>
+        <Surcharges hidden="1" title="Surcharges" value=" International Services  "/>
+        <OperatingSystem hidden="1" title="OperatingSystem" value=" Red Hat Enterprise Linux 6.x (64 bit) (per-processor licensing)  "/>
+        <RAM hidden="1" title="RAM" value=" 8 GB DDR3 1333  "/>
+        <DiskController hidden="1" title="DiskController" value=" RAID  "/>
+        <FirstHardDrive hidden="1" title="FirstHardDrive" value=" 300 GB SA-SCSI 15K RPM  "/>
+        <SecondHardDrive hidden="1" title="SecondHardDrive" value=" 300 GB SA-SCSI 15K RPM  "/>
+        <ThirdHardDrive hidden="1" title="ThirdHardDrive" value=" 300 GB SA-SCSI 15K RPM  "/>
+        <PublicBandwidth hidden="1" title="PublicBandwidth" value=" 20000 GB Bandwidth  "/>
+        <UplinkPortSpeeds hidden="1" title="UplinkPortSpeeds" value=" 100 Mbps Public &amp; Private Network Uplinks  "/>
+        <PublicNetworkPort hidden="1" title="PublicNetworkPort" value=" 100 Mbps Public Uplink  "/>
+        <PrivateNetworkPort hidden="1" title="PrivateNetworkPort" value=" 100 Mbps Private Uplink  "/>
+        <RemoteManagement hidden="1" title="RemoteManagement" value=" Reboot / KVM over IP  "/>
+        <PrimaryIPAddresses hidden="1" title="PrimaryIPAddresses" value=" 1 IP Address  "/>
+        <Monitoring hidden="1" title="Monitoring" value=" Host Ping  "/>
+        <Notification hidden="1" title="Notification" value=" Email and Ticket  "/>
+        <AdvancedMonitoring hidden="1" title="AdvancedMonitoring" value=" Monitoring Package - Advanced  "/>
+        <Response hidden="1" title="Response" value=" Automated Notification  "/>
+        <HardwareandSoftwareFirewalls hidden="1" title="HardwareandSoftwareFirewalls" value=" 100Mbps Hardware Firewall  "/>
+        <VPNManagement-PrivateNetwork hidden="1" title="VPNManagement-PrivateNetwork" value=" Unlimited SSL VPN Users &amp; 1 PPTP VPN User per account  "/>
+        <VulnerabilityAssessmentsandManagement hidden="1" title="VulnerabilityAssessmentsandManagement" value=" Nessus Vulnerability Assessment &amp; Reporting  "/>
+        <Servercost hidden="1" title="Servercost" value="  209.00  "/>
+        <Surchargescost hidden="1" title="Surchargescost" value="  20.00  "/>
+        <OperatingSystemcost hidden="1" title="OperatingSystemcost" value="  45.00  "/>
+        <RAMcost hidden="1" title="RAMcost" value="  48.00  "/>
+        <DiskControllercost hidden="1" title="DiskControllercost" value="  50.00  "/>
+        <FirstHardDrivecost hidden="1" title="FirstHardDrivecost" value="  72.00  "/>
+        <SecondHardDrivecost hidden="1" title="SecondHardDrivecost" value="  72.00  "/>
+        <ThirdHardDrivecost hidden="1" title="ThirdHardDrivecost" value="  72.00  "/>
+        <PublicBandwidthcost hidden="1" title="PublicBandwidthcost" value="  0.00  "/>
+        <UplinkPortSpeedscost hidden="1" title="UplinkPortSpeedscost" value="  0.00  "/>
+        <PublicNetworkPortcost hidden="1" title="PublicNetworkPortcost" value="  0.00  "/>
+        <PrivateNetworkPortcost hidden="1" title="PrivateNetworkPortcost" value="  0.00  "/>
+        <RemoteManagementcost hidden="1" title="RemoteManagementcost" value="  0.00  "/>
+        <PrimaryIPAddressescost hidden="1" title="PrimaryIPAddressescost" value="  0.00  "/>
+        <Monitoringcost hidden="1" title="Monitoringcost" value="  0.00  "/>
+        <Notificationcost hidden="1" title="Notificationcost" value="  0.00  "/>
+        <AdvancedMonitoringcost hidden="1" title="AdvancedMonitoringcost" value="  5.00  "/>
+        <Responsecost hidden="1" title="Responsecost" value="  0.00  "/>
+        <HardwareandSoftwareFirewallscost hidden="1" title="HardwareandSoftwareFirewallscost" value="  99.00  "/>
+        <VPNManagement-PrivateNetworkcost hidden="1" title="VPNManagement-PrivateNetworkcost" value="  0.00  "/>
+        <VulnerabilityAssessmentsandManagementcost hidden="1" title="VulnerabilityAssessmentsandManagementcost" value="  0.00  "/>
+        <Subtotals hidden="1" title="Subtotals" value="  692.00  "/>
+        <Quantity hidden="1" title="Quantity" value="  3  "/>
+        <NewSubtotals hidden="1" title="NewSubtotals" value="  2,076.00  "/>
+    </Quote>
+    <Quote id="5">
+        <Datacenter hidden="1" title="Datacenter" value=" Singapore 1 (sng01)"/>
+        <ComputingInstance hidden="1" title="ComputingInstance" value=" 4 x 2.0 GHz Cores  "/>
+        <Surcharges hidden="1" title="Surcharges" value=" International Services  "/>
+        <RAM hidden="1" title="RAM" value=" 4 GB  "/>
+        <RemoteManagement hidden="1" title="RemoteManagement" value=" Reboot / Remote Console  "/>
+        <UplinkPortSpeeds hidden="1" title="UplinkPortSpeeds" value=" 100 Mbps Public &amp; Private Network Uplinks  "/>
+        <PublicNetworkPort hidden="1" title="PublicNetworkPort" value=" 100 Mbps Public Uplink  "/>
+        <PrivateNetworkPort hidden="1" title="PrivateNetworkPort" value=" 100 Mbps Private Uplink  "/>
+        <PublicBandwidth hidden="1" title="PublicBandwidth" value=" 5000 GB Bandwidth  "/>
+        <PrimaryIPAddresses hidden="1" title="PrimaryIPAddresses" value=" 1 IP Address  "/>
+        <FirstDisk hidden="1" title="FirstDisk" value=" 100 GB (SAN)  "/>
+        <OperatingSystem hidden="1" title="OperatingSystem" value=" Windows Server 2012 Standard Edition (64 bit)  "/>
+        <Anti-VirusandSpywareProtection hidden="1" title="Anti-VirusandSpywareProtection" value=" McAfee VirusScan Anti-Virus - Windows  "/>
+        <Monitoring hidden="1" title="Monitoring" value=" Host Ping  "/>
+        <Notification hidden="1" title="Notification" value=" Email and Ticket  "/>
+        <AdvancedMonitoring hidden="1" title="AdvancedMonitoring" value=" Monitoring Package - Advanced  "/>
+        <Response hidden="1" title="Response" value=" Automated Notification  "/>
+        <HardwareandSoftwareFirewalls hidden="1" title="HardwareandSoftwareFirewalls" value=" Microsoft Windows Firewall  "/>
+        <VPNManagement-PrivateNetwork hidden="1" title="VPNManagement-PrivateNetwork" value=" Unlimited SSL VPN Users &amp; 1 PPTP VPN User per account  "/>
+        <VulnerabilityAssessmentsandManagement hidden="1" title="VulnerabilityAssessmentsandManagement" value=" Nessus Vulnerability Assessment &amp; Reporting  "/>
+        <ComputingInstancecost hidden="1" title="ComputingInstancecost" value="  60.00  "/>
+        <Surchargescost hidden="1" title="Surchargescost" value="  20.00  "/>
+        <RAMcost hidden="1" title="RAMcost" value="  50.40  "/>
+        <RemoteManagementcost hidden="1" title="RemoteManagementcost" value="  0.00  "/>
+        <UplinkPortSpeedscost hidden="1" title="UplinkPortSpeedscost" value="  0.00  "/>
+        <PublicNetworkPortcost hidden="1" title="PublicNetworkPortcost" value="  0.00  "/>
+        <PrivateNetworkPortcost hidden="1" title="PrivateNetworkPortcost" value="  0.00  "/>
+        <PublicBandwidthcost hidden="1" title="PublicBandwidthcost" value="  0.00  "/>
+        <PrimaryIPAddressescost hidden="1" title="PrimaryIPAddressescost" value="  0.00  "/>
+        <FirstDiskcost hidden="1" title="FirstDiskcost" value="  10.29  "/>
+        <OperatingSystemcost hidden="1" title="OperatingSystemcost" value="  17.00  "/>
+        <Anti-VirusandSpywareProtectioncost hidden="1" title="Anti-VirusandSpywareProtectioncost" value="  0.00  "/>
+        <Monitoringcost hidden="1" title="Monitoringcost" value="  0.00  "/>
+        <Notificationcost hidden="1" title="Notificationcost" value="  0.00  "/>
+        <AdvancedMonitoringcost hidden="1" title="AdvancedMonitoringcost" value="  5.00  "/>
+        <Responsecost hidden="1" title="Responsecost" value="  0.00  "/>
+        <HardwareandSoftwareFirewallscost hidden="1" title="HardwareandSoftwareFirewallscost" value="  0.00  "/>
+        <VPNManagement-PrivateNetworkcost hidden="1" title="VPNManagement-PrivateNetworkcost" value="  0.00  "/>
+        <VulnerabilityAssessmentsandManagementcost hidden="1" title="VulnerabilityAssessmentsandManagementcost" value="  0.00  "/>
+        <Subtotals hidden="1" title="Subtotals" value="  162.69  "/>
+        <Quantity hidden="1" title="Quantity" value="  1  "/>
+        <NewSubtotals hidden="1" title="NewSubtotals" value="  162.69  "/>
+    </Quote>
+    <Quote id="6">
+        <Datacenter hidden="1" title="Datacenter" value=" Singapore 1 (sng01)"/>
+        <ComputingInstance hidden="1" title="ComputingInstance" value=" 4 x 2.0 GHz Cores  "/>
+        <Surcharges hidden="1" title="Surcharges" value=" International Services  "/>
+        <RAM hidden="1" title="RAM" value=" 6 GB  "/>
+        <RemoteManagement hidden="1" title="RemoteManagement" value=" Reboot / Remote Console  "/>
+        <UplinkPortSpeeds hidden="1" title="UplinkPortSpeeds" value=" 1 Gbps Public &amp; Private Network Uplinks  "/>
+        <PublicBandwidth hidden="1" title="PublicBandwidth" value=" 5000 GB Bandwidth  "/>
+        <PrimaryIPAddresses hidden="1" title="PrimaryIPAddresses" value=" 1 IP Address  "/>
+        <FirstDisk hidden="1" title="FirstDisk" value=" 100 GB (SAN)  "/>
+        <SecondDisk hidden="1" title="SecondDisk" value=" 200 GB (SAN)  "/>
+        <EVault hidden="1" title="EVault" value=" 100GB EVault Disk to Disk Enterprise Backup  "/>
+        <OperatingSystem hidden="1" title="OperatingSystem" value=" Red Hat Enterprise Linux 7.x - LAMP Install (64 bit)  "/>
+        <Insurance hidden="1" title="Insurance" value=" Business Continuance Insurance  "/>
+        <Monitoring hidden="1" title="Monitoring" value=" Host Ping and TCP Service Monitoring  "/>
+        <AdvancedMonitoring hidden="1" title="AdvancedMonitoring" value=" Monitoring Package - Advanced  "/>
+        <Notification hidden="1" title="Notification" value=" Email and Ticket  "/>
+        <Response hidden="1" title="Response" value=" Automated Notification  "/>
+        <HardwareandSoftwareFirewalls hidden="1" title="HardwareandSoftwareFirewalls" value=" APF Software Firewall for Linux  "/>
+        <VPNManagement-PrivateNetwork hidden="1" title="VPNManagement-PrivateNetwork" value=" Unlimited SSL VPN Users &amp; 1 PPTP VPN User per account  "/>
+        <VulnerabilityAssessmentsandManagement hidden="1" title="VulnerabilityAssessmentsandManagement" value=" Nessus Vulnerability Assessment &amp; Reporting  "/>
+        <ComputingInstancecost hidden="1" title="ComputingInstancecost" value="  60.00  "/>
+        <Surchargescost hidden="1" title="Surchargescost" value="  20.00  "/>
+        <RAMcost hidden="1" title="RAMcost" value="  72.00  "/>
+        <RemoteManagementcost hidden="1" title="RemoteManagementcost" value="  0.00  "/>
+        <UplinkPortSpeedscost hidden="1" title="UplinkPortSpeedscost" value="  20.00  "/>
+        <PublicBandwidthcost hidden="1" title="PublicBandwidthcost" value="  0.00  "/>
+        <PrimaryIPAddressescost hidden="1" title="PrimaryIPAddressescost" value="  0.00  "/>
+        <FirstDiskcost hidden="1" title="FirstDiskcost" value="  10.29  "/>
+        <SecondDiskcost hidden="1" title="SecondDiskcost" value="  12.57  "/>
+        <EVaultcost hidden="1" title="EVaultcost" value="  80.00  "/>
+        <OperatingSystemcost hidden="1" title="OperatingSystemcost" value="  45.00  "/>
+        <Insurancecost hidden="1" title="Insurancecost" value="  5.00  "/>
+        <Monitoringcost hidden="1" title="Monitoringcost" value="  5.00  "/>
+        <AdvancedMonitoringcost hidden="1" title="AdvancedMonitoringcost" value="  5.00  "/>
+        <Notificationcost hidden="1" title="Notificationcost" value="  0.00  "/>
+        <Responsecost hidden="1" title="Responsecost" value="  0.00  "/>
+        <HardwareandSoftwareFirewallscost hidden="1" title="HardwareandSoftwareFirewallscost" value="  0.00  "/>
+        <VPNManagement-PrivateNetworkcost hidden="1" title="VPNManagement-PrivateNetworkcost" value="  0.00  "/>
+        <VulnerabilityAssessmentsandManagementcost hidden="1" title="VulnerabilityAssessmentsandManagementcost" value="  0.00  "/>
+        <Subtotals hidden="1" title="Subtotals" value="  334.86  "/>
+        <Quantity hidden="1" title="Quantity" value="  1  "/>
+        <NewSubtotals hidden="1" title="NewSubtotals" value="  334.86  "/>
+    </Quote>
+</XMLCreators>
