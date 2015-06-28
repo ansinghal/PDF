@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import java.awt.CardLayout;
 
-import Config.configcreate;
+
 
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -259,7 +259,7 @@ public class FrontEndTest {
 				   String delimiter = ";";
 				   String xmlPath1 = output+"\\test1.xml";
 				   XmlGenerator x = new XmlGenerator(outputPath,xmlPath,delimiter);
-				   configcreate y = new configcreate(xmlPath1,delimiter);
+				   
 				   xmlRead xlr = new xmlRead(xmlPath,output+".\\output.csv");
 
 				   

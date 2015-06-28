@@ -22,13 +22,13 @@ public class MainFunction {
 		   //input file
 		 String [] fname = new String[3];
 		 
-		   fname[0] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf";
+		   fname[0] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test2.pdf";
 		  fname[1] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test3.pdf";
 		  fname[2] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test4.pdf";
 			 
 			  File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
 			  
-			 for (int g=0;g<3;g++)
+			 for (int g=0;g<2;g++)
 		  {    
 				  
 				  if(g==0) //file will be created first time 

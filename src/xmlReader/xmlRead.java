@@ -94,12 +94,12 @@ public class xmlRead
 					  i++;
 					  
 				  }
-				  //printMatrix(matrix);
+				   //printMatrix(matrix);
 				   createLinkedList(matrix,output);
 		
 	}
 
-			private static void createLinkedList(String[][] matrix,String output){
+			private void createLinkedList(String[][] matrix,String output){
 				  LinkedList<String> l=new LinkedList<String>();
 					int row = 0;
 					int col = 0;
@@ -142,7 +142,7 @@ public class xmlRead
 					
 				}
 
-			private static void reduceMatrix(LinkedList<String> l,String[][] matrix,String output) 
+			private void reduceMatrix(LinkedList<String> l,String[][] matrix,String output) 
 			{
 				// generate the final form of matrix which has the first row as header;and rest as values.
 				int i = 0;
@@ -184,7 +184,7 @@ public class xmlRead
 					col++;	
 				}
 				//System.out.println("notfound:"+head+" row:"+row+" col:"+col);
-				return "Not Avaliable";
+				return "NA";
 			}
 
 			private static LinkedList<String> reArrange(LinkedList<String> l)
@@ -212,18 +212,23 @@ public class xmlRead
 					
 				}
 				//itr = l.iterator();
-				//System.out.println("ahahahahahha");
+				//String s = l.get(69);
+				//System.out.println(l.size());
 				for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);
-					if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
-						break;
-					//System.out.println("String:"+str);
+					if(str==null)
+						continue;
+					//System.out.println("i="+i+";str="+l.get(i));
 					if(str.contains("cost"))
 					{
 						nl.add(str);
 						//System.out.println("Adding:"+str);
 					}
+					/*if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
+						break;*/
+					//System.out.println("String:"+str);
+					
 				}
 				nl.add("Subtotals");
 				nl.add("Quantity");
@@ -233,7 +238,7 @@ public class xmlRead
 				return nl;
 			}
 
-			private static int maxColumnSize(String[][] matrix) {
+			private int maxColumnSize(String[][] matrix) {
 				// ma
 				int row = 0;
 				int max = -1;
@@ -250,7 +255,7 @@ public class xmlRead
 				return max;
 			}
 
-			private static void printMatrix(String[][] matrix) 
+			private void printMatrix(String[][] matrix) 
 			
 			{
 				for(int i = 0; i<matrix.length; i++)
