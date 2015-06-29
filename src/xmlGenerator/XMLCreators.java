@@ -148,7 +148,7 @@ public class XMLCreators {
                            hiddenVal = prop.getProperty(head);
                           if (hiddenVal==null)
                           { System.out.println(header + "\t  Please add this to config file and read again");
-                            hiddenVal="0";
+                            hiddenVal="1";
                           }
                          
                          }
