@@ -76,7 +76,7 @@ public class xmlRead
 									//int flag = 0;
 									if(k==0)
 									{
-										if(Integer.parseInt(node.getNodeValue())==0)
+										if(Integer.parseInt(node.getNodeValue().trim())==0)
 										{
 											arr[i*2][j]=1;
 											//System.out.println("setting to 1 because hidden = 0 "+"\tj="+j);
