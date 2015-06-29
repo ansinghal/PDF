@@ -100,7 +100,7 @@ public class XMLCreators {
                     
                     Properties prop = new Properties();
                 	String propFileName = "titlesConfig.properties";
-                	InputStream inputStream = XMLCreators.class.getResourceAsStream(propFileName);
+                	InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
                 	if (inputStream != null) {
                 		prop.load(inputStream);
                 		} else {
