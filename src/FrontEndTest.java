@@ -13,10 +13,12 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JTextField;
 
 import java.awt.CardLayout;
+
 
 
 
@@ -39,6 +41,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import javax.swing.JInternalFrame;
 
 
@@ -192,13 +195,13 @@ private void initialize() {
 		});
 		toolBar.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Edit");
-		toolBar.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("Delete");
-		toolBar.add(btnNewButton_3);
-		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddView n = new AddView () ;
+				n.main(null);
+			}
+		});
 		toolBar.add(btnAdd);
 		  btnRun.addActionListener(new ActionListener() {
 		         public void actionPerformed(ActionEvent e) {     
@@ -274,6 +277,7 @@ private void initialize() {
    	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
 
 		          	           frame.validate(); 
+		          	         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 				    
 		 	      } 
 		            

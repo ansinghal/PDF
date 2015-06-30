@@ -73,12 +73,18 @@ public class EditButton {
 		JLabel lblNewLabel = new JLabel("Enter New Name");
 		
 		JTextArea textArea = new JTextArea();
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.addItem("Show") ;
+		comboBox_1.addItem("Hidden");
 		
-		JButton btnRename = new JButton("Rename");
+		JButton btnRename = new JButton("Update");
 		btnRename.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String Abc ;
+				String Abc2 ;
 				Abc=comboBox.getSelectedItem().toString() ;
+				Abc2=comboBox_1.getSelectedItem().toString() ;
+				
 				String Abc1 ;
 				Abc1=textArea.getText();
 				Properties props = new Properties();
@@ -88,11 +94,15 @@ public class EditButton {
 			      //first load old one:
 			      FileInputStream configStream = new FileInputStream(propsFileName);
 			      props.load(configStream);
-			      
+			      if (Abc2.equals("Hidden"))
+			      { props.remove(Abc) ;
+			      props.setProperty(Abc,Abc1+",0");}
+			    	  
+			      if (Abc2.equals("Show"))
+			      {
 
-			      //modifies existing or adds new property
 			      props.remove(Abc) ;
-			      props.setProperty(Abc,Abc1+",1");
+			      props.setProperty(Abc,Abc1+",1");}
 			      
 			      System.out.println("Done");
 			      JOptionPane.showMessageDialog(null,"Name Changed ","Changed",JOptionPane.WARNING_MESSAGE);
@@ -105,6 +115,8 @@ public class EditButton {
 			      configStream.close();
 			      ConfigView j = new ConfigView () ;
 			      j.initialize();
+			      FrontEndTest g = new FrontEndTest () ;
+					g.main(null);
 			      
 			      
 
@@ -114,38 +126,59 @@ public class EditButton {
 			  }
 			
 			
+			
+			
+			
+			
 		});
+		
+		JLabel lblNewLabel_1 = new JLabel("Select one ");
+		
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(40)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(27)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNewLabel_1)
+							.addGap(55))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(comboBox, 0, 145, Short.MAX_VALUE)
+							.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
 							.addContainerGap())
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(btnRename, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(192))
-								.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+							.addComponent(btnRename, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(comboBox, 0, 286, Short.MAX_VALUE)
+								.addComponent(comboBox_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))
 							.addGap(23))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(32)
+					.addGap(6)
 					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-					.addGap(32)
+					.addGap(13)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(textArea, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGap(17)
+							.addComponent(lblNewLabel_1)))
+					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
 					.addComponent(btnRename)
-					.addContainerGap(102, Short.MAX_VALUE))
+					.addGap(34))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		comboBox.addItem("Select Field") ;

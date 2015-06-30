@@ -25,8 +25,10 @@ import javax.swing.JList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 
 public class ConfigView {
@@ -137,6 +139,15 @@ public class ConfigView {
 				EditButton a = new
 				EditButton () ;
 				a.main(null);
+				FrontEndTest f = new FrontEndTest ();
+				try {
+					in.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
 				
 				
 			}

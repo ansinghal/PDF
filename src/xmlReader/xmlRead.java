@@ -47,6 +47,7 @@ public class xmlRead
 				}
 			 
 			    } catch (Exception e) {
+			    	System.out.println("EXCEPTION");
 				System.out.println(e.getMessage());
 			    }
 			 
@@ -153,16 +154,38 @@ public class xmlRead
 					{
 					//	System.out.println("List l:"+" "+i+" "+l.get(i));
 					}
-					
+					try{
 					reduceMatrix(l,matrix,output);
-					
+					}
+					catch(IOException e)
+					{
+						System.out.println("ConfigFile not found while writing csv");
+					}
 				}
 
-			private void reduceMatrix(LinkedList<String> l,String[][] matrix,String output) 
+			private void reduceMatrix(LinkedList<String> l,String[][] matrix,String output) throws IOException
 			{
 				// generate the final form of matrix which has the first row as header;and rest as values.
 				int i = 0;
-				String finalMatrix[][] = new String[matrix.length/2+1][200]; 
+				String finalMatrix[][] = new String[matrix.length/2+1][200];
+				int flag = 0;
+				
+				 Properties prop = new Properties();
+             	String propFileName = "titlesConfig.properties";
+             	InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+             	if (inputStream != null) {
+             		prop.load(inputStream);
+             		} else {
+             		throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+             		}
+             	
+             	String ci = (prop.getProperty("ComputingInstance")).split(",")[0];
+                String serv = (prop.getProperty("Server")).split(",")[0];          
+				if(l.contains(serv) && l.contains(ci))
+					{
+						flag = 1;
+						l.remove(ci);
+					}
 				for(i=0;i<l.size();i++)
 				{
 					String head  = l.get(i);
@@ -174,6 +197,20 @@ public class xmlRead
 						if(row%2==0)
 							{
 								String val = findInMatrix(matrix,head,row);
+								if(flag == 1)
+								{
+									if(head.equals(serv))
+									{
+										val = findInMatrix(matrix,serv,row);
+										if(val.equals("NA"))
+											val = findInMatrix(matrix,ci,row);
+										finalMatrix[row/2+1][i] = val;
+									}
+									else
+									{
+										finalMatrix[row/2+1][i] = val;
+									}
+								}
 								finalMatrix[row/2+1][i] = val;
 								//System.out.println("head:"+head+" row:"+row+" i:"+i+" finalMatrix[row/2+1][i]:"+val);
 							}
@@ -181,9 +218,31 @@ public class xmlRead
 					
 				}
 				//printMatrix(finalMatrix);
+				int j = 0;
+				i=0;
+				//renaming the datacenter
+				String dc = (prop.getProperty("Datacenter")).split(",")[0];
+				for(j= 0;j<l.size();j++)
+				{
+					//System.out.println("checking for match:"+dc+"with"+matrix[i][j]);
+					if(dc.equals(finalMatrix[i][j]))
+					{
+						int row = 0;
+						for(row=1;row<finalMatrix.length;row++)
+						{
+							int len = finalMatrix[row][j].length();
+							//System.out.println("rename:"+finalMatrix[row][j]);
+							finalMatrix[row][j] = finalMatrix[row][j].substring(len-6, len-1);
+							//System.out.println("renamed as:"+finalMatrix[row][j]);
+						}
+						
+					}
+				}
+				
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
+			
 			private static String findInMatrix(String[][] matrix, String head,int row)
 			{
 				// TODO:given the "head" string;find the value in the appropriate row in the matrix;
@@ -200,6 +259,10 @@ public class xmlRead
 					col++;	
 				}
 				//System.out.println("notfound:"+head+" row:"+row+" col:"+col);
+				if(head.endsWith("cost"))
+				{
+					return "0.00";
+				}
 				return "NA";
 			}
 
