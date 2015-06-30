@@ -109,7 +109,7 @@ public class XMLCreators {
                     
                    
                 	
-                	
+                	 String[] special = new String[20];
                 	for (int col = 0; col < headers.size(); col++)
                     {
 
@@ -130,6 +130,10 @@ public class XMLCreators {
 
                         Element curElement = newDoc.createElement("Element");
                        
+                        
+                        if(header.equals("IntrusionDetection&Protection"))
+                        { special[1]=value;  }
+                        
                         	
                         	
                         		String titval = (prop.getProperty(header));
@@ -149,11 +153,14 @@ public class XMLCreators {
                         		
    
                         	
-                       
-                        curElement.setAttribute("title", titlevalue[0]);
+                        		 if (header.equals("IntrusionDetection&Protectioncost"))
+                                 { curElement.setAttribute("title", special[1]+"cost"); }
+                        		 else 
+                        { curElement.setAttribute("title", titlevalue[0]);}
                         /*Element title = newDoc.createElement("title");
                         title.appendChild(newDoc.createTextNode(header));
                         curElement.appendChild(title);*/
+                       
                         
                         curElement.setAttribute("value", value);
                         /*Element valuetag = newDoc.createElement("value");
