@@ -55,7 +55,8 @@ public class xmlRead
 			private void populateMatrix(String[][] matrix,NodeList n,int count,String output) {
 		// TODO Auto-generated method stub
 				  int i = 0;
-				  while(i < count)
+				  int[][] arr = new int[count*2][1000];
+				   while(i < count)
 				  {
 					  NodeList kids = ((Element) n.item(i)).getElementsByTagName("Element");
 					  //System.out.println("Length of kids is ="+kids.getLength());
@@ -65,24 +66,34 @@ public class xmlRead
 						  if(kids.item(j).hasAttributes())
 						  {
 							  NamedNodeMap nodeMap = kids.item(j).getAttributes();
-							  for (int k = 1; k < nodeMap.getLength(); k++) {
+							  for (int k = 0; k < nodeMap.getLength(); k++) {
 									//good place to check if hidden == 0;change k = 0 for hidden nodes
 								  	Node node = nodeMap.item(k);
 								  	//Displays with each iteration values where i=quote no j=title pair k=value/title
 								  	//System.out.println("\n\ni="+i+" j = "+j+" k="+k);
 								  	//System.out.println("attr name : " + node.getNodeName());
-									//System.out.println("attr value : " + node.getNodeValue());
-									
+								  	//System.out.println("attr value : " + node.getNodeValue());
+									//int flag = 0;
+									if(k==0)
+									{
+										if(Integer.parseInt(node.getNodeValue().trim())==0)
+										{
+											arr[i*2][j]=1;
+											//System.out.println("setting to 1 because hidden = 0 "+"\tj="+j);
+										}
+										else
+											arr[i*2][j]=0;
+									}
 									if(k==1)
 									{
 										matrix[i*2][j]=node.getNodeValue();
 										//System.out.println("k=1;attr name : " + node.getNodeValue());
-										//System.out.println(matrix[i*2][j]+"\t"+i*2+"\t"+j);
+										//System.out.println(matrix[i*2][j]+"\t"+i*2+"\t"+(j));
 									}
 									if(k==2)
 									{
 										matrix[i*2+1][j]=node.getNodeValue();
-										//System.out.println(matrix[i*2+1][j]+"\t"+(i*2+1)+"\t"+j);
+										//System.out.println(matrix[i*2+1][j]+"\t"+(i*2+1)+"\t"+(j));
 									}
 								}
 							  
@@ -95,11 +106,11 @@ public class xmlRead
 					  
 				  }
 				   //printMatrix(matrix);
-				   createLinkedList(matrix,output);
+				   createLinkedList(matrix,output,arr);
 		
 	}
 
-			private void createLinkedList(String[][] matrix,String output){
+			private void createLinkedList(String[][] matrix,String output,int[][] arr){
 				  LinkedList<String> l=new LinkedList<String>();
 					int row = 0;
 					int col = 0;
@@ -109,24 +120,28 @@ public class xmlRead
 					for(col=0;col<m;col++)
 					{
 						//System.out.println("column="+col);
+						
 						for(row=0;row<(matrix.length)-1;row++)
 						{	
 							//System.out.println("row="+row);
-							if(row%2==0)
+							if(arr[row][col]==0)
 							{
-								if(l.contains(matrix[row][col]))
+								if(row%2==0)
 								{
-									//System.out.println("Contains:"+matrix[row][col]);
-									continue;
-								}										
-								else
-								{
-									//System.out.println("Added:"+matrix[row][col]);
-									l.add(matrix[row][col]);
+									if(l.contains(matrix[row][col]))
+									{
+										//System.out.println("Contains:"+matrix[row][col]);
+										continue;
+									}										
+									else
+									{
+										//System.out.println("Added:"+matrix[row][col]);
+										l.add(matrix[row][col]);
+									}
 								}
 							}
 						}
-						
+							
 						
 					
 					}
@@ -136,8 +151,9 @@ public class xmlRead
 					int i = 0;
 					for(i=0;i<l.size();i++)
 					{
-						//System.out.println("List l:"+" "+i+" "+l.get(i));
+					//	System.out.println("List l:"+" "+i+" "+l.get(i));
 					}
+					
 					reduceMatrix(l,matrix,output);
 					
 				}
