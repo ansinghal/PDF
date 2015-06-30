@@ -39,6 +39,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JInternalFrame;
 
 
 public class FrontEndTest {
@@ -180,6 +181,12 @@ public class FrontEndTest {
 		toolBar.add(lblNewLabel_3);
 		
 		JButton btnNewButton_1 = new JButton("View");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConfigView x = new ConfigView() ;
+				x.main(null);
+			}
+		});
 		toolBar.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Edit");
