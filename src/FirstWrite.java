@@ -86,7 +86,7 @@ public class FirstWrite{
 		second = delims[1];//quantity of the items
 		cost = delims[2];//cost of items
 		first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
-		first=first.replace("&", "and");
+		//first=first.replace("&", "and");
 
 
 	   //System.out.println("First word: "+first);
