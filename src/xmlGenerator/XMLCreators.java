@@ -129,10 +129,28 @@ public class XMLCreators {
                         }
 
                         Element curElement = newDoc.createElement("Element");
-                        
-                        
                        
-                        curElement.setAttribute("title", header);
+                        	
+                        	
+                        		String titval = (prop.getProperty(header));
+                        		//System.out.println(titval==null);
+                        		String [] titlevalue = new String[2] ;
+                        		
+                        		if (titval==null)
+                        		{
+                        			                        		
+                        			titlevalue[0]=header;
+                        			titlevalue[1]="1";
+                        		}
+                        		else
+                        		{ titlevalue=titval.split(",");}
+                        		
+                        		
+                        		
+   
+                        	
+                       
+                        curElement.setAttribute("title", titlevalue[0]);
                         /*Element title = newDoc.createElement("title");
                         title.appendChild(newDoc.createTextNode(header));
                         curElement.appendChild(title);*/
@@ -142,8 +160,8 @@ public class XMLCreators {
                         valuetag.appendChild(newDoc.createTextNode(value));
                         curElement.appendChild(valuetag);*/
                         
-                        String hiddenVal = prop.getProperty(header);
-                         if(hiddenVal==null)
+                        
+                        /* if(hiddenVal==null)
                          {String  head=header.replace("cost","");
                            hiddenVal = prop.getProperty(head);
                           if (hiddenVal==null)
@@ -151,8 +169,8 @@ public class XMLCreators {
                             hiddenVal="1";
                           }
                          
-                         }
-                        curElement.setAttribute("hidden", hiddenVal);
+                         }*/
+                        curElement.setAttribute("hidden", titlevalue[1]);
                         /*Element hidden = newDoc.createElement("hidden");
                         hidden.appendChild(newDoc.createTextNode("1"));
                         curElement.appendChild(hidden);*/
