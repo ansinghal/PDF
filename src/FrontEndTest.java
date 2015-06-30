@@ -39,6 +39,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JInternalFrame;
 
 
 public class FrontEndTest {
@@ -72,14 +73,14 @@ public class FrontEndTest {
 	/**
 	 * Create the application.
 	 */
-	public FrontEndTest() {
+public FrontEndTest() {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.setBounds(100, 100, 778, 368);
@@ -180,6 +181,12 @@ public class FrontEndTest {
 		toolBar.add(lblNewLabel_3);
 		
 		JButton btnNewButton_1 = new JButton("View");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConfigView x = new ConfigView() ;
+				x.main(null);
+			}
+		});
 		toolBar.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Edit");
@@ -198,13 +205,7 @@ public class FrontEndTest {
 		            output=textPane.getText();
 		            new File(output).mkdir();
 		            
-
-		            
-
-		            
-		            
 		            input=data.split(",") ;
-		            
 		            
 		            count=Integer.parseInt(textField.getText()) ;
 		            if (input.length<count )
@@ -217,37 +218,29 @@ public class FrontEndTest {
 		            File file = new File(output+".txt");
 		            file.delete();
 		           
-			 	       try {
-			 	    	  FileWriter fw = new FileWriter(file.getAbsoluteFile());
-					       BufferedWriter bw = new BufferedWriter(fw);
+		    try {
+		    		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
 					       
-						file.createNewFile();
+					file.createNewFile();
 					
 		            for (int i =0;i<count;i++)
 		            {      
-		            
-		            
-		            
-		            
-		            
-		            pdfManager.setFilePath(input[i]);
-		            System.out.print(input[i]);
+		            	            
+		            	pdfManager.setFilePath(input[i]);
+		            //System.out.print(input[i]);
 				
 					// TODO Auto-generated catch block
-					
-					
-					
-				       bw.append(pdfManager.ToText());
+		               bw.append(pdfManager.ToText());
 				       bw.write("\nNEXT:\n");
 				       
 				       
 		            }
-		          
-		            
+		                    
 		            bw.close(); 
 		           
 		            
-			        System.out.println("DoneParsing");
+			        System.out.println("\nDoneParsing");
 			        //writing to produce a csv file
 			        FirstWrite fwrite = new FirstWrite(file);
 			        String outputPath =output+"\\test.csv";
@@ -261,27 +254,20 @@ public class FrontEndTest {
 				   XmlGenerator x = new XmlGenerator(outputPath,xmlPath,delimiter);
 				   
 				   xmlRead xlr = new xmlRead(xmlPath,output+".\\output.csv");
-
-				   
-			    
-			
-				       
-				    
-		 	      } catch (FileNotFoundException e1){
+		 	      }
+		    catch (FileNotFoundException e1){
 		 	    	 JOptionPane.showMessageDialog(null,"Enter Correct Path","File Not Found",JOptionPane.WARNING_MESSAGE);
-		 	    	    
-		 	    	    
-		 	    	} catch (IOException e1) {
-					// TODO Auto-generated catch block
+		 	    	}
+		    catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			 	      if (textPane.getText()=="")
 			 	      {
 			 	    	 JOptionPane.showMessageDialog(null,"Specify Output Path","Ouput Path Not Specified ",JOptionPane.WARNING_MESSAGE);
 			 	      }
-			 	      
+			    
 			 	    	  
-			 	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path Ronit is awesome  ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
+   	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path;Ronit is not awesome  ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
 
 		          	            
 				    
@@ -294,5 +280,4 @@ public class FrontEndTest {
 
 	}
 	}
-
 	
