@@ -154,21 +154,37 @@ public class xmlRead
 					{
 					//	System.out.println("List l:"+" "+i+" "+l.get(i));
 					}
-					
+					try{
 					reduceMatrix(l,matrix,output);
-					
+					}
+					catch(IOException e)
+					{
+						System.out.println("ConfigFile not found while writing csv");
+					}
 				}
 
-			private void reduceMatrix(LinkedList<String> l,String[][] matrix,String output) 
+			private void reduceMatrix(LinkedList<String> l,String[][] matrix,String output) throws IOException
 			{
 				// generate the final form of matrix which has the first row as header;and rest as values.
 				int i = 0;
 				String finalMatrix[][] = new String[matrix.length/2+1][200];
 				int flag = 0;
-				if(l.contains("Server") && l.contains("ComputingInstance"))
+				
+				 Properties prop = new Properties();
+             	String propFileName = "titlesConfig.properties";
+             	InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+             	if (inputStream != null) {
+             		prop.load(inputStream);
+             		} else {
+             		throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+             		}
+             	
+             	String ci = (prop.getProperty("ComputingInstance")).split(",")[0];
+                String serv = (prop.getProperty("Server")).split(",")[0];          
+				if(l.contains(serv) && l.contains(ci))
 					{
 						flag = 1;
-						l.remove("ComputingInstance");
+						l.remove(ci);
 					}
 				for(i=0;i<l.size();i++)
 				{
@@ -183,11 +199,11 @@ public class xmlRead
 								String val = findInMatrix(matrix,head,row);
 								if(flag == 1)
 								{
-									if(head.equals("Server"))
+									if(head.equals(serv))
 									{
-										val = findInMatrix(matrix,"Server",row);
+										val = findInMatrix(matrix,serv,row);
 										if(val.equals("NA"))
-											val = findInMatrix(matrix,"ComputingInstance",row);
+											val = findInMatrix(matrix,ci,row);
 										finalMatrix[row/2+1][i] = val;
 									}
 									else
@@ -202,6 +218,10 @@ public class xmlRead
 					
 				}
 				//printMatrix(finalMatrix);
+				for(i=0;i<l.size();i++)
+				{
+					
+				}
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
@@ -222,6 +242,10 @@ public class xmlRead
 					col++;	
 				}
 				//System.out.println("notfound:"+head+" row:"+row+" col:"+col);
+				if(head.endsWith("cost"))
+				{
+					return "0.00";
+				}
 				return "NA";
 			}
 
