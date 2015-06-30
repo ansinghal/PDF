@@ -13,10 +13,12 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JTextField;
 
 import java.awt.CardLayout;
+
 
 
 
@@ -39,12 +41,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import javax.swing.JInternalFrame;
 
 
 public class FrontEndTest {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTextField textField;
 	public String data ;
 
@@ -182,23 +185,27 @@ private void initialize() {
 		
 		JButton btnNewButton_1 = new JButton("View");
 		btnNewButton_1.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				frame.validate();
 				ConfigView x = new ConfigView() ;
+				x.initialize();
 				x.main(null);
 			}
 		});
 		toolBar.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Edit");
-		toolBar.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("Delete");
-		toolBar.add(btnNewButton_3);
-		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddView n = new AddView () ;
+				n.main(null);
+			}
+		});
 		toolBar.add(btnAdd);
 		  btnRun.addActionListener(new ActionListener() {
 		         public void actionPerformed(ActionEvent e) {     
+		        	 frame.validate();
 
 		            data = textArea.getText();
 		            data = data+"," ;
@@ -267,9 +274,10 @@ private void initialize() {
 			 	      }
 			    
 			 	    	  
-   	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path;Ronit is not awesome  ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
+   	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
 
-		          	            
+		          	           frame.validate(); 
+		          	         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 				    
 		 	      } 
 		            
