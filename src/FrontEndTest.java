@@ -44,7 +44,7 @@ import javax.swing.JInternalFrame;
 
 public class FrontEndTest {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTextField textField;
 	public String data ;
 
@@ -182,8 +182,11 @@ private void initialize() {
 		
 		JButton btnNewButton_1 = new JButton("View");
 		btnNewButton_1.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				frame.validate();
 				ConfigView x = new ConfigView() ;
+				x.initialize();
 				x.main(null);
 			}
 		});
@@ -199,6 +202,7 @@ private void initialize() {
 		toolBar.add(btnAdd);
 		  btnRun.addActionListener(new ActionListener() {
 		         public void actionPerformed(ActionEvent e) {     
+		        	 frame.validate();
 
 		            data = textArea.getText();
 		            data = data+"," ;
@@ -267,9 +271,9 @@ private void initialize() {
 			 	      }
 			    
 			 	    	  
-   	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path;Ronit is not awesome  ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
+   	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
 
-		          	            
+		          	           frame.validate(); 
 				    
 		 	      } 
 		            

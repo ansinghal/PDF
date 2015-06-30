@@ -111,7 +111,7 @@ public class ConfigView {
 		 DefaultTableModel dtm = new DefaultTableModel(0, 0);
 
 		// add header of the table
-		String header[] = new String[] { "Title","Hidden" };
+		String header[] = new String[] { "Field","Title","Hidden" };
 
 		// add header in table model     
 		 dtm.setColumnIdentifiers(header);
@@ -121,8 +121,9 @@ public class ConfigView {
 		for (int i=0 ; i<prop.keySet().size();i++)
 		{String arr = (String) prop.keySet().toArray()[i];
 		System.out.println(arr);
-		String p = prop.getProperty(arr); 		
-		dtm.addRow(new Object[] { arr,p });
+		String p = prop.getProperty(arr); 
+		String x[] = p.split(",");
+		dtm.addRow(new Object[] { arr,x[0],x[1] });
 		  } 
 	
 		JScrollPane scrollPane = new JScrollPane(table);
@@ -133,6 +134,10 @@ public class ConfigView {
 		JButton btnUpdate = new JButton("EDIT");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				EditButton a = new
+				EditButton () ;
+				a.main(null);
+				
 				
 			}
 		});
