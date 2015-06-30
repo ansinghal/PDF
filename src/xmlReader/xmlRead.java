@@ -173,7 +173,7 @@ public class xmlRead
 				for(i=0;i<l.size();i++)
 				{
 					String head  = l.get(i);
-					System.out.println("finalmatrix[0]["+i+"]="+head);
+					//System.out.println("finalmatrix[0]["+i+"]="+head);
 					finalMatrix[0][i]=head;
 					int row = 0;
 					for(row=0;row<matrix.length;row++)
@@ -196,7 +196,7 @@ public class xmlRead
 									}
 								}
 								finalMatrix[row/2+1][i] = val;
-								System.out.println("head:"+head+" row:"+row+" i:"+i+" finalMatrix[row/2+1][i]:"+val);
+								//System.out.println("head:"+head+" row:"+row+" i:"+i+" finalMatrix[row/2+1][i]:"+val);
 							}
 					}
 					
