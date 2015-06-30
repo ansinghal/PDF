@@ -20,15 +20,16 @@ public class MainFunction {
 	public static void main(String[] args) throws IOException {
 		   FirstParse pdfManager = new FirstParse();
 		   //input file
-		 String [] fname = new String[3];
+		 String [] fname = new String[4];
 		 
 		   fname[0] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test.pdf";
 		  fname[1] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test3.pdf";
 		  fname[2] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test4.pdf";
+		  fname[3] = "C:\\Users\\IBM_ADMIN\\Desktop\\Project\\test1.pdf";
 			 
 			  File file = new File("C:\\Users\\IBM_ADMIN\\Desktop\\Project\\output\\test.txt");
 			  
-			 for (int g=0;g<3;g++)
+			 for (int g=0;g<4;g++)
 		  {    
 				  
 				  if(g==0) //file will be created first time 

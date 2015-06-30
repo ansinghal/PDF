@@ -47,8 +47,8 @@ public class xmlRead
 				}
 			 
 			    } catch (Exception e) {
-			    	System.out.println("EXCEPTION");
-				System.out.println(e.getMessage());
+			    	System.out.println("Config file corrupted");
+			    	System.out.println(e.getMessage());
 			    }
 			 
 			  }
@@ -79,11 +79,11 @@ public class xmlRead
 									{
 										if(Integer.parseInt(node.getNodeValue().trim())==0)
 										{
-											arr[i*2][j]=1;
+											arr[i*2][j]=0;
 											//System.out.println("setting to 1 because hidden = 0 "+"\tj="+j);
 										}
 										else
-											arr[i*2][j]=0;
+											arr[i*2][j]=1;
 									}
 									if(k==1)
 									{
@@ -106,7 +106,9 @@ public class xmlRead
 					  i++;
 					  
 				  }
-				   printMatrix(matrix);
+				  // printMatrix(matrix);
+				  // System.out.println(matrix[14][21]);
+
 				   createLinkedList(matrix,output,arr);
 		
 	}
@@ -122,11 +124,13 @@ public class xmlRead
 					{
 						System.out.println("column="+col);
 						
-						for(row=0;row<(matrix.length)-1;row++)
+						for(row=0;row<(matrix.length);row++)
 						{	
-							System.out.println("row="+row);
-							if(arr[row][col]==0)
-							{
+							//System.out.println("row="+row);
+							//System.out.println("arr["+row+"]["+col+"]:"+arr[row][col]);
+							//if(arr[row][col]==1)
+							//{
+
 								if(row%2==0)
 								{
 									if(l.contains(matrix[row][col]))
@@ -140,7 +144,7 @@ public class xmlRead
 										l.add(matrix[row][col]);
 									}
 								}
-							}
+							//}
 						}
 							
 						
@@ -179,8 +183,27 @@ public class xmlRead
              		throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
              		}
              	
-             	String ci = (prop.getProperty("ComputingInstance")).split(",")[0];
-                String serv = (prop.getProperty("Server")).split(",")[0];          
+             	String Ci = (prop.getProperty("ComputingInstance"));
+             	String ci = null;
+             	if(Ci==null)
+             	{
+             		ci = "ComputingInstance";             		
+             	}
+             	else
+             	{
+             		ci = Ci.split(",")[0];
+             	}
+             	
+                String Serv = (prop.getProperty("Server"));
+                String serv = null;
+                if(Serv==null)
+                {
+                	serv="Server";
+                }
+                else
+                {
+                	serv = Serv.split(",")[0];
+                }
 				if(l.contains(serv) && l.contains(ci))
 					{
 						flag = 1;
@@ -220,8 +243,17 @@ public class xmlRead
 				//printMatrix(finalMatrix);
 				int j = 0;
 				i=0;
-				//renaming the datacenter
-				String dc = (prop.getProperty("Datacenter")).split(",")[0];
+				//renaming the datacenter:
+				String Dc = prop.getProperty("Datacenter");
+				String dc = null;
+				if(Dc==null)
+				{
+					dc = "Datacenter";
+				}
+				else
+				{
+					dc = Dc.split(",")[0];
+				}
 				for(j= 0;j<l.size();j++)
 				{
 					//System.out.println("checking for match:"+dc+"with"+matrix[i][j]);
@@ -238,7 +270,53 @@ public class xmlRead
 						
 					}
 				}
+				//antivirus yes or no:
+				String Av = prop.getProperty("Anti-Virus&SpywareProtection");
+				String av = null;
+				if(Av==null)
+					av = "Anti-Virus&SpywareProtection";
+				else
+					av = Av.split(",")[0];
+				for(j= 0;j<l.size();j++)
+				{
+					
+					if(av.equals(finalMatrix[i][j]))
+					{
+						int row = 0;
+						for(row=1;row<finalMatrix.length;row++)
+						{
+							if(finalMatrix[row][j]=="NA")
+								finalMatrix[row][j]="No";
+							else
+								finalMatrix[row][j]="Yes";
+						}
+						
+					}
+				}
+				//for advanced monitoring
+				String Am = prop.getProperty("AdvancedMonitoring");
+				String am = null;
+				if(Am == null)
+					am = "AdvancedMonitoring";
+				else
+					am = Am.split(",")[0];
 				
+				for(j= 0;j<l.size();j++)
+				{
+					if(am.equals(finalMatrix[i][j]))
+					{
+						int row = 0;
+						for(row=1;row<finalMatrix.length;row++)
+						{
+							if(finalMatrix[row][j]!="NA")
+							{
+								int len = finalMatrix[row][j].length();
+								finalMatrix[row][j]=finalMatrix[row][j].substring(22);
+							}
+						}
+						
+					}
+				}
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
