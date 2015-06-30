@@ -218,10 +218,27 @@ public class xmlRead
 					
 				}
 				//printMatrix(finalMatrix);
-				for(i=0;i<l.size();i++)
+				int j = 0;
+				i=0;
+				//renaming the datacenter
+				String dc = (prop.getProperty("Datacenter")).split(",")[0];
+				for(j= 0;j<l.size();j++)
 				{
-					
+					//System.out.println("checking for match:"+dc+"with"+matrix[i][j]);
+					if(dc.equals(finalMatrix[i][j]))
+					{
+						int row = 0;
+						for(row=1;row<finalMatrix.length;row++)
+						{
+							int len = finalMatrix[row][j].length();
+							//System.out.println("rename:"+finalMatrix[row][j]);
+							finalMatrix[row][j] = finalMatrix[row][j].substring(len-6, len-1);
+							//System.out.println("renamed as:"+finalMatrix[row][j]);
+						}
+						
+					}
 				}
+				
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
