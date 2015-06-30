@@ -102,11 +102,11 @@ public class xmlRead
 						  
 					  }
 					  //Node k = kids.item(0);
-					  //System.out.println(kids.getLength());
+					  System.out.println(kids.getLength());
 					  i++;
 					  
 				  }
-				   //printMatrix(matrix);
+				   printMatrix(matrix);
 				   createLinkedList(matrix,output,arr);
 		
 	}
@@ -120,23 +120,23 @@ public class xmlRead
 					//System.out.println("Max size of columns is:"+m);
 					for(col=0;col<m;col++)
 					{
-						//System.out.println("column="+col);
+						System.out.println("column="+col);
 						
 						for(row=0;row<(matrix.length)-1;row++)
 						{	
-							//System.out.println("row="+row);
+							System.out.println("row="+row);
 							if(arr[row][col]==0)
 							{
 								if(row%2==0)
 								{
 									if(l.contains(matrix[row][col]))
 									{
-										//System.out.println("Contains:"+matrix[row][col]);
+										System.out.println("Contains:"+matrix[row][col]);
 										continue;
 									}										
 									else
 									{
-										//System.out.println("Added:"+matrix[row][col]);
+										System.out.println("Added:"+matrix[row][col]);
 										l.add(matrix[row][col]);
 									}
 								}
@@ -152,7 +152,7 @@ public class xmlRead
 					int i = 0;
 					for(i=0;i<l.size();i++)
 					{
-					//	System.out.println("List l:"+" "+i+" "+l.get(i));
+					//System.out.println("List l:"+" "+i+" "+l.get(i));
 					}
 					try{
 					reduceMatrix(l,matrix,output);
