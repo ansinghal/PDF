@@ -127,8 +127,8 @@ public class xmlRead
 						{	
 							//System.out.println("row="+row);
 							//System.out.println("arr["+row+"]["+col+"]:"+arr[row][col]);
-							//if(arr[row][col]==1)
-							//{
+							if(arr[row][col]==1)
+							{
 								if(row%2==0)
 								{
 									if(l.contains(matrix[row][col]))
@@ -142,7 +142,7 @@ public class xmlRead
 										l.add(matrix[row][col]);
 									}
 								}
-							//}
+							}
 						}
 							
 						
