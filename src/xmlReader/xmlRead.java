@@ -47,6 +47,7 @@ public class xmlRead
 				}
 			 
 			    } catch (Exception e) {
+			    	System.out.println("EXCEPTION");
 				System.out.println(e.getMessage());
 			    }
 			 
@@ -162,11 +163,17 @@ public class xmlRead
 			{
 				// generate the final form of matrix which has the first row as header;and rest as values.
 				int i = 0;
-				String finalMatrix[][] = new String[matrix.length/2+1][200]; 
+				String finalMatrix[][] = new String[matrix.length/2+1][200];
+				int flag = 0;
+				if(l.contains("Server") && l.contains("ComputingInstance"))
+					{
+						flag = 1;
+						l.remove("ComputingInstance");
+					}
 				for(i=0;i<l.size();i++)
 				{
 					String head  = l.get(i);
-					//System.out.println("finalmatrix[0]["+i+"]="+head);
+					System.out.println("finalmatrix[0]["+i+"]="+head);
 					finalMatrix[0][i]=head;
 					int row = 0;
 					for(row=0;row<matrix.length;row++)
@@ -174,8 +181,22 @@ public class xmlRead
 						if(row%2==0)
 							{
 								String val = findInMatrix(matrix,head,row);
+								if(flag == 1)
+								{
+									if(head.equals("Server"))
+									{
+										val = findInMatrix(matrix,"Server",row);
+										if(val.equals("NA"))
+											val = findInMatrix(matrix,"ComputingInstance",row);
+										finalMatrix[row/2+1][i] = val;
+									}
+									else
+									{
+										finalMatrix[row/2+1][i] = val;
+									}
+								}
 								finalMatrix[row/2+1][i] = val;
-								//System.out.println("head:"+head+" row:"+row+" i:"+i+" finalMatrix[row/2+1][i]:"+val);
+								System.out.println("head:"+head+" row:"+row+" i:"+i+" finalMatrix[row/2+1][i]:"+val);
 							}
 					}
 					
@@ -184,6 +205,7 @@ public class xmlRead
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
+			
 			private static String findInMatrix(String[][] matrix, String head,int row)
 			{
 				// TODO:given the "head" string;find the value in the appropriate row in the matrix;
