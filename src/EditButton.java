@@ -89,7 +89,22 @@ public class EditButton {
 				Abc1=textArea.getText();
 				Properties props = new Properties();
 
-			    String propsFileName = "./src/titlesConfig.properties";
+			  
+				if(Abc.endsWith("Disk"))                /* This if else block,3 lines of code is used so that
+			                                        //    the order in which the Vm disk comes in the quotation
+			                                          //    is not  changed when a person renames them.*/
+			   {   
+					if (Abc1.endsWith("Disk"))  
+			             {}
+			         else
+			        	  Abc1= Abc1 +"Disk";
+			   }
+				
+				
+				
+				
+				
+				String propsFileName = "./src/titlesConfig.properties";
 			    try {
 			      //first load old one:
 			      FileInputStream configStream = new FileInputStream(propsFileName);
