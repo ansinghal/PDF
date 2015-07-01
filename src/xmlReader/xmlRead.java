@@ -122,7 +122,7 @@ public class xmlRead
 					//System.out.println("Max size of columns is:"+m);
 					for(col=0;col<m;col++)
 					{
-						System.out.println("column="+col);
+						//System.out.println("column="+col);
 						
 						for(row=0;row<(matrix.length);row++)
 						{	
@@ -317,6 +317,10 @@ public class xmlRead
 						
 					}
 				}
+				
+				//for RAM
+				String Ram =  prop.getProperty("RAM");
+				//Stirng
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
@@ -358,12 +362,30 @@ public class xmlRead
 					String str = l.get(i);
 					if(str.contains("cost"))
 						continue;
+					else if(str.contains("Disk"))
+						continue;
 					else
 					{
 						if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
 							break;
 						//System.out.println("Adding:"+str);
 						nl.add(str);
+					}
+			
+					
+				}
+				for(i=0;i<l.size();i++)
+				{
+					String str = l.get(i);
+					if(str.contains("cost"))
+						continue;
+					else if(str.contains("Disk"))
+						nl.add(str);
+					else
+					{
+						if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
+							break;
+						//System.out.println("Adding:"+str);
 					}
 			
 					
