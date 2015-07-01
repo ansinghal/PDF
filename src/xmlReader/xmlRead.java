@@ -209,6 +209,7 @@ public class xmlRead
 						flag = 1;
 						l.remove(ci);
 					}
+								
 				for(i=0;i<l.size();i++)
 				{
 					String head  = l.get(i);
@@ -320,11 +321,36 @@ public class xmlRead
 				
 				//for RAM
 				String Ram =  prop.getProperty("RAM");
-				//Stirng
+				String ram = null;
+				if(Ram==null)
+					ram = "RAM";
+				else
+					ram = Ram.split(",")[0];
+				for(j= 0;j<l.size();j++)
+				{
+					if(ram.equals(finalMatrix[i][j]))
+					{
+						int row = 0;
+						for(row=1;row<finalMatrix.length;row++)
+						{
+							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("B")+1);
+						}
+						
+					}
+				}
+				finalMatrix = mergeHardDrive(finalMatrix);
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
 			
+			private String[][] mergeHardDrive(String[][] finalMatrix) {
+				/* TODO 1st) in the 0th row;find in which columns does "HardDrive" appear
+				 * 		Store the column numbers in the array.
+				 * 		2n
+				*/
+				return finalMatrix;
+			}
+
 			private static String findInMatrix(String[][] matrix, String head,int row)
 			{
 				// TODO:given the "head" string;find the value in the appropriate row in the matrix;

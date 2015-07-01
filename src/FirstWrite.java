@@ -87,6 +87,7 @@ public class FirstWrite{
 		cost = delims[2];//cost of items
 		first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
 		//first=first.replace("&", "and");
+		second=second.replace(" Red Hat Enterprise Linux 6.x "," RHEL 6 ");
 
 
 	   //System.out.println("First word: "+first);

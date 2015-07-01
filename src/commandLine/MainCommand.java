@@ -73,14 +73,56 @@ public class MainCommand {
 	        	   scanner.nextLine();
         	   }
            }
+           int z = 0;
            if(flag==1)
            {
-        	   try{
-        		   viewConfigFile();
-        	   }
-        	   catch(Exception e){
-        		   System.out.println("Exception thrown while viewing config file");
-        		   System.out.print(e);
+        	   while(true)
+        	   {
+        		   if(z==1)
+        			   break;
+        		   int m = 0;
+        		   System.out.println("Press 1 to view ConfigFile");
+        		   System.out.println("Press 2 to edit Configfile");
+        		   System.out.println("Add a field");
+        		   System.out.println("Press -1 to continue execution");
+        		   if(scanner.hasNextInt())
+        			   m = scanner.nextInt();
+        		   else
+        		   {
+        			   scanner.nextLine();
+        			   System.out.println("Enter a valid integer");
+        			   continue;
+        		   }
+        		   
+        		   switch(m)
+        		   {
+	        		   case 1:
+	        		   {
+	        			   try{
+	                		   viewConfigFile();
+	                		   }
+	                		   catch(Exception e){
+	                		   System.out.println("Exception thrown while viewing config file");
+	                		   System.out.print(e);
+	                	   		}
+	        			   break;
+	        		   }
+	        		   case 2:
+	        		   {
+	        			   //edit
+	        			   break;
+	        		   }
+	        		   case 3:
+	        		   {
+	        			   //add
+	        			   break;
+	        		   }
+	        		   case -1:
+	        		   {
+	        			   z = 1;
+	        			   break;
+	        		   }
+        		   }
         	   }
            }
            
@@ -146,14 +188,16 @@ public class MainCommand {
 			{
 				prop.load(inputStream);				
 			}
+		System.out.println(String.format("%s%42s%25s","Key","Title","Hidden"));
 		
 		for (int i=0 ; i<prop.keySet().size();i++)
 		{
 			String arr = (String) prop.keySet().toArray()[i];
 			String p = prop.getProperty(arr); 
 			String x[] = p.split(",");
-			System.out.println("key"+"\t\t"+"Title"+"\t\t");
-			System.out.println(arr+"\t\t"+x[0]+"\t\t"+x[1]);
+			
+			String s = String.format("%s%40s%5s",arr,x[0].trim(),x[1].trim());
+			System.out.println(s);
 			//System.out.print("\t"+x[0]+"\t"+x[1]);
 		  } 
 	

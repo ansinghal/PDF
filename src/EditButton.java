@@ -228,7 +228,7 @@ public class EditButton {
 		for (int i=0 ; i<prop.keySet().size();i++)
 		{String arr = (String) prop.keySet().toArray()[i];
 		System.out.println(arr);
-		if (arr.equals("FirstHardDrive")==false&&arr.equals("SecondHardDrive")==false&&arr.equals("ThirdHardDrive")==false&&arr.equals("FourthHardDrive")==false && arr.equals("Subtotals")==false)
+		if (arr.equals("FirstHardDrive")==false&&arr.equals("SecondHardDrive")==false&&arr.equals("ThirdHardDrive")==false&&arr.equals("FourthHardDrive")==false)
 		{ comboBox.addItem(arr);}
 		
 		  } 
