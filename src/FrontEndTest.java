@@ -43,6 +43,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JInternalFrame;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 
 public class FrontEndTest {
@@ -155,8 +157,20 @@ private void initialize() {
 		frame.getContentPane().add(lblNewLabel_4, "4, 12, default, center");
 		
 		textField = new JTextField();
+		textField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String abc =textField.getText() ;
+				String regex = "^[0-9]";
+				if (abc.matches(regex)==false)
+				{JOptionPane.showMessageDialog(null,"Enter Number Only","Wrong Input ",JOptionPane.WARNING_MESSAGE);
+				
+			}
+			}
+		});
 		frame.getContentPane().add(textField, "8, 11, 1, 3");
 		textField.setColumns(10);
+		
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setLineWrap(true);
@@ -206,6 +220,11 @@ private void initialize() {
 		  btnRun.addActionListener(new ActionListener() {
 		         public void actionPerformed(ActionEvent e) {     
 		        	 frame.validate();
+		        	 String abc =textField.getText() ;
+						String regex = "^[0-9]";
+						if (abc.matches(regex)==false)
+						JOptionPane.showMessageDialog(null,"Enter Number Only In Number Of Files","Wrong Input ",JOptionPane.WARNING_MESSAGE);
+						
 
 		            data = textArea.getText();
 		            data = data+"," ;
@@ -280,6 +299,7 @@ private void initialize() {
 		          	         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 				    
 		 	      } 
+		         
 		            
 		   
 		         
