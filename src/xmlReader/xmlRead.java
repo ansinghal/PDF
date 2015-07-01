@@ -209,6 +209,7 @@ public class xmlRead
 						flag = 1;
 						l.remove(ci);
 					}
+								
 				for(i=0;i<l.size();i++)
 				{
 					String head  = l.get(i);
@@ -337,11 +338,19 @@ public class xmlRead
 						
 					}
 				}
-				
+				finalMatrix = mergeHardDrive(finalMatrix);
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 
 			
+			private String[][] mergeHardDrive(String[][] finalMatrix) {
+				/* TODO 1st) in the 0th row;find in which columns does "HardDrive" appear
+				 * 		Store the column numbers in the array.
+				 * 		2n
+				*/
+				return finalMatrix;
+			}
+
 			private static String findInMatrix(String[][] matrix, String head,int row)
 			{
 				// TODO:given the "head" string;find the value in the appropriate row in the matrix;
