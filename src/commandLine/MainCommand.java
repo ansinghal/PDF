@@ -3,10 +3,13 @@ package commandLine;
 import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.InputMismatchException;
+import java.util.Properties;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -54,6 +57,32 @@ public class MainCommand {
            s = s.insert(2,"\\");
            output = s.toString();
            new File(output).mkdir();
+           
+           System.out.println("Enter 1 to view or edit config file:");
+           int flag = 0;
+           while(true)
+           {
+        	   try
+        	   {
+        		   flag=scanner.nextInt() ;
+        		   break;
+        	   }
+           catch(InputMismatchException e)
+        	   {
+	        	   System.out.println("Please enter a valid integer");
+	        	   scanner.nextLine();
+        	   }
+           }
+           if(flag==1)
+           {
+        	   try{
+        		   viewConfigFile();
+        	   }
+        	   catch(Exception e){
+        		   System.out.println("Exception thrown while viewing config file");
+        		   System.out.print(e);
+        	   }
+           }
            
            File file = new File(output+".txt");
            file.delete();
@@ -106,5 +135,27 @@ public class MainCommand {
    }
 		    
          
+	}
+
+	private static void viewConfigFile() throws IOException{
+		// TODO Auto-generated method stub
+		Properties prop = new Properties();
+		String propFileName = "./src/titlesConfig.properties";
+		FileInputStream inputStream = new FileInputStream(propFileName);
+		if (inputStream != null) 
+			{
+				prop.load(inputStream);				
+			}
+		
+		for (int i=0 ; i<prop.keySet().size();i++)
+		{
+			String arr = (String) prop.keySet().toArray()[i];
+			String p = prop.getProperty(arr); 
+			String x[] = p.split(",");
+			System.out.println("key"+"\t\t"+"Title"+"\t\t");
+			System.out.println(arr+"\t\t"+x[0]+"\t\t"+x[1]);
+			//System.out.print("\t"+x[0]+"\t"+x[1]);
+		  } 
+	
 	}
 }
