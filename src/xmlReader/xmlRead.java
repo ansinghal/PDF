@@ -102,7 +102,7 @@ public class xmlRead
 						  
 					  }
 					  //Node k = kids.item(0);
-					  System.out.println(kids.getLength());
+					  //System.out.println(kids.getLength());
 					  i++;
 					  
 				  }
@@ -135,12 +135,12 @@ public class xmlRead
 								{
 									if(l.contains(matrix[row][col]))
 									{
-										System.out.println("Contains:"+matrix[row][col]);
+										//System.out.println("Contains:"+matrix[row][col]);
 										continue;
 									}										
 									else
 									{
-										System.out.println("Added:"+matrix[row][col]);
+										//System.out.println("Added:"+matrix[row][col]);
 										l.add(matrix[row][col]);
 									}
 								}
