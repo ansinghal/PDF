@@ -320,7 +320,24 @@ public class xmlRead
 				
 				//for RAM
 				String Ram =  prop.getProperty("RAM");
-				//Stirng
+				String ram = null;
+				if(Ram==null)
+					ram = "RAM";
+				else
+					ram = Ram.split(",")[0];
+				for(j= 0;j<l.size();j++)
+				{
+					if(ram.equals(finalMatrix[i][j]))
+					{
+						int row = 0;
+						for(row=1;row<finalMatrix.length;row++)
+						{
+							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("B")+1);
+						}
+						
+					}
+				}
+				
 				csvWriter d = new csvWriter(finalMatrix,output);
 			}
 

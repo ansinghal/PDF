@@ -87,8 +87,9 @@ public class FirstWrite{
 		cost = delims[2];//cost of items
 		first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
 		//first=first.replace("&", "and");
-
-
+		second=second.replace(" Red Hat Enterprise Linux 6.x "," RHEL 6 ");
+		second=second.replace(" Red Hat Enterprise Linux 7.x "," RHEL 7 ");
+		//System.out.println(second);
 	   //System.out.println("First word: "+first);
        count++ ;
         i++ ;//i = 2
@@ -116,11 +117,12 @@ public class FirstWrite{
             m = m + ";"+cost ;
         }
 			
-		
+       // System.out.println(s);
 	}
 	
 	// writing f and s to a new file
 	out.close();
+	
 	//System.out.println(count*2) ;//prints the number of columns to the console
 	in.close();
 	
