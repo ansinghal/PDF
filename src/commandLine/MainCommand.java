@@ -58,7 +58,7 @@ public class MainCommand {
            output = s.toString();
            new File(output).mkdir();
            
-           System.out.println("Enter 1 to view or edit config file:");
+           System.out.println("Enter 1 to view or edit config file;otherwise enter 0:");
            int flag = 0;
            while(true)
            {
