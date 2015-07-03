@@ -31,9 +31,9 @@ public class FirstWrite{
 	String second = null;//the second column
 	String f = null;//f will contain the text from the first column and a comma as a delimiter
 	String s = null;//s will contain the text from the second column and a comma as a delimiter
-    String c=  null;//c will contain test cost+first column and comma as delimiter
+    String c=  null;//c will contain test price+first column and comma as delimiter
     String m= null ;
-	String cost = null;
+	String price = null;
     int i=1 ;
 	DataInputStream in = new DataInputStream(fstream);
 	BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -84,7 +84,7 @@ public class FirstWrite{
 		}
 		
 		second = delims[1];//quantity of the items
-		cost = delims[2];//cost of items
+		price = delims[2];//price of items
 		first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
 		//first=first.replace("&", "and");
 		second=second.replace(" Red Hat Enterprise Linux 6.x "," RHEL 6 ");
@@ -97,24 +97,24 @@ public class FirstWrite{
         if (i==2)
         {
         	f=first;
-        	c=first + "cost";
+        	c=first + "price";
         	s=second;
-        	m=cost ;
+        	m=price ;
         }
         else if(first.equals("Subtotals") || first.equals("Quantity") || 
         		first.equals("NewSubtotals"))
         {
         	c = c+";"+first;
         	//s = s + ";" + second;
-            m = m + ";"+cost ;
+            m = m + ";"+price ;
         }
         else
         {
           
         	f = f+";"+first;
-        	c= c+";"+first+"cost";
+        	c= c+";"+first+"price";
             s = s + ";" + second;
-            m = m + ";"+cost ;
+            m = m + ";"+price ;
         }
 			
 		

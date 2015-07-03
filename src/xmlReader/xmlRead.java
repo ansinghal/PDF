@@ -47,8 +47,8 @@ public class xmlRead
 				}
 			 
 			    } catch (Exception e) {
-			    	System.out.println("Config file corrupted");
-			    	System.out.println(e.getMessage());
+			    	//System.out.println("Config file corrupted");
+			    	e.printStackTrace();
 			    }
 			 
 			  }
@@ -275,7 +275,7 @@ public class xmlRead
 				String Av = prop.getProperty("Anti-Virus&SpywareProtection");
 				String av = null;
 				if(Av==null)
-					av = "Anti-Virus&SpywareProtection";
+					av = "Anti-Virus & Spyware Protection";
 				else
 					av = Av.split(",")[0];
 				for(j= 0;j<l.size();j++)
@@ -312,7 +312,7 @@ public class xmlRead
 							if(finalMatrix[row][j]!="NA")
 							{
 								int len = finalMatrix[row][j].length();
-								finalMatrix[row][j]=finalMatrix[row][j].substring(22);
+								finalMatrix[row][j]=finalMatrix[row][j].substring(21);
 							}
 						}
 						
@@ -333,23 +333,341 @@ public class xmlRead
 						int row = 0;
 						for(row=1;row<finalMatrix.length;row++)
 						{
-							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("B")+1);
+							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("G")-1);
 						}
 						
 					}
 				}
-				finalMatrix = mergeHardDrive(finalMatrix);
+				int trap = 0;
+				int u = 0;
+				while(finalMatrix[0][u]!=null)
+				{
+					if(finalMatrix[0][u].contains("Hard Drive"))
+					{
+						trap = 1;
+					}
+					u++;
+				}
+				if(trap==1)
+					{
+						finalMatrix = mergeHardDrive(finalMatrix);
+						finalMatrix = mergepriceHardDrive(finalMatrix);
+					}
 				csvWriter d = new csvWriter(finalMatrix,output);
+			
+			
+			}
+
+		
+			private String[][] mergepriceHardDrive(String[][] finalMatrix) 
+			
+			{
+				
+				 String[][] hdValues = new String[100][finalMatrix.length];
+					int j=0;
+					int k=0;
+					//System.out.println("Inside Merge function");
+				    int count=0; //to count no. of hardrives
+				    while(finalMatrix[0][j]!=null)
+					{  //System.out.println("Inside while loop");
+				    	 int y=0 ;
+				    	    String find = finalMatrix[0][j] ;
+					          if (find.contains("Hard Drive price"))
+					           { 
+					                  
+					                   count++;
+						                for (int z=1 ; z< finalMatrix.length; z++)
+						                  {  //System.out.println("Z==" +  z  +  "J==" + j);
+						                  		
+							                 hdValues[k][y] =finalMatrix[z][j];
+							                 //System.out.println(hdValues[k][y]+" k:"+k+" y:"+y);
+							                 y++;
+						                  }
+						                
+						                     k++;
+					                  
+					          }
+						   
+					               j++;
+					      }
+				    
+				 
+				    int p=0;
+				    String[][] singledrive= new String[40][200];
+				   
+				  
+				    while(hdValues[0][p]!=null) 
+				   {  
+				          if (hdValues[0][p].equals("NA"))
+				                 {      }
+				       else
+				     {
+					           for (int s=0;s<count;s++)
+				                   {      
+						   
+						                 String comp=hdValues[s][p];
+				    	                 String xyz =comp;
+				                             if (comp.equals("NA"))
+				    	                            { }
+				                                         else 
+				                                             {
+				                                                   for (int c=s;c<count;c++)
+				    	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
+				    	                                                            {}
+				    	                                                             else 
+				    		                                                            { if(comp.equals(hdValues[c+1][p]))
+				    		                                                                { //System.out.println("Xyz ::"+xyz);
+				    			                                                                xyz=xyz + "," + hdValues[c+1][p];
+				    		   
+	                                                                                             hdValues[c+1][p]="NA";			    		
+				    		                                                                 }
+				    		                                                             }
+				                                                        }
+				    		
+				    		                     hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
+				    	
+				    		                    // System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
+				    		                      
+				    		
+				                                              }	
+				    		
+				      
+				       
+				                   }	
+				    	
+				              }
+					  
+					p++ ; 
+				   } //while ends
+				    String Arrt [] = new String [20] ;
+				    
+				    for (int i=0;i<p;i++)
+				    {
+				    	
+				    	for (int o=0;o<count;o++)
+				    	{
+				    		if ((hdValues[o][i].equals("NA")==true))
+				    		{ }
+				    		else
+				    			if (o==0)
+				    				{Arrt[i]=hdValues[o][i] ;}
+				    			else
+				    		Arrt[i]=Arrt [i] + "+"+hdValues[o][i] ;
+				    		
+				    		
+				    	}
+				    	if (Arrt[i]==null)
+				    	{Arrt[i]="NA" ;}
+				    	
+				 
+				    	Arrt[i] = Arrt[i].replaceAll("[X]", "*");
+				    	StringBuilder s = new StringBuilder(Arrt[i]);
+				    	s = s.insert(0, "=");
+				    	Arrt[i]=s.toString();
+				    	//System.out.print(Arrt[i]);
+				    	//System.out.print("\n");
+				    		
+				    }
+				    j=0;
+				    String finalMatrix2[][] = new String[finalMatrix.length][200];
+				    while(!finalMatrix[0][j].equals("Hard Drive price"))
+					{
+						//System.out.println("J:"+j+"finalMatrix:"+finalMatrix[0][j]);
+						finalMatrix2[0][j] = finalMatrix[0][j];
+						int i = 0;
+						for(i =1 ;i<finalMatrix.length;i++)
+						{
+							finalMatrix2[i][j]=finalMatrix[i][j];
+						}
+						j++;
+					}
+					int i = 0;
+					finalMatrix2[i][j] = "Hard Drive price";
+					for(i=0;i<p;i++)
+					{
+						finalMatrix2[i+1][j]=Arrt[i];
+					}
+					j++;
+					int skip = 0;
+				    while(finalMatrix[0][j]!=null)
+				    {
+				    	if(finalMatrix[0][j].contains("Hard Drive") && finalMatrix[0][j].contains("price"))
+				    		{
+				    			j++;
+				    			skip++;
+				    			continue;
+				    		}
+				    	   
+				    		for(i =0 ;i<finalMatrix.length;i++)			    	
+								{
+									finalMatrix2[i][j-skip]=finalMatrix[i][j];
+									//System.out.println(finalMatrix2[i][skip]);
+								}
+						    	
+				    	
+				    	   j++;
+				    	  
+				    }
+				   // printMatrix(finalMatrix2);
+					return finalMatrix2;
+			
 			}
 
 			
-			private String[][] mergeHardDrive(String[][] finalMatrix) {
-				/* TODO 1st) in the 0th row;find in which columns does "HardDrive" appear
-				 * 		Store the column numbers in the array.
-				 * 		2n
-				*/
-				return finalMatrix;
-			}
+			
+			
+			
+			
+			
+			private String[][] mergeHardDrive(String[][] finalMatrix)
+			{  
+			    String[][] hdValues = new String[100][finalMatrix.length];
+				int j=0;
+				int k=0;
+				//System.out.println("Inside Merge function");
+			    int count=0; //to count no. of hardrives
+			    while(finalMatrix[0][j]!=null)
+				{  //System.out.println("Inside while loop");
+			    	 int y=0 ;
+			    	    String find = finalMatrix[0][j] ;
+				          if (find.contains("Hard Drive"))
+				           { if (find.contains("price") || find.contains("price"))
+				               {break;}
+				                  else
+				                  { count++;
+					                for (int z=1 ; z< finalMatrix.length; z++)
+					                  {  //System.out.println("Z==" +  z  +  "J==" + j);
+					                  		
+						                 hdValues[k][y] =finalMatrix[z][j];
+						                // System.out.println(hdValues[k][y]+" k:"+k+" y:"+y);
+						                 y++;
+					                  }
+					                
+					                     k++;
+				                  }
+				          }
+					   
+				               j++;
+				      }
+			    
+			 
+			    int p=0;
+			    String[][] singledrive= new String[40][200];
+			   
+			  
+			    while(hdValues[0][p]!=null) 
+			   {  
+			          if (hdValues[0][p].equals("NA"))
+			                 {      }
+			       else
+			     {
+				           for (int s=0;s<count;s++)
+			                   {      
+					   
+					                 String comp=hdValues[s][p];
+			    	                 String xyz =comp;
+			                             if (comp.equals("NA"))
+			    	                            { }
+			                                         else 
+			                                             {
+			                                                   for (int c=s;c<count;c++)
+			    	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
+			    	                                                            {}
+			    	                                                             else 
+			    		                                                            { if(comp.equals(hdValues[c+1][p]))
+			    		                                                                { //System.out.println("Xyz ::"+xyz);
+			    			                                                                xyz=xyz + "," + hdValues[c+1][p];
+			    		   
+                                                                                             hdValues[c+1][p]="NA";			    		
+			    		                                                                 }
+			    		                                                             }
+			                                                        }
+			    		
+			    		                     hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
+			    	
+			    		                    // System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
+			    		                      
+			    		
+			                                              }	
+			    		
+			      
+			       
+			                   }	
+			    	
+			              }
+				  
+				p++ ; 
+			   } //while ends
+			    String Arrt [] = new String [20] ;
+			    
+			    for (int i=0;i<p;i++)
+			    {
+			    	
+			    	for (int o=0;o<count;o++)
+			    	{
+			    		if ((hdValues[o][i].equals("NA")==true))
+			    		{ }
+			    		else
+			    			if (o==0)
+			    				{Arrt[i]=hdValues[o][i] ;}
+			    			else
+			    		Arrt[i]=Arrt [i] + "+"+hdValues[o][i] ;
+			    		
+			    		
+			    	}
+			    	if (Arrt[i]==null)
+			    	{Arrt[i]="NA" ;}
+			    	
+			 
+			    	Arrt[i] = Arrt[i].replaceAll("[X]", "*");
+			    	
+			    //	System.out.print(Arrt[i]);
+			    	//System.out.print("\n");
+			    		
+			    }
+			    j=0;
+			    String finalMatrix2[][] = new String[finalMatrix.length][200];
+				while(!finalMatrix[0][j].equals("Hard Drive"))
+				{
+					//System.out.println("J:"+j+"finalMatrix:"+finalMatrix[0][j]);
+					finalMatrix2[0][j] = finalMatrix[0][j];
+					int i = 0;
+					for(i =1 ;i<finalMatrix.length;i++)
+					{
+						finalMatrix2[i][j]=finalMatrix[i][j];
+					}
+					j++;
+				}
+				int i = 0;
+				finalMatrix2[i][j] = "Hard Drive";
+				for(i=0;i<p;i++)
+				{
+					finalMatrix2[i+1][j]=Arrt[i];
+				}
+				j++;
+				int skip = 0;
+			    while(finalMatrix[0][j]!=null)
+			    {
+			    	if(finalMatrix[0][j].contains("Hard Drive") && !finalMatrix[0][j].contains("price"))
+			    		{
+			    			j++;
+			    			skip++;
+			    			continue;
+			    		}
+			    	   
+			    		for(i =0 ;i<finalMatrix.length;i++)			    	
+							{
+								finalMatrix2[i][j-skip]=finalMatrix[i][j];
+								//System.out.println(finalMatrix2[i][skip]);
+							}
+					    	
+			    	
+			    	   j++;
+			    	  
+			    }
+			   // printMatrix(finalMatrix2);
+				return finalMatrix2;
+			} 
 
 			private static String findInMatrix(String[][] matrix, String head,int row)
 			{
@@ -367,7 +685,7 @@ public class xmlRead
 					col++;	
 				}
 				//System.out.println("notfound:"+head+" row:"+row+" col:"+col);
-				if(head.endsWith("cost"))
+				if(head.endsWith("price"))
 				{
 					return "0.00";
 				}
@@ -379,14 +697,14 @@ public class xmlRead
 				//Iterator<String> itr = l.iterator();
 				LinkedList<String> nl = new LinkedList<String>();
 				int i = 0;
-				/*for(i=0;i<l.size();i++)
+				for(i=0;i<l.size();i++)
 				{
-					System.out.println("List l:"+" "+i+" "+l.get(i));
-				}*/
+					//System.out.println("List l:"+" "+i+" "+l.get(i));
+				}
 				for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);
-					if(str.contains("cost"))
+					if(str.contains("price"))
 						continue;
 					else if(str.contains("Disk"))
 						continue;
@@ -403,7 +721,7 @@ public class xmlRead
 				for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);
-					if(str.contains("cost"))
+					if(str.contains("price"))
 						continue;
 					else if(str.contains("Disk"))
 						nl.add(str);
@@ -425,7 +743,7 @@ public class xmlRead
 					if(str==null)
 						continue;
 					//System.out.println("i="+i+";str="+l.get(i));
-					if(str.contains("cost"))
+					if(str.contains("price"))
 					{
 						nl.add(str);
 						//System.out.println("Adding:"+str);

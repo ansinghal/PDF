@@ -61,23 +61,29 @@ public class XMLCreators {
             while ((text = csvReader.readLine()) != null) 
             {
 
-                StringTokenizer st = new StringTokenizer(text, delimiter, false);
+               // System.out.println("LINE:"+line);
+            	String[] st = text.split(",");
               //number of comma seperated values in this line of text:
-                String[] rowValues = new String[st.countTokens()];
+                String[] rowValues = new String[st.length];
                 int index = 0;
-                while (st.hasMoreTokens()) {
+                int len = 0;
+                while (len<st.length) {
 
-                    String next = st.nextToken();
+                    String next = st[len];
+                   // System.out.println("next:"+next);
                     rowValues[index++] = next;
+                    len++;
 
                 }
 
                 if (line%2 == 0) { // Header row
                 	headers.clear();
+                	//System.out.println("entered headers for line:"+line);
                 	i++;
                     for (String col : rowValues) {
-                       //we need to implement find logic here:
-                    	headers.add(col);
+                         	headers.add(col);
+                         	//System.out.println("headers:"+headers);
+                    	
                     }
 
                 } else { // Data row
@@ -109,7 +115,7 @@ public class XMLCreators {
                     
                    
                 	
-                	 String[] special = new String[20];
+                	 String[] special = new String[200];
                 	for (int col = 0; col < headers.size(); col++)
                     {
 
@@ -130,13 +136,13 @@ public class XMLCreators {
 
                         Element curElement = newDoc.createElement("Element");
                        
-                        
-                        if(header.equals("IntrusionDetection&Protection"))
+                       
+                        if((header.trim()).equals("IntrusionDetection&Protection"))
                         { special[1]=value;  }
                         
                         	
                         	
-                        		String titval = (prop.getProperty(header));
+                        		String titval = (prop.getProperty(header.replace(" ","")));
                         		//System.out.println(titval==null);
                         		String [] titlevalue = new String[2] ;
                         		
@@ -153,8 +159,8 @@ public class XMLCreators {
                         		
    
                         	
-                        		 if (header.equals("IntrusionDetection&Protectioncost"))
-                                 { curElement.setAttribute("title", special[1]+"cost"); }
+                        		 if ((header.trim()).equals("IntrusionDetection&Protectionprice"))
+                                 { curElement.setAttribute("title", special[1]+" price"); }
                         		 else 
                         { curElement.setAttribute("title", titlevalue[0]);}
                         /*Element title = newDoc.createElement("title");
@@ -169,7 +175,7 @@ public class XMLCreators {
                         
                         
                         /* if(hiddenVal==null)
-                         {String  head=header.replace("cost","");
+                         {String  head=header.replace("price","");
                            hiddenVal = prop.getProperty(head);
                           if (hiddenVal==null)
                           { System.out.println(header + "\t  Please add this to config file and read again");
