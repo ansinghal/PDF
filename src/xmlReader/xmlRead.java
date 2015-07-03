@@ -47,8 +47,8 @@ public class xmlRead
 				}
 			 
 			    } catch (Exception e) {
-			    	System.out.println("Config file corrupted");
-			    	System.out.println(e.getMessage());
+			    	//System.out.println("Config file corrupted");
+			    	e.printStackTrace();
 			    }
 			 
 			  }
@@ -275,7 +275,7 @@ public class xmlRead
 				String Av = prop.getProperty("Anti-Virus&SpywareProtection");
 				String av = null;
 				if(Av==null)
-					av = "Anti-Virus&SpywareProtection";
+					av = "Anti-Virus & Spyware Protection";
 				else
 					av = Av.split(",")[0];
 				for(j= 0;j<l.size();j++)

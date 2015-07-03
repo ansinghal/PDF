@@ -18,7 +18,7 @@ public class csvWriter {
 				{
 				//	System.out.println("writing:"+matrix[row][col]);
 					out.write(matrix[row][col]);
-					out.write(";");
+					out.write(",");
 					col++;
 				}
 				out.write("\n");
