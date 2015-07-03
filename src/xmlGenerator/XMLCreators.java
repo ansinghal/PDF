@@ -159,8 +159,8 @@ public class XMLCreators {
                         		
    
                         	
-                        		 if ((header.trim()).equals("IntrusionDetection&Protectioncost"))
-                                 { curElement.setAttribute("title", special[1]+"cost"); }
+                        		 if ((header.trim()).equals("IntrusionDetection&Protectionprice"))
+                                 { curElement.setAttribute("title", special[1]+" price"); }
                         		 else 
                         { curElement.setAttribute("title", titlevalue[0]);}
                         /*Element title = newDoc.createElement("title");
@@ -175,7 +175,7 @@ public class XMLCreators {
                         
                         
                         /* if(hiddenVal==null)
-                         {String  head=header.replace("cost","");
+                         {String  head=header.replace("price","");
                            hiddenVal = prop.getProperty(head);
                           if (hiddenVal==null)
                           { System.out.println(header + "\t  Please add this to config file and read again");

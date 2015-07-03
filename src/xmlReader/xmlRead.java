@@ -351,7 +351,7 @@ public class xmlRead
 				if(trap==1)
 					{
 						finalMatrix = mergeHardDrive(finalMatrix);
-						finalMatrix = mergeCostHardDrive(finalMatrix);
+						finalMatrix = mergepriceHardDrive(finalMatrix);
 					}
 				csvWriter d = new csvWriter(finalMatrix,output);
 			
@@ -359,7 +359,7 @@ public class xmlRead
 			}
 
 		
-			private String[][] mergeCostHardDrive(String[][] finalMatrix) 
+			private String[][] mergepriceHardDrive(String[][] finalMatrix) 
 			
 			{
 				
@@ -372,7 +372,7 @@ public class xmlRead
 					{  //System.out.println("Inside while loop");
 				    	 int y=0 ;
 				    	    String find = finalMatrix[0][j] ;
-					          if (find.contains("Hard Drive cost"))
+					          if (find.contains("Hard Drive price"))
 					           { 
 					                  
 					                   count++;
@@ -470,7 +470,7 @@ public class xmlRead
 				    }
 				    j=0;
 				    String finalMatrix2[][] = new String[finalMatrix.length][200];
-				    while(!finalMatrix[0][j].equals("Hard Drive cost"))
+				    while(!finalMatrix[0][j].equals("Hard Drive price"))
 					{
 						//System.out.println("J:"+j+"finalMatrix:"+finalMatrix[0][j]);
 						finalMatrix2[0][j] = finalMatrix[0][j];
@@ -482,7 +482,7 @@ public class xmlRead
 						j++;
 					}
 					int i = 0;
-					finalMatrix2[i][j] = "Hard Drive cost";
+					finalMatrix2[i][j] = "Hard Drive price";
 					for(i=0;i<p;i++)
 					{
 						finalMatrix2[i+1][j]=Arrt[i];
@@ -491,7 +491,7 @@ public class xmlRead
 					int skip = 0;
 				    while(finalMatrix[0][j]!=null)
 				    {
-				    	if(finalMatrix[0][j].contains("Hard Drive") && finalMatrix[0][j].contains("cost"))
+				    	if(finalMatrix[0][j].contains("Hard Drive") && finalMatrix[0][j].contains("price"))
 				    		{
 				    			j++;
 				    			skip++;
@@ -531,7 +531,7 @@ public class xmlRead
 			    	 int y=0 ;
 			    	    String find = finalMatrix[0][j] ;
 				          if (find.contains("Hard Drive"))
-				           { if (find.contains("cost") || find.contains("Cost"))
+				           { if (find.contains("price") || find.contains("price"))
 				               {break;}
 				                  else
 				                  { count++;
@@ -648,7 +648,7 @@ public class xmlRead
 				int skip = 0;
 			    while(finalMatrix[0][j]!=null)
 			    {
-			    	if(finalMatrix[0][j].contains("Hard Drive") && !finalMatrix[0][j].contains("cost"))
+			    	if(finalMatrix[0][j].contains("Hard Drive") && !finalMatrix[0][j].contains("price"))
 			    		{
 			    			j++;
 			    			skip++;
@@ -685,7 +685,7 @@ public class xmlRead
 					col++;	
 				}
 				//System.out.println("notfound:"+head+" row:"+row+" col:"+col);
-				if(head.endsWith("cost"))
+				if(head.endsWith("price"))
 				{
 					return "0.00";
 				}
@@ -704,7 +704,7 @@ public class xmlRead
 				for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);
-					if(str.contains("cost"))
+					if(str.contains("price"))
 						continue;
 					else if(str.contains("Disk"))
 						continue;
@@ -721,7 +721,7 @@ public class xmlRead
 				for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);
-					if(str.contains("cost"))
+					if(str.contains("price"))
 						continue;
 					else if(str.contains("Disk"))
 						nl.add(str);
@@ -743,7 +743,7 @@ public class xmlRead
 					if(str==null)
 						continue;
 					//System.out.println("i="+i+";str="+l.get(i));
-					if(str.contains("cost"))
+					if(str.contains("price"))
 					{
 						nl.add(str);
 						//System.out.println("Adding:"+str);
