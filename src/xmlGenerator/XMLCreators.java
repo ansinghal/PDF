@@ -144,7 +144,7 @@ public class XMLCreators {
                         	
                         		String titval = (prop.getProperty(header.replace(" ","")));
                         		//System.out.println(titval==null);
-                        		String [] titlevalue = new String[2] ;
+                        		String [] titlevalue = new String[3] ;
                         		
                         		if (titval==null)
                         		{
@@ -167,7 +167,11 @@ public class XMLCreators {
                         title.appendChild(newDoc.createTextNode(header));
                         curElement.appendChild(title);*/
                        
-                        
+                        		 System.out.println("Header::"+ header );
+                        curElement.setAttribute("order", titlevalue[2]);
+                        		 
+                        		 
+                        		 
                         curElement.setAttribute("value", value);
                         /*Element valuetag = newDoc.createElement("value");
                         valuetag.appendChild(newDoc.createTextNode(value));
