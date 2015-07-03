@@ -312,7 +312,7 @@ public class xmlRead
 							if(finalMatrix[row][j]!="NA")
 							{
 								int len = finalMatrix[row][j].length();
-								finalMatrix[row][j]=finalMatrix[row][j].substring(22);
+								finalMatrix[row][j]=finalMatrix[row][j].substring(21);
 							}
 						}
 						
@@ -333,7 +333,7 @@ public class xmlRead
 						int row = 0;
 						for(row=1;row<finalMatrix.length;row++)
 						{
-							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("B")+1);
+							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("G")-1);
 						}
 						
 					}
@@ -379,10 +379,10 @@ public class xmlRead
 				//Iterator<String> itr = l.iterator();
 				LinkedList<String> nl = new LinkedList<String>();
 				int i = 0;
-				/*for(i=0;i<l.size();i++)
+				for(i=0;i<l.size();i++)
 				{
-					System.out.println("List l:"+" "+i+" "+l.get(i));
-				}*/
+					//System.out.println("List l:"+" "+i+" "+l.get(i));
+				}
 				for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);
