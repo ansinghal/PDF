@@ -47,8 +47,8 @@ public class xmlRead
 				}
 			 
 			    } catch (Exception e) {
-			    	System.out.println("Config file corrupted");
-			    	System.out.println(e.getMessage());
+			    	//System.out.println("Config file corrupted");
+			    	e.printStackTrace();
 			    }
 			 
 			  }
@@ -275,7 +275,7 @@ public class xmlRead
 				String Av = prop.getProperty("Anti-Virus&SpywareProtection");
 				String av = null;
 				if(Av==null)
-					av = "Anti-Virus&SpywareProtection";
+					av = "Anti-Virus & Spyware Protection";
 				else
 					av = Av.split(",")[0];
 				for(j= 0;j<l.size();j++)
@@ -333,7 +333,7 @@ public class xmlRead
 						int row = 0;
 						for(row=1;row<finalMatrix.length;row++)
 						{
-							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("B")+1);
+							finalMatrix[row][j] = finalMatrix[row][j].substring(0,finalMatrix[row][j].indexOf("G")-1);
 						}
 						
 					}
@@ -487,10 +487,10 @@ public class xmlRead
 				//Iterator<String> itr = l.iterator();
 				LinkedList<String> nl = new LinkedList<String>();
 				int i = 0;
-				/*for(i=0;i<l.size();i++)
+				for(i=0;i<l.size();i++)
 				{
-					System.out.println("List l:"+" "+i+" "+l.get(i));
-				}*/
+					//System.out.println("List l:"+" "+i+" "+l.get(i));
+				}
 				for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);

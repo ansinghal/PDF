@@ -47,7 +47,7 @@ public class FirstWrite{
 	{
 		//System.out.println(f);
 		String[] delims = strLine.split(":");
-		first = delims[0] ;//column names
+		first = delims[0];//column names
 		if(first.equals("NEXT"))
 		{
 			//System.out.print("\n***********entered Next*********\n");
@@ -59,14 +59,16 @@ public class FirstWrite{
 			{
 				flag = 1;
 			}
+			// writing f and s to a new file
+
 			out.write(datacenter);
 			out.write(f);
-			out.write(";");
+			out.write(",");
 			out.write(c);
 			out.newLine();
 			out.write(namedatacenter);
 			out.write(s);
-			out.write(";") ;
+			out.write(",") ;
 			out.write(m);
 			f = null;
 			i = 1;
@@ -78,8 +80,8 @@ public class FirstWrite{
 		}
 		if (first.equals("   Datacenter"))
 		{
-			datacenter = "Datacenter;";
-			namedatacenter=delims[1]+";";
+			datacenter = "Datacenter"+",";
+			namedatacenter=delims[1]+",";
 			continue;
 		}
 		
@@ -87,8 +89,14 @@ public class FirstWrite{
 		cost = delims[2];//cost of items
 		first=first.replace(" ","");//replace spaces with no spaces to remove extra whitespaces.
 		//first=first.replace("&", "and");
+		first = first.trim();
 		second=second.replace(" Red Hat Enterprise Linux 6.x "," RHEL 6 ");
 		second=second.replace(" Red Hat Enterprise Linux 7.x "," RHEL 7 ");
+		second = second.replace(",","-");
+		second = second.trim();
+		
+		cost = cost.trim();
+		cost = cost.replace(",", "");
 		//System.out.println(second);
 	   //System.out.println("First word: "+first);
        count++ ;
@@ -104,23 +112,22 @@ public class FirstWrite{
         else if(first.equals("Subtotals") || first.equals("Quantity") || 
         		first.equals("NewSubtotals"))
         {
-        	c = c+";"+first;
-        	//s = s + ";" + second;
-            m = m + ";"+cost ;
+        	c = c+","+first;
+        	//s = s + "," + second;
+            m = m + ","+cost ;
         }
         else
         {
           
-        	f = f+";"+first;
-        	c= c+";"+first+"cost";
-            s = s + ";" + second;
-            m = m + ";"+cost ;
+        	f = f+","+first;
+        	c= c+","+first+"cost";
+            s = s + "," + second;
+            m = m + ","+cost ;
         }
 			
        // System.out.println(s);
 	}
 	
-	// writing f and s to a new file
 	out.close();
 	
 	//System.out.println(count*2) ;//prints the number of columns to the console
