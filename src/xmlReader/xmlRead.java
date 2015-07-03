@@ -338,18 +338,190 @@ public class xmlRead
 						
 					}
 				}
-				finalMatrix = mergeHardDrive(finalMatrix);
-				
-				
+				int trap = 0;
+				int u = 0;
+				while(finalMatrix[0][u]!=null)
+				{
+					if(finalMatrix[0][u].contains("Hard Drive"))
+					{
+						trap = 1;
+					}
+					u++;
+				}
+				if(trap==1)
+					{
+						finalMatrix = mergeHardDrive(finalMatrix);
+						finalMatrix = mergeCostHardDrive(finalMatrix);
+					}
 				csvWriter d = new csvWriter(finalMatrix,output);
 			
 			
 			}
 
 		
+			private String[][] mergeCostHardDrive(String[][] finalMatrix) 
+			
+			{
+				
+				 String[][] hdValues = new String[100][finalMatrix.length];
+					int j=0;
+					int k=0;
+					//System.out.println("Inside Merge function");
+				    int count=0; //to count no. of hardrives
+				    while(finalMatrix[0][j]!=null)
+					{  //System.out.println("Inside while loop");
+				    	 int y=0 ;
+				    	    String find = finalMatrix[0][j] ;
+					          if (find.contains("Hard Drive cost"))
+					           { 
+					                  
+					                   count++;
+						                for (int z=1 ; z< finalMatrix.length; z++)
+						                  {  //System.out.println("Z==" +  z  +  "J==" + j);
+						                  		
+							                 hdValues[k][y] =finalMatrix[z][j];
+							                 //System.out.println(hdValues[k][y]+" k:"+k+" y:"+y);
+							                 y++;
+						                  }
+						                
+						                     k++;
+					                  
+					          }
+						   
+					               j++;
+					      }
+				    
+				 
+				    int p=0;
+				    String[][] singledrive= new String[40][200];
+				   
+				  
+				    while(hdValues[0][p]!=null) 
+				   {  
+				          if (hdValues[0][p].equals("NA"))
+				                 {      }
+				       else
+				     {
+					           for (int s=0;s<count;s++)
+				                   {      
+						   
+						                 String comp=hdValues[s][p];
+				    	                 String xyz =comp;
+				                             if (comp.equals("NA"))
+				    	                            { }
+				                                         else 
+				                                             {
+				                                                   for (int c=s;c<count;c++)
+				    	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
+				    	                                                            {}
+				    	                                                             else 
+				    		                                                            { if(comp.equals(hdValues[c+1][p]))
+				    		                                                                { //System.out.println("Xyz ::"+xyz);
+				    			                                                                xyz=xyz + "," + hdValues[c+1][p];
+				    		   
+	                                                                                             hdValues[c+1][p]="NA";			    		
+				    		                                                                 }
+				    		                                                             }
+				                                                        }
+				    		
+				    		                     hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
+				    	
+				    		                    // System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
+				    		                      
+				    		
+				                                              }	
+				    		
+				      
+				       
+				                   }	
+				    	
+				              }
+					  
+					p++ ; 
+				   } //while ends
+				    String Arrt [] = new String [20] ;
+				    
+				    for (int i=0;i<p;i++)
+				    {
+				    	
+				    	for (int o=0;o<count;o++)
+				    	{
+				    		if ((hdValues[o][i].equals("NA")==true))
+				    		{ }
+				    		else
+				    			if (o==0)
+				    				{Arrt[i]=hdValues[o][i] ;}
+				    			else
+				    		Arrt[i]=Arrt [i] + "+"+hdValues[o][i] ;
+				    		
+				    		
+				    	}
+				    	if (Arrt[i]==null)
+				    	{Arrt[i]="NA" ;}
+				    	
+				 
+				    	Arrt[i] = Arrt[i].replaceAll("[X]", "*");
+				    	StringBuilder s = new StringBuilder(Arrt[i]);
+				    	s = s.insert(0, "=");
+				    	Arrt[i]=s.toString();
+				    	//System.out.print(Arrt[i]);
+				    	//System.out.print("\n");
+				    		
+				    }
+				    j=0;
+				    String finalMatrix2[][] = new String[finalMatrix.length][200];
+				    while(!finalMatrix[0][j].equals("Hard Drive cost"))
+					{
+						//System.out.println("J:"+j+"finalMatrix:"+finalMatrix[0][j]);
+						finalMatrix2[0][j] = finalMatrix[0][j];
+						int i = 0;
+						for(i =1 ;i<finalMatrix.length;i++)
+						{
+							finalMatrix2[i][j]=finalMatrix[i][j];
+						}
+						j++;
+					}
+					int i = 0;
+					finalMatrix2[i][j] = "Hard Drive cost";
+					for(i=0;i<p;i++)
+					{
+						finalMatrix2[i+1][j]=Arrt[i];
+					}
+					j++;
+					int skip = 0;
+				    while(finalMatrix[0][j]!=null)
+				    {
+				    	if(finalMatrix[0][j].contains("Hard Drive") && finalMatrix[0][j].contains("cost"))
+				    		{
+				    			j++;
+				    			skip++;
+				    			continue;
+				    		}
+				    	   
+				    		for(i =0 ;i<finalMatrix.length;i++)			    	
+								{
+									finalMatrix2[i][j-skip]=finalMatrix[i][j];
+									//System.out.println(finalMatrix2[i][skip]);
+								}
+						    	
+				    	
+				    	   j++;
+				    	  
+				    }
+				   // printMatrix(finalMatrix2);
+					return finalMatrix2;
+			
+			}
+
+			
+			
+			
+			
+			
+			
 			private String[][] mergeHardDrive(String[][] finalMatrix)
 			{  
-			    String[][] hdValues = new String[finalMatrix.length][100];
+			    String[][] hdValues = new String[100][finalMatrix.length];
 				int j=0;
 				int k=0;
 				//System.out.println("Inside Merge function");
@@ -364,7 +536,8 @@ public class xmlRead
 				                  else
 				                  { count++;
 					                for (int z=1 ; z< finalMatrix.length; z++)
-					                  {   
+					                  {  //System.out.println("Z==" +  z  +  "J==" + j);
+					                  		
 						                 hdValues[k][y] =finalMatrix[z][j];
 						                // System.out.println(hdValues[k][y]+" k:"+k+" y:"+y);
 						                 y++;
@@ -389,7 +562,7 @@ public class xmlRead
 			       else
 			     {
 				           for (int s=0;s<count;s++)
-			                   {    
+			                   {      
 					   
 					                 String comp=hdValues[s][p];
 			    	                 String xyz =comp;
@@ -485,14 +658,14 @@ public class xmlRead
 			    		for(i =0 ;i<finalMatrix.length;i++)			    	
 							{
 								finalMatrix2[i][j-skip]=finalMatrix[i][j];
-								System.out.println(finalMatrix2[i][skip]);
+								//System.out.println(finalMatrix2[i][skip]);
 							}
 					    	
 			    	
 			    	   j++;
 			    	  
 			    }
-			    printMatrix(finalMatrix2);
+			   // printMatrix(finalMatrix2);
 				return finalMatrix2;
 			} 
 
