@@ -358,7 +358,7 @@ public class xmlRead
 				{  //System.out.println("Inside while loop");
 			    	 int y=0 ;
 			    	    String find = finalMatrix[0][j] ;
-				          if (find.contains("HardDrive"))
+				          if (find.contains("Hard Drive"))
 				           { if (find.contains("cost") || find.contains("Cost"))
 				               {break;}
 				                  else
@@ -366,7 +366,7 @@ public class xmlRead
 					                for (int z=1 ; z< finalMatrix.length; z++)
 					                  {   
 						                 hdValues[k][y] =finalMatrix[z][j];
-						                 System.out.println(hdValues[k][y]+" k:"+k+" y:"+y);
+						                // System.out.println(hdValues[k][y]+" k:"+k+" y:"+y);
 						                 y++;
 					                  }
 					                
@@ -380,7 +380,7 @@ public class xmlRead
 			 
 			    int p=0;
 			    String[][] singledrive= new String[40][200];
-			   // hdValues[2][7]= "300 GB SATA II";
+			   
 			  
 			    while(hdValues[0][p]!=null) 
 			   {  
@@ -402,7 +402,7 @@ public class xmlRead
 			    	                                                            {}
 			    	                                                             else 
 			    		                                                            { if(comp.equals(hdValues[c+1][p]))
-			    		                                                                { System.out.println("Xyz ::"+xyz);
+			    		                                                                { //System.out.println("Xyz ::"+xyz);
 			    			                                                                xyz=xyz + "," + hdValues[c+1][p];
 			    		   
                                                                                              hdValues[c+1][p]="NA";			    		
@@ -412,7 +412,7 @@ public class xmlRead
 			    		
 			    		                     hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
 			    	
-			    		                     System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
+			    		                    // System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
 			    		                      
 			    		
 			                                              }	
@@ -448,15 +448,52 @@ public class xmlRead
 			 
 			    	Arrt[i] = Arrt[i].replaceAll("[X]", "*");
 			    	
-			    	System.out.print(Arrt[i]);
-			    	System.out.print("\n");
+			    //	System.out.print(Arrt[i]);
+			    	//System.out.print("\n");
 			    		
 			    }
-			    
-				   
-				  
-			    
-				return finalMatrix;
+			    j=0;
+			    String finalMatrix2[][] = new String[finalMatrix.length][200];
+				while(!finalMatrix[0][j].equals("Hard Drive"))
+				{
+					//System.out.println("J:"+j+"finalMatrix:"+finalMatrix[0][j]);
+					finalMatrix2[0][j] = finalMatrix[0][j];
+					int i = 0;
+					for(i =1 ;i<finalMatrix.length;i++)
+					{
+						finalMatrix2[i][j]=finalMatrix[i][j];
+					}
+					j++;
+				}
+				int i = 0;
+				finalMatrix2[i][j] = "Hard Drive";
+				for(i=0;i<p;i++)
+				{
+					finalMatrix2[i+1][j]=Arrt[i];
+				}
+				j++;
+				int skip = 0;
+			    while(finalMatrix[0][j]!=null)
+			    {
+			    	if(finalMatrix[0][j].contains("Hard Drive") && !finalMatrix[0][j].contains("cost"))
+			    		{
+			    			j++;
+			    			skip++;
+			    			continue;
+			    		}
+			    	   
+			    		for(i =0 ;i<finalMatrix.length;i++)			    	
+							{
+								finalMatrix2[i][j-skip]=finalMatrix[i][j];
+								System.out.println(finalMatrix2[i][skip]);
+							}
+					    	
+			    	
+			    	   j++;
+			    	  
+			    }
+			    printMatrix(finalMatrix2);
+				return finalMatrix2;
 			} 
 
 			private static String findInMatrix(String[][] matrix, String head,int row)

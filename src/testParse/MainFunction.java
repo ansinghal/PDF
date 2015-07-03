@@ -65,7 +65,7 @@ public class MainFunction {
 		  }
 	       //xml file generation:
 		   String xmlPath = "C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.xml";
-		   String delimiter = ";";
+		   String delimiter = ",";
 		   XmlGenerator x = new XmlGenerator("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv",xmlPath,delimiter);
 		   //reading the generated xml and creating the appropriate csv files:
 		   xmlRead xlr = new xmlRead(xmlPath,"C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\test.csv");
