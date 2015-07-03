@@ -17,7 +17,12 @@ import org.w3c.dom.NodeList;
 
 public class xmlRead 
 {
-
+	//Properties props = new Properties();
+	//String propFileName = "tilesConfig.properties";
+	//InputStream in = xmlRead.class.getResourceAsStream(propFileName);
+	//props.load(in);
+	//FileOutputStream output = new FileOutputStream(propsFileName);
+	//props.store(output, null);
 	public xmlRead(String xmlPath,String output)
 	{
 		// TODO Auto-generated method stub
@@ -57,6 +62,7 @@ public class xmlRead
 		// TODO Auto-generated method stub
 				  int i = 0;
 				  int[][] arr = new int[count*2][1000];
+				  int[][] order = new int[count*2][1000];
 				   while(i < count)
 				  {
 					  NodeList kids = ((Element) n.item(i)).getElementsByTagName("Element");
@@ -75,7 +81,9 @@ public class xmlRead
 								  	//System.out.println("attr name : " + node.getNodeName());
 								  	//System.out.println("attr value : " + node.getNodeValue());
 									//int flag = 0;
-									if(k==0)
+									
+								  	//hidden
+								  	if(k==0)
 									{
 										if(Integer.parseInt(node.getNodeValue().trim())==0)
 										{
@@ -85,13 +93,26 @@ public class xmlRead
 										else
 											arr[i*2][j]=1;
 									}
-									if(k==1)
+								  	
+								  	//order
+								  	if(k==1)
+								  	{
+								  		System.out.println("attr name : " + node.getNodeName());
+								  		System.out.println(node.getNodeValue().trim());
+								  		order[i*2][j] = Integer.parseInt(node.getNodeValue().trim());
+								  	}
+								  	
+								  	
+								  	//title
+									if(k==2)
 									{
 										matrix[i*2][j]=node.getNodeValue();
 										//System.out.println("k=1;attr name : " + node.getNodeValue());
 										//System.out.println(matrix[i*2][j]+"\t"+i*2+"\t"+(j));
 									}
-									if(k==2)
+									
+									//value
+									if(k==3)
 									{
 										matrix[i*2+1][j]=node.getNodeValue();
 										//System.out.println(matrix[i*2+1][j]+"\t"+(i*2+1)+"\t"+(j));
@@ -109,11 +130,11 @@ public class xmlRead
 				  // printMatrix(matrix);
 				  // System.out.println(matrix[14][21]);
 
-				   createLinkedList(matrix,output,arr);
+				   createLinkedList(matrix,output,arr,order);
 		
 	}
 
-			private void createLinkedList(String[][] matrix,String output,int[][] arr){
+			private void createLinkedList(String[][] matrix,String output,int[][] arr,int[][] order){
 				  LinkedList<String> l=new LinkedList<String>();
 					int row = 0;
 					int col = 0;
@@ -151,7 +172,12 @@ public class xmlRead
 					
 					}
 					//rearrange the linkedList:
-					l=reArrange(l);
+					try{
+						l=reArrange(l,order,matrix);
+					}
+					catch(IOException e){
+						e.printStackTrace();
+					}
 					//printing the linkedlist:
 					int i = 0;
 					for(i=0;i<l.size();i++)
@@ -357,8 +383,7 @@ public class xmlRead
 			
 			
 			}
-
-		
+	
 			private String[][] mergepriceHardDrive(String[][] finalMatrix) 
 			
 			{
@@ -513,12 +538,6 @@ public class xmlRead
 			
 			}
 
-			
-			
-			
-			
-			
-			
 			private String[][] mergeHardDrive(String[][] finalMatrix)
 			{  
 			    String[][] hdValues = new String[100][finalMatrix.length];
@@ -692,16 +711,68 @@ public class xmlRead
 				return "NA";
 			}
 
-			private static LinkedList<String> reArrange(LinkedList<String> l)
+			public LinkedList<String> reArrange(LinkedList<String> l,int[][] order,String[][] matrix) throws IOException
 			{
 				//Iterator<String> itr = l.iterator();
 				LinkedList<String> nl = new LinkedList<String>();
 				int i = 0;
+				int m = maxColumnSize(matrix);
+				int col;
+				int row;
+				int size=0;
 				for(i=0;i<l.size();i++)
 				{
-					//System.out.println("List l:"+" "+i+" "+l.get(i));
+					System.out.println("List l:"+" "+i+" "+l.get(i));
 				}
-				for(i=0;i<l.size();i++)
+				//Properties props = new Properties();
+				//String propFileName = "tilesConfig.properties";
+				//InputStream in = xmlRead.class.getResourceAsStream(propFileName);
+					//props.load(in);
+					//FileOutputStream output = new FileOutputStream(propsFileName);
+					//props.store(output, null);
+					size = 85;
+					System.out.println(size);
+				for(i=1;i<size;i++)
+				{
+					
+					for(col=0;col<m;col++)
+					{
+						for(row=0;row<matrix.length;row = row+2)
+						{
+							if(i==order[row][col])
+								
+							{
+								//System.out.println("found i:"+i+"at"+" row:"+row+" col:"+col);
+								System.out.println(matrix[row][col]);
+								if(l.contains(matrix[row][col]))
+								{
+									
+									if(!nl.contains(matrix[row][col]))
+									{
+										nl.add(matrix[row][col]);
+										//System.out.println("ADDDED:"+matrix[row][col]);
+									}
+									//else
+										//System.out.println("Contains:"+matrix[row][col]);
+									
+								}
+							}
+						}
+							
+					}
+				}
+				
+				/*for(col=0;col<m;col++)
+				{
+					System.out.println("col:"+col);
+					for(row=0;row<matrix.length;row++)
+					{
+						System.out.println("order["+row+"]"+"["+col+"]="+order[row][col]);
+					}
+						
+				}*/
+				//System.out.println(order[100][100]);
+				/*for(i=0;i<l.size();i++)
 				{
 					String str = l.get(i);
 					if(str.contains("price"))
@@ -749,15 +820,15 @@ public class xmlRead
 						//System.out.println("Adding:"+str);
 					}
 					/*if(str.equals("Subtotals") || str.equals("Quantity") || str.equals("NewSubtotals"))
-						break;*/
+						break;
 					//System.out.println("String:"+str);
 					
 				}
 				nl.add("Subtotals");
 				nl.add("Quantity");
-				nl.add("NewSubtotals");
+				nl.add("NewSubtotals");*/
 				// TODO Auto-generated method stub
-				//System.out.println("The size of l is:"+l.size()+"\nThe size of nl is:"+nl.size());
+				System.out.println("The size of l is:"+l.size()+"\nThe size of nl is:"+nl.size());
 				return nl;
 			}
 
