@@ -339,17 +339,125 @@ public class xmlRead
 					}
 				}
 				finalMatrix = mergeHardDrive(finalMatrix);
+				
+				
 				csvWriter d = new csvWriter(finalMatrix,output);
+			
+			
 			}
 
-			
-			private String[][] mergeHardDrive(String[][] finalMatrix) {
-				/* TODO 1st) in the 0th row;find in which columns does "HardDrive" appear
-				 * 		Store the column numbers in the array.
-				 * 		2n
-				*/
+		
+			private String[][] mergeHardDrive(String[][] finalMatrix)
+			{  
+			    String[][] hdValues = new String[finalMatrix.length][100];
+				int j=0;
+				int k=0;
+				//System.out.println("Inside Merge function");
+			    int count=0; //to count no. of hardrives
+			    while(finalMatrix[0][j]!=null)
+				{  //System.out.println("Inside while loop");
+			    	 int y=0 ;
+			    	    String find = finalMatrix[0][j] ;
+				          if (find.contains("HardDrive"))
+				           { if (find.contains("cost") || find.contains("Cost"))
+				               {break;}
+				                  else
+				                  { count++;
+					                for (int z=1 ; z< finalMatrix.length; z++)
+					                  {   
+						                 hdValues[k][y] =finalMatrix[z][j];
+						                 System.out.println(hdValues[k][y]+" k:"+k+" y:"+y);
+						                 y++;
+					                  }
+					                
+					                     k++;
+				                  }
+				          }
+					   
+				               j++;
+				      }
+			    
+			 
+			    int p=0;
+			    String[][] singledrive= new String[40][200];
+			   // hdValues[2][7]= "300 GB SATA II";
+			  
+			    while(hdValues[0][p]!=null) 
+			   {  
+			          if (hdValues[0][p].equals("NA"))
+			                 {      }
+			       else
+			     {
+				           for (int s=0;s<count;s++)
+			                   {    
+					   
+					                 String comp=hdValues[s][p];
+			    	                 String xyz =comp;
+			                             if (comp.equals("NA"))
+			    	                            { }
+			                                         else 
+			                                             {
+			                                                   for (int c=s;c<count;c++)
+			    	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
+			    	                                                            {}
+			    	                                                             else 
+			    		                                                            { if(comp.equals(hdValues[c+1][p]))
+			    		                                                                { System.out.println("Xyz ::"+xyz);
+			    			                                                                xyz=xyz + "," + hdValues[c+1][p];
+			    		   
+                                                                                             hdValues[c+1][p]="NA";			    		
+			    		                                                                 }
+			    		                                                             }
+			                                                        }
+			    		
+			    		                     hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
+			    	
+			    		                     System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
+			    		                      
+			    		
+			                                              }	
+			    		
+			      
+			       
+			                   }	
+			    	
+			              }
+				  
+				p++ ; 
+			   } //while ends
+			    String Arrt [] = new String [20] ;
+			    
+			    for (int i=0;i<p;i++)
+			    {
+			    	
+			    	for (int o=0;o<count;o++)
+			    	{
+			    		if ((hdValues[o][i].equals("NA")==true))
+			    		{ }
+			    		else
+			    			if (o==0)
+			    				{Arrt[i]=hdValues[o][i] ;}
+			    			else
+			    		Arrt[i]=Arrt [i] + "+"+hdValues[o][i] ;
+			    		
+			    		
+			    	}
+			    	if (Arrt[i]==null)
+			    	{Arrt[i]="NA" ;}
+			    	
+			 
+			    	Arrt[i] = Arrt[i].replaceAll("[X]", "*");
+			    	
+			    	System.out.print(Arrt[i]);
+			    	System.out.print("\n");
+			    		
+			    }
+			    
+				   
+				  
+			    
 				return finalMatrix;
-			}
+			} 
 
 			private static String findInMatrix(String[][] matrix, String head,int row)
 			{
