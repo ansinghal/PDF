@@ -1,48 +1,33 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JOptionPane;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
-
-import javax.swing.JTextField;
-
-import java.awt.CardLayout;
-
-
-
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.factories.FormFactory;
-
-import javax.swing.JToolBar;
-import javax.swing.JTextArea;
-
-import testParse.FirstWrite;
-import xmlGenerator.XmlGenerator;
-import xmlReader.xmlRead;
-
-import java.awt.Font;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JInternalFrame;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+
+import testParse.FirstWrite;
+import xmlGenerator.XmlGenerator;
+import xmlReader.xmlRead;
+
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 
 public class FrontEndTest {
@@ -155,10 +140,29 @@ private void initialize() {
 		frame.getContentPane().add(lblNewLabel_4, "4, 12, default, center");
 		
 		textField = new JTextField();
+		
 		frame.getContentPane().add(textField, "8, 11, 1, 3");
 		textField.setColumns(10);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				String abc = textField.getText();
+				String regex = "[0-9]";
+				
+				if (abc.matches(regex)==false||abc.contains(null)==true)
+					
+				
+				{
+					textField.requestFocus();
+					JOptionPane.showMessageDialog(null,"Wrong Input","Enter Number Only",JOptionPane.WARNING_MESSAGE);
+					
+				}
+				
+				
+			}
+		});
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		frame.getContentPane().add(textArea, "8, 18, 7, 5, fill, fill");
@@ -204,12 +208,28 @@ private void initialize() {
 		});
 		toolBar.add(btnAdd);
 		  btnRun.addActionListener(new ActionListener() {
-		         public void actionPerformed(ActionEvent e) {     
+			         public void actionPerformed(ActionEvent e) {     
 		        	 frame.validate();
+		        	 String abc = textField.getText();
+		 			String regex = "[0-9]";
+		 			if (abc.matches(regex)==false)
+		 			
+		 			{
+		 				JOptionPane.showMessageDialog(null,"Enter Number Only In Number Of Files","Wrong Input",JOptionPane.WARNING_MESSAGE);
+		 			}
+		        	 
+		        	 
+		        	    
 
 		            data = textArea.getText();
 		            data = data+"," ;
 		            output=textPane.getText();
+		            StringBuffer s = new StringBuffer(output);
+		        	   s = s.insert(2, "\\");
+		        	   output=s.toString(); 
+		           
+		        	   
+		        	   
 		            new File(output).mkdir();
 		            
 		            input=data.split(",") ;
@@ -233,7 +253,9 @@ private void initialize() {
 					
 		            for (int i =0;i<count;i++)
 		            {      
-		            	            
+		            	 StringBuffer t = new StringBuffer(input[i]);
+			        	   t = t.insert(2, "\\");
+			        	   input[i]=t.toString();             
 		            	pdfManager.setFilePath(input[i]);
 		            //System.out.print(input[i]);
 				

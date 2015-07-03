@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.CharBuffer;
+import java.util.Arrays;
 import java.util.Properties;
 
 import javax.swing.DefaultListModel;
@@ -119,15 +120,31 @@ public class ConfigView {
 		 dtm.setColumnIdentifiers(header);
 		  
 		       table.setModel(dtm);
-		
+		       int len =prop.keySet().size() ;
+		       String arr1[] = new String[len] ;
+		       		
 		for (int i=0 ; i<prop.keySet().size();i++)
 		{String arr = (String) prop.keySet().toArray()[i];
 		System.out.println(arr);
-		String p = prop.getProperty(arr); 
-		String x[] = p.split(",");
-		dtm.addRow(new Object[] { arr,x[0],x[1] });
-		  } 
-	
+		arr1[i] = arr;}
+		Arrays.sort(arr1);
+		
+		for (int i=0 ; i<prop.keySet().size();i++)
+		{  
+			String p = prop.getProperty(arr1[i]); 
+			String x[] = p.split(",");
+			dtm.addRow(new Object[] { arr1[i],x[0],x[1] });
+		}
+		
+		
+		
+		  
+	try {
+		in.close();
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -139,13 +156,7 @@ public class ConfigView {
 				EditButton a = new
 				EditButton () ;
 				a.main(null);
-				FrontEndTest f = new FrontEndTest ();
-				try {
-					in.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				
 				
 				
 				

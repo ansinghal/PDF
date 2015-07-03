@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -83,7 +84,7 @@ public class MainCommand {
         		   int m = 0;
         		   System.out.println("Press 1 to view ConfigFile");
         		   System.out.println("Press 2 to edit Configfile");
-        		   System.out.println("Add a field");
+        		   System.out.println("Press 3 to add a field");
         		   System.out.println("Press -1 to continue execution");
         		   if(scanner.hasNextInt())
         			   m = scanner.nextInt();
@@ -109,16 +110,31 @@ public class MainCommand {
 	        		   }
 	        		   case 2:
 	        		   {
+	        			   try {
+	        			   editConfigFile () ;
+	        			   }
+	        			   catch(Exception e){
+	                		   System.out.println("Exception thrown while editing Config File");
+	                		   System.out.print(e);
+	                	   		}
+	        		   
 	        			   //edit
 	        			   break;
 	        		   }
 	        		   case 3:
 	        		   {
-	        			   //add
+	        			   try {
+		        			   addToConfigFile () ;
+		        			   }
+		        			   catch(Exception e){
+		                		   System.out.println("Exception thrown while adding to Config File");
+		                		   System.out.print(e);
+		                	   		}//add
 	        			   break;
 	        		   }
 	        		   case -1:
 	        		   {
+	        			   
 	        			   z = 1;
 	        			   break;
 	        		   }
@@ -197,9 +213,120 @@ public class MainCommand {
 			String x[] = p.split(",");
 			
 			String s = String.format("%s%40s%5s",arr,x[0].trim(),x[1].trim());
-			System.out.println(s);
+			System.out.println(s) ;
+		}
 			//System.out.print("\t"+x[0]+"\t"+x[1]);
 		  } 
+		private static void editConfigFile ()  {
+			Scanner scanner = new Scanner(System.in);
+			String Abc ;
+			String Abc1 ;
+			Integer Abc2 ;
+			
+			System.out.println("Enter Key ");
+			Abc=scanner.next() ;
+			System.out.println("Enter New Name");
+			Abc1=scanner.next();
+			System.out.println("Enter 1 for Showing the Field , Enter 0 For Hidden ");
+			
+			Abc2=scanner.nextInt() ;
+			
+			
+		
+			
+			
+			
+			
+			Properties props = new Properties();
+
+		  
+			if(Abc.endsWith("Disk"))                /* This if else block,3 lines of code is used so that
+		                                        //    the order in which the Vm disk comes in the quotation
+		                                          //    is not  changed when a person renames them.*/
+		   {   
+				if (Abc1.endsWith("Disk"))  
+		             {}
+		         else
+		        	  Abc1= Abc1 +"Disk";
+		   }
+			
+			
+			
+			
+			
+			String propsFileName = "./src/titlesConfig.properties";
+		    try {
+		      //first load old one:
+		      FileInputStream configStream = new FileInputStream(propsFileName);
+		      props.load(configStream);
+		      if (Abc2==0)
+		      { props.remove(Abc) ;
+		      props.setProperty(Abc,Abc1+","+Abc2);}
+		    	  
+		      if (Abc2==1)
+		      {
+
+		      props.remove(Abc) ;
+		      props.setProperty(Abc,Abc1+","+Abc2);}
+		      
+		      System.out.println("Done");
+		      
+
+		      //save modified property file
+		      FileOutputStream output = new FileOutputStream(propsFileName);
+		      props.store(output, null);
+		      
+		      output.close();
+		      configStream.close();
+		    } catch (IOException ex) {
+			      ex.printStackTrace();
+			    }
 	
 	}
-}
+		public static void addToConfigFile  () 
+		{
+			String propsFileName = "./src/titlesConfig.properties";
+		    try {
+		    	Scanner scanner = new Scanner(System.in);
+		    	Properties props = new Properties();
+		      FileInputStream configStream = new FileInputStream(propsFileName);
+		      props.load(configStream);
+		      System.out.println("Enter Key ");
+		      String Abc=scanner.next() ;
+		      System.out.println("Enter 1 for Show, 2 for hidden");
+		      
+		      Integer Abc2=scanner.nextInt() ;
+		      if (Abc2==0)
+		      {  
+		      props.setProperty(Abc,Abc+","+Abc2);}
+		    	  
+		      if (Abc2==1)
+		      {
+
+		      props.remove(Abc) ;
+		      props.setProperty(Abc,Abc+","+Abc2);}
+		      
+		     
+		      
+		      System.out.println("Field Added");
+		      
+
+		      //save modified property file
+		      FileOutputStream output = new FileOutputStream(propsFileName);
+		      props.store(output, null);
+		      
+		      output.close();
+		      configStream.close();
+		      
+		    
+		      
+		      
+
+		    } catch (IOException ex) {
+		      ex.printStackTrace();
+		    }
+		  }
+		
+		}
+	
+	
