@@ -114,7 +114,7 @@ public class ConfigView {
 		 DefaultTableModel dtm = new DefaultTableModel(0, 0);
 
 		// add header of the table
-		String header[] = new String[] { "Field","Title","Hidden" };
+		String header[] = new String[] { "Field","Title","Shown","Order" };
 
 		// add header in table model     
 		 dtm.setColumnIdentifiers(header);
@@ -133,7 +133,16 @@ public class ConfigView {
 		{  
 			String p = prop.getProperty(arr1[i]); 
 			String x[] = p.split(",");
-			dtm.addRow(new Object[] { arr1[i],x[0],x[1] });
+			int hidden = Integer.parseInt(x[1].trim());
+			String str = null;
+			if(hidden == 1)
+			{
+				str = "YES";
+			}
+			else
+				str = "NO";
+				
+			dtm.addRow(new Object[] { arr1[i],x[0],str,x[2] });
 		}
 		
 		

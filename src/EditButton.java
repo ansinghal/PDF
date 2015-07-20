@@ -110,7 +110,7 @@ if (Abc1.endsWith("Disk"))
 else
 Abc1= Abc1 +"Disk";
 }
-String propsFileName = "./src/titlesConfig.properties";
+String propsFileName = "titlesConfig.properties";
 try {
 //first load old one:
 FileInputStream configStream = new FileInputStream(propsFileName);
@@ -335,14 +335,23 @@ comboBox.addActionListener(new ActionListener() {
 			
 			props.load(in);
 			String aib = (String)comboBox.getSelectedItem() ;
+			String Name2=props.getProperty(aib) ;
+			String properties []=new String [3] ;
+			properties=Name2.split(",") ;
+			Integer y = Integer.parseInt(properties[1]) ;
 			if (aib.equals("Select Field"))
-			{textArea.setText("");} 
+			
+			{textArea.setText("");
+			} 
 			else
 			{
 			String aic = props.getProperty(aib) ;
 			arrt=aic.split(",") ;
 			textArea.setText(arrt[0]);
-			textArea1.setText(arrt[2]);}
+			textArea1.setText(arrt[2]);
+			}
+			if (y==0)
+			{comboBox_1.setSelectedItem("Hidden"); }
 			
 			
 		
