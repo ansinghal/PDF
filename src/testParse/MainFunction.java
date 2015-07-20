@@ -22,8 +22,8 @@ public class MainFunction {
 	public static void main(String[] args) throws IOException {
 		   FirstParse pdfManager = new FirstParse();
 		   //writing console output to a file:
-		  // PrintStream out = new PrintStream(new FileOutputStream("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\CONSOLE.txt"));
-		   //System.setOut(out);
+		  PrintStream out = new PrintStream(new FileOutputStream("C:\\Users\\IBM_ADMIN\\Desktop\\project\\output\\CONSOLE.txt"));
+		 System.setOut(out);
 		   //input file
 		 String [] fname = new String[4];
 		 

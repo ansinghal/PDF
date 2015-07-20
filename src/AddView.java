@@ -78,6 +78,7 @@ public class AddView {
 				      String Abc3= textArea_1.getText() ;
 				      Integer Abc4 = Integer.parseInt(Abc3) ;
 				      Integer Abc5 = props.keySet().size()+1 ;
+				      System.out.println("Variables read and generated");
 				      if (Abc4>Abc5 )
 				      {
 				    	  JOptionPane.showMessageDialog(null,"Enter Correct Order Number ","Error",JOptionPane.WARNING_MESSAGE);
