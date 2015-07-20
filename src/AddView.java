@@ -67,11 +67,9 @@ public class AddView {
 		comboBox.addItem("Show") ;
 		comboBox.addItem("Hidden");
 		
-		JButton btnAdd = new JButton("Add");
-		System.out.println("outside action");
+		JButton btnAdd = new JButton("Save&Exit ");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("inside action");
 				 String propsFileName = "titlesConfig.properties";
 				    try {
 				    	Properties props = new Properties();
@@ -151,11 +149,13 @@ public class AddView {
 				      configStream.close();
 				      ConfigView j = new ConfigView () ;
 				      j.initialize();
+				      System.exit(0);
 				      }
 				      
 
 				    } catch (IOException ex) {
 				      ex.printStackTrace();
+				      
 				    }
 				  }
 				
@@ -165,7 +165,7 @@ public class AddView {
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				frame.dispose();
 			}
 		});
 		
