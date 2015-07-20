@@ -117,61 +117,87 @@ props.load(configStream);
 String Temp [] = new String [3] ;
 String Temp1 [] = new String [3] ;
 String Temp2 [] = new String [3] ;
+String Name = new String () ;
 if (Abc4>props.keySet().size())
 	JOptionPane.showMessageDialog(null,"Wrong Order Value","Error",JOptionPane.WARNING_MESSAGE);
 else
 	
 {
 for (int i=0 ; i<props.keySet().size();i++)
-{String arr = (String) props.keySet().toArray()[i];
-System.out.println(arr);
-String temp = props.getProperty(arr) ;
-Temp=temp.split(",");
-Integer Asd = Integer.parseInt(Temp[2]) ;
-for (int j=0 ; j<props.keySet().size();j++)
-{   String arr1 = (String) props.keySet().toArray()[i];
-    System.out.println(arr1);
+{
+
+
+	
+	String arr1 = (String) props.keySet().toArray()[i];
+    System.out.println("arr1:"+arr1);
     String arr3= props.getProperty(Abc) ;
     Temp2=arr3.split(",") ;
-    Integer Asd4= Integer.parseInt(Temp2[2]) ;
+    String Name1=Temp2[0] ;
+    Integer Asd1= Integer.parseInt(Temp2[2]) ;
     
     String temp1 = props.getProperty(arr1) ;
     Temp1=temp1.split(",");
-    Integer Asd1 = Integer.parseInt(Temp[2]) ;
-    if (Asd4<Abc4)
+    Integer Asd4 = Integer.parseInt(Temp1[2]) ;
+    
+     Name = Temp1[0];
+    
+    if (Abc4>Asd1)
     {
-    	if (Asd1>Asd4&&Asd1<=Abc4)
-    {Asd1=Asd1+1 ;}
-    	props.setProperty(arr,Temp1[0]+","+Temp1[1]+","+Asd1) ;
-    }
-    	else if ((Asd1>Asd4))
-    	{
-    		if (Asd1>Asd4&&Asd1<=Abc4)
-    		Asd1=Asd1-1 ;
-    		props.setProperty(arr,Temp1[0]+","+Temp1[1]+","+Asd1) ;
-    	}
+    	
+    	if (Asd4>Asd1&&Asd4<=Abc4)
+    {
+    	
+    		Asd4=Asd4-1 ;
+    		if (Abc2.equals("Hidden"))
+    		{ 
+    		props.setProperty(arr1,Name+",0"+","+Asd4);}
+    		if (Abc2.equals("Show"))
+    		{
     		
-    
-
+    		props.setProperty(arr1,Name+",1"+","+Asd4);}
+    	
     }
+    }
+    	else if ((Abc4<Asd1))
+    	{
+    		if (Asd4>=Asd1&&Asd4<Abc4)
+    		{Asd4=Asd4+1 ;
+    		if (Abc2.equals("Hidden"))
+    		{ 
+    		props.setProperty(arr1,Name+",0"+","+Asd4);}
+    		if (Abc2.equals("Show"))
+    		{
+    		
+    		props.setProperty(arr1,Name+",1"+","+Asd4);}}
+    		
+    		
+    	}
+    	 
+    
+			
+    
+    	
+
+    
 
     
 
 
 
-if (Abc2.equals("Hidden"))
-{ props.remove(Abc) ;
-props.setProperty(Abc,Abc1+",0"+","+Abc4);}
-if (Abc2.equals("Show"))
-{
-props.remove(Abc) ;
-props.setProperty(Abc,Abc1+",1"+","+Abc4);}
+
+
 System.out.println("Done");
 }
 
 
-JOptionPane.showMessageDialog(null,"Name Changed ","Changed",JOptionPane.WARNING_MESSAGE);
 }
+
+props.setProperty(Abc1,Abc1+",1"+","+Abc4);
+
+
+
+JOptionPane.showMessageDialog(null,"Name Changed ","Changed",JOptionPane.WARNING_MESSAGE);
+
 //save modified property file
 FileOutputStream output = new FileOutputStream(propsFileName);
 props.store(output, null);
