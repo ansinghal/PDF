@@ -284,9 +284,11 @@ private void initialize() {
 				   XmlGenerator x = new XmlGenerator(outputPath,xmlPath,delimiter);
 				   
 				   xmlRead xlr = new xmlRead(xmlPath,output+".\\output.csv");
+				   JOptionPane.showMessageDialog(null,"Execution Successful ","End",JOptionPane.WARNING_MESSAGE);
 		 	      }
 		    catch (FileNotFoundException e1){
 		 	    	 JOptionPane.showMessageDialog(null,"Enter Correct Path","File Not Found",JOptionPane.WARNING_MESSAGE);
+		 	    	 
 		 	    	}
 		    
 		    	
@@ -300,10 +302,10 @@ private void initialize() {
 			 	      else
 			    
 			 	    	  
-   	     JOptionPane.showMessageDialog(null,"Program Run Over ","End",JOptionPane.WARNING_MESSAGE);
+   	    
 
 		          	           frame.validate(); 
-		          	         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+		          	         
 				    
 		 	      } 
 		            
