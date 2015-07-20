@@ -151,7 +151,7 @@ private void initialize() {
 				String abc = textField.getText();
 				String regex = "[0-9]";
 				
-				if (abc.matches(regex)==false||abc.contains(null)==true)
+				if (abc.matches(regex)==false)
 					
 				
 				{
@@ -159,6 +159,7 @@ private void initialize() {
 					JOptionPane.showMessageDialog(null,"Wrong Input","Enter Number Only",JOptionPane.WARNING_MESSAGE);
 					
 				}
+				else {}
 				
 				
 			}
@@ -287,6 +288,8 @@ private void initialize() {
 		    catch (FileNotFoundException e1){
 		 	    	 JOptionPane.showMessageDialog(null,"Enter Correct Path","File Not Found",JOptionPane.WARNING_MESSAGE);
 		 	    	}
+		    
+		    	
 		    catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -294,9 +297,10 @@ private void initialize() {
 			 	      {
 			 	    	 JOptionPane.showMessageDialog(null,"Specify Output Path","Ouput Path Not Specified ",JOptionPane.WARNING_MESSAGE);
 			 	      }
+			 	      else
 			    
 			 	    	  
-   	     JOptionPane.showMessageDialog(null,"Find the converted file in the specified path ","File Converted Succesfully  ",JOptionPane.WARNING_MESSAGE);
+   	     JOptionPane.showMessageDialog(null,"Program Run Over ","End",JOptionPane.WARNING_MESSAGE);
 
 		          	           frame.validate(); 
 		          	         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
