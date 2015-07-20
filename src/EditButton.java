@@ -160,7 +160,7 @@ for (int i=0 ; i<props.keySet().size();i++)
     }
     	else if ((Abc4<Asd1))
     	{
-    		if (Asd4>=Asd1&&Asd4<Abc4)
+    		if (Asd4<Asd1&&Asd4>=Abc4)
     		{Asd4=Asd4+1 ;
     		if (Abc2.equals("Hidden"))
     		{ 
@@ -192,7 +192,8 @@ System.out.println("Done");
 
 }
 
-props.setProperty(Abc1,Abc1+",1"+","+Abc4);
+
+props.setProperty(Abc,Abc1+",1"+","+Abc4);
 
 
 
