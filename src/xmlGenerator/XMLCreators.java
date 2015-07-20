@@ -162,14 +162,17 @@ public class XMLCreators {
                         		 if ((header.trim()).equals("IntrusionDetection&Protectionprice"))
                                  { curElement.setAttribute("title", special[1]+" price"); }
                         		 else 
-                        { curElement.setAttribute("title", titlevalue[0]);}
+                        {
+                                   //     System.out.println(titlevalue[0]);
+                                        
+                        			 curElement.setAttribute("title", titlevalue[0]);}
                         /*Element title = newDoc.createElement("title");
                         title.appendChild(newDoc.createTextNode(header));
                         curElement.appendChild(title);*/
                        
                        // 		 System.out.println("Header::"+ header );
                         curElement.setAttribute("order", titlevalue[2]);
-                        		 
+                      //  System.out.println(titlevalue[2]);
                         		 
                         		 
                         curElement.setAttribute("value", value);
@@ -248,5 +251,31 @@ public class XMLCreators {
         return rowsCount;
         
         // "XLM Document has been created" + rowsCount;
+    }
+
+    public int getSize()
+    {
+    	Properties prop = new Properties();
+		String propFileName = "titlesConfig.properties";
+
+		InputStream in = getClass().getClassLoader().getResourceAsStream(propFileName);
+		if (in != null) {
+			try {
+				prop.load(in);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			} else {
+			try {
+				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+		
+		return prop.size();
     }
 }
