@@ -81,6 +81,7 @@ JLabel lblNewLabel = new JLabel("Enter New Name");
 JTextArea textArea = new JTextArea();
 JComboBox comboBox_1 = new JComboBox();
 comboBox_1.addItem("Show") ;
+
 comboBox_1.addItem("Hidden");
 JButton btnRename = new JButton("Update");
 btnRename.addActionListener(new ActionListener() {
@@ -160,7 +161,7 @@ for (int i=0 ; i<props.keySet().size();i++)
     }
     	else if ((Abc4<Asd1))
     	{
-    		if (Asd4<Asd1&&Asd4>=Abc4)
+    		if (Asd4<=Asd1&&Asd4>Abc4)
     		{Asd4=Asd4+1 ;
     		if (Abc2.equals("Hidden"))
     		{ 
