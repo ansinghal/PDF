@@ -253,7 +253,7 @@ public class XMLCreators {
         // "XLM Document has been created" + rowsCount;
     }
 
-    public int getSize()
+  /*  public int getSize()
     {
     	Properties prop = new Properties();
 		String propFileName = "titlesConfig.properties";
@@ -277,5 +277,5 @@ public class XMLCreators {
 			}
 		
 		return prop.size();
-    }
+    }*/
 }
