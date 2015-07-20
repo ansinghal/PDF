@@ -1,5 +1,6 @@
 package xmlReader;
 import xmlGenerator.XMLCreators;
+
 import java.util.*;
 import java.io.*;
 import java.util.LinkedList;
@@ -625,30 +626,30 @@ public class xmlRead
 					                 String comp=hdValues[s][p];
 			    	                 String xyz =comp;
 			                             if (comp.equals("NA"))
-			    	                            { }
-			                                         else 
-			                                             {
-			                                                   for (int c=s;c<count;c++)
-			    	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
-			    	                                                            {}
-			    	                                                             else 
-			    		                                                            { if(comp.equals(hdValues[c+1][p]))
-			    		                                                                { //System.out.println("Xyz ::"+xyz);
-			    			                                                                xyz=xyz + "," + hdValues[c+1][p];
-			    		   
-                                                                                             hdValues[c+1][p]="NA";			    		
-			    		                                                                 }
-			    		                                                             }
-			                                                        }
-			    		
-			    		                     hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
-			    	
-			    		                    // System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
-			    		                      
-			    		
-			                                              }	
-			    		
-			      
+			                             {}
+                                         else 
+                                             {
+                                               for (int c=s;c<count;c++)
+	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
+	                                                            {}
+	                                                             else 
+		                                                            { if(comp.equals(hdValues[c+1][p]))
+		                                                                { //System.out.println("Xyz ::"+xyz);
+			                                                                xyz=xyz + "," + hdValues[c+1][p];
+		   
+                                                                             hdValues[c+1][p]="NA";			    		
+		                                                                 }
+		                                                             }
+                                                    }
+    		
+                                               hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
+    	
+    		                    // System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
+    		                      
+    		
+                                              }	
+    		
+      
 			       
 			                   }	
 			    	
@@ -763,8 +764,28 @@ public class xmlRead
 				{
 					//System.out.println("List l:"+" "+i+" "+l.get(i));
 				}
-				XMLCreators x = new XMLCreators();
-				size = x.getSize();
+				Properties prop = new Properties();
+				String propFileName = "titlesConfig.properties";
+
+				InputStream in = getClass().getClassLoader().getResourceAsStream(propFileName);
+				if (in != null) {
+					try {
+						prop.load(in);
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					} else {
+					try {
+						throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					}
+				
+				size = prop.size();
 					System.out.println("SIZE:"+size);
 				for(i=1;i<size+1;i++)
 				{
