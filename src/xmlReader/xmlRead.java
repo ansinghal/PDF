@@ -1,4 +1,5 @@
 package xmlReader;
+import xmlGenerator.XMLCreators;
 import java.util.*;
 import java.io.*;
 import java.util.LinkedList;
@@ -17,12 +18,6 @@ import org.w3c.dom.NodeList;
 
 public class xmlRead 
 {
-	//Properties props = new Properties();
-	//String propFileName = "tilesConfig.properties";
-	//InputStream in = xmlRead.class.getResourceAsStream(propFileName);
-	//props.load(in);
-	//FileOutputStream output = new FileOutputStream(propsFileName);
-	//props.store(output, null);
 	public xmlRead(String xmlPath,String output)
 	{
 		// TODO Auto-generated method stub
@@ -75,7 +70,7 @@ public class xmlRead
 							  NamedNodeMap nodeMap = kids.item(j).getAttributes();
 							  for (int k = 0; k < nodeMap.getLength(); k++) {
 									//good place to check if hidden == 0;change k = 0 for hidden nodes
-								  	Node node = nodeMap.item(k);
+								    	Node node = nodeMap.item(k);
 								  	//Displays with each iteration values where i=quote no j=title pair k=value/title
 								  	//System.out.println("\n\ni="+i+" j = "+j+" k="+k);
 								  	//System.out.println("attr name : " + node.getNodeName());
@@ -97,8 +92,8 @@ public class xmlRead
 								  	//order
 								  	if(k==1)
 								  	{
-								  		System.out.println("attr name : " + node.getNodeName());
-								  		System.out.println(node.getNodeValue().trim());
+								  		//System.out.println("attr name : " + node.getNodeName());
+								  		//System.out.println(node.getNodeValue().trim());
 								  		order[i*2][j] = Integer.parseInt(node.getNodeValue().trim());
 								  	}
 								  	
@@ -107,7 +102,7 @@ public class xmlRead
 									if(k==2)
 									{
 										matrix[i*2][j]=node.getNodeValue();
-										//System.out.println("k=1;attr name : " + node.getNodeValue());
+										///System.out.println("attr name : " + node.getNodeValue());
 										//System.out.println(matrix[i*2][j]+"\t"+i*2+"\t"+(j));
 									}
 									
@@ -208,7 +203,7 @@ public class xmlRead
              		} else {
              		throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
              		}
-             	
+             	//merging computing instance and server
              	String Ci = (prop.getProperty("ComputingInstance"));
              	String ci = null;
              	if(Ci==null)
@@ -235,6 +230,36 @@ public class xmlRead
 						flag = 1;
 						l.remove(ci);
 					}
+				
+				//merging computing instance price and server price
+				
+				String CiPrice = (prop.getProperty("ComputingInstanceprice"));
+             	String ciPrice = null;
+             	if(CiPrice==null)
+             	{
+             		ciPrice = "ComputingInstanceprice";             		
+             	}
+             	else
+             	{
+             		ciPrice = CiPrice.split(",")[0];
+             	}
+             	
+                String ServPrice = (prop.getProperty("Serverprice"));
+                String servPrice = null;
+                if(ServPrice==null)
+                {
+                	servPrice="Server";
+                }
+                else
+                {
+                	servPrice = ServPrice.split(",")[0];
+                }
+                int flagPrice = 0;
+                if(l.contains(servPrice) && l.contains(ciPrice))
+				{
+					flagPrice = 1;
+					l.remove(ciPrice);
+				}
 								
 				for(i=0;i<l.size();i++)
 				{
@@ -259,8 +284,22 @@ public class xmlRead
 									else
 									{
 										finalMatrix[row/2+1][i] = val;
-									}
+									}															
 								}
+								if(flagPrice==1)
+								{
+									if(head.equals(servPrice))
+									{
+										val = findInMatrix(matrix,servPrice,row);
+										if(val.equals("0.00"))
+											val = findInMatrix(matrix,ciPrice,row);
+										finalMatrix[row/2+1][i] = val;
+									}
+									else
+									{
+										finalMatrix[row/2+1][i] = val;
+									}															
+								}	
 								finalMatrix[row/2+1][i] = val;
 								//System.out.println("head:"+head+" row:"+row+" i:"+i+" finalMatrix[row/2+1][i]:"+val);
 							}
@@ -434,27 +473,27 @@ public class xmlRead
 				    	                 String xyz =comp;
 				                             if (comp.equals("NA"))
 				    	                            { }
-				                                         else 
-				                                             {
-				                                                   for (int c=s;c<count;c++)
-				    	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
-				    	                                                            {}
-				    	                                                             else 
-				    		                                                            { if(comp.equals(hdValues[c+1][p]))
-				    		                                                                { //System.out.println("Xyz ::"+xyz);
-				    			                                                                xyz=xyz + "," + hdValues[c+1][p];
-				    		   
-	                                                                                             hdValues[c+1][p]="NA";			    		
-				    		                                                                 }
-				    		                                                             }
-				                                                        }
+				                             else 
+                                             {
+                                                   for (int c=s;c<count;c++)
+    	                                                {   if (hdValues[c+1][p]==null || hdValues[c+1][p].equals("NA"))
+    	                                                            {}
+    	                                                             else 
+    		                                                            { if(comp.equals(hdValues[c+1][p]))
+    		                                                                { //System.out.println("Xyz ::"+xyz);
+    			                                                                xyz=xyz + "," + hdValues[c+1][p];
+    		   
+                                                                                 hdValues[c+1][p]="NA";			    		
+    		                                                                 }
+    		                                                             }
+                                                        }
 				    		
 				    		                     hdValues[s][p]=(xyz.split(",")[0]+"X"+xyz.split(",").length);
 				    	
 				    		                    // System.out.println( ">>>>>>>>>>>>>>>>>>>>>" + hdValues[s][p]+ "S="+s + "P="+p); 
 				    		                      
 				    		
-				                                              }	
+				                               }	
 				    		
 				      
 				       
@@ -722,17 +761,12 @@ public class xmlRead
 				int size=0;
 				for(i=0;i<l.size();i++)
 				{
-					System.out.println("List l:"+" "+i+" "+l.get(i));
+					//System.out.println("List l:"+" "+i+" "+l.get(i));
 				}
-				//Properties props = new Properties();
-				//String propFileName = "tilesConfig.properties";
-				//InputStream in = xmlRead.class.getResourceAsStream(propFileName);
-					//props.load(in);
-					//FileOutputStream output = new FileOutputStream(propsFileName);
-					//props.store(output, null);
-					size = 85;
-					System.out.println(size);
-				for(i=1;i<size;i++)
+				XMLCreators x = new XMLCreators();
+				size = x.getSize();
+					System.out.println("SIZE:"+size);
+				for(i=1;i<size+1;i++)
 				{
 					
 					for(col=0;col<m;col++)
@@ -743,7 +777,7 @@ public class xmlRead
 								
 							{
 								//System.out.println("found i:"+i+"at"+" row:"+row+" col:"+col);
-								System.out.println(matrix[row][col]);
+								//System.out.println(matrix[row][col]);
 								if(l.contains(matrix[row][col]))
 								{
 									
