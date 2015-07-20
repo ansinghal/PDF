@@ -68,9 +68,11 @@ public class AddView {
 		comboBox.addItem("Hidden");
 		
 		JButton btnAdd = new JButton("Add");
+		System.out.println("outside action");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 String propsFileName = "./src/titlesConfig.properties";
+				System.out.println("inside action");
+				 String propsFileName = "titlesConfig.properties";
 				    try {
 				    	Properties props = new Properties();
 				      FileInputStream configStream = new FileInputStream(propsFileName);
@@ -78,6 +80,7 @@ public class AddView {
 				      String Abc3= textArea_1.getText() ;
 				      Integer Abc4 = Integer.parseInt(Abc3) ;
 				      Integer Abc5 = props.keySet().size()+1 ;
+				      System.out.println("Variables read and generated");
 				      if (Abc4>Abc5 )
 				      {
 				    	  JOptionPane.showMessageDialog(null,"Enter Correct Order Number ","Error",JOptionPane.WARNING_MESSAGE);
